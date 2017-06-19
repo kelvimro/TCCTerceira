@@ -16,7 +16,7 @@ The"select" button toggles these two modes
 
 //Pins for HC-06 (FC114 model) RX/TX
 //  Arduino D12(TX) to BlueTooth RX
-//  Arduino D2(RX) to BlueTooth TX
+//  Arduino D2(RX) to BlueTooth TX 
 SoftwareSerial BTSerial(0, 1); // RX | TX
 
 //For NANO
