@@ -1,338 +1,248 @@
 #include <Arduino.h>
-// Modu Cinza GY 4 pinos
 #include <SoftwareSerial.h>
-/*
-Spiderbot bluetooth remote control using
-Arduino Bluetooth Controller App
+#include <../lib/Arduino-PID-Library-master/PID_v1.h>
 
-It has two modes:
-
-  RC mode (default when turned on)
-  line-following - manual control is disabled except for the select (toggle) button
-
-The"select" button toggles these two modes
-*/
+// Test MD03a / Pololu motor with encoder
+// speed control (PI), V & I display
+// Credits:
+//   Dallaby   http://letsmakerobots.com/node/19558#comment-49685
+//   Bill Porter  http://www.billporter.info/?p=286
+//   bobbyorr (nice connection diagram) http://forum.pololu.com/viewtopic.php?f=15&t=1923
 
 
-//Pins for HC-06 (FC114 model) RX/TX
-//  Arduino D12(TX) to BlueTooth RX
-//  Arduino D2(RX) to BlueTooth TX 
-SoftwareSerial BTSerial(0, 1); // RX | TX
+boolean aaa = true;
 
-//For NANO
-//PWM: 3, 5, 6, 9, 10, and 11. Provide 8-bit PWM output with the analogWrite() function.
+//Motor Esquerdo = A
+#define PWMA            5                      // PWM motor pin
+#define InA1            9                      // INA motor pin
+#define InA2            10                     // INB motor pin
 
-const int lSensor = A1; //left IR line tracking sensor input
-const int rSensor = A2; //right IR line tracking sensor input
+//Motor Direito = B
+#define PWMB            6                       // PWM motor pin
+#define InB1            11                      // INA motor pin
+#define InB2            12                      // INB motor pin
 
-//Encoders parameters
-const int Lencoder1 = 2;
-const int Rencoder1 = 3;
-const int Lencoder2 = 7;
-const int Rencoder2 = 8;
-//Altere o numero abaixo de acordo com o seu disco encoder
-//34 Total 12 brancos 12 pretos --- Preto= '1' Branco = '0'
-unsigned int pulsos_por_volta = 12;
-int rpm;
-volatile byte pulsos;
-unsigned long oldtime;
+const int motorSTBY = 13;  //STBY pin on TB6612FNG. Must be HIGH to enable motor
 
-//drive motor/shield parameters
-const int LmotorPWM  = 5;   //speed control using analogWrite() function. Value between 0 - 255
-const int LmotorPOS  = 9;   //HIGH should go forward
-const int LmotorNEG  = 10;  //LOW should go forward
+const int encodPinA1 = 2;                       // encoder A pin
+const int encodPinB1 = 3;                       // encoder B pin
+const int pulsos = 34;
+#define Vpin            A7                      // battery monitoring analog pin
+#define Apin            1                       // motor current monitoring analog pin
 
-const int RmotorPWM  = 6;   //speed control using analogWrite() function. Value between 0 - 255
-const int RmotorPOS  = 11;  //HIGH should go forward
-const int RmotorNEG  = 12;  //LOW should go forward
-const int motorSTBY  = 13;  //STBY pin on TB6612FNG. Must be HIGH to enable motor
+#define CURRENT_LIMIT   1000                    // high current warning
+#define LOW_BAT         10000                   // low bat warning
+#define LOOPTIME        100                     // PID loop time
+#define NUMREADINGS     10                      // samples for Amp average
 
-//calibrate the following values to make it go straight
-int LmotorSpeed = 250; //slow down a bit. left more appears to be more powerful than rightt
-int RmotorSpeed = 100; //max speed
+int readings[NUMREADINGS];
+unsigned long lastMilli = 0;                    // loop timing
+unsigned long lastMilliPrint = 0;               // loop timing
+//Velocidade solicitada
+double speed_reqA = 300;                           // speed (Set Point)
+double speed_reqB = 300;                           // speed (Set Point)
+//Velocidade atual
+double speed_actA = 0;                             // speed (actual value)
+double speed_actB = 0;                             // speed (actual value)
+//PWM
+double PWM_valA = 0;                               // (25% = 64; 50% = 127; 75% = 191; 100% = 255)
+double PWM_valB = 0;                               // (25% = 64; 50% = 127; 75% = 191; 100% = 255)
+//Bateria
+int voltage = 0;                                // in mV
+int current = 0;                                // in mA
 
-//for Serial.read
-char command = ' ';
+volatile long countA = 0;                        // rev counter
+volatile long countB = 0;                        // rev counter
 
-//op mode: could also use boolean in this case
-int opMode = 0; // operation mode: 0 = RC (default), 1 = line following
+//PID config
+float Kp = .4;                                // PID proportional control Gain
+float Ki = 0.02;
+float Kd = 0.5;                                // PID Derivitave control gain
 
-//set this to true when debugging and watch the serial monitor for status msg
-boolean DEBUG = false;
+//Specify the links and initial tuning parameters
+PID myPID(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 
 
-// Bateria config
-int bateria = A7;
-const int ledPin = 4;
-int outbat = 0;
-int bat = 0;
-int estadoLed = HIGH; // estadoLed
-
-// Generally, you should use "unsigned long" for variables that hold time
-// The value will quickly become too large for an int to store
-unsigned long previousMillis = 0; // will store last time LED was updated
-
-// constants won't change :
-const long intervalo = 1000; // interval at which to blink (milliseconds)
-// Bateria fim
-
-/****************************************************************************/
-void contador(){
-    pulsos++;
+void rencoderA() {                               // pulse and direction, direct port reading to save cycles
+    if (digitalRead(encodPinA1)) countA++;    // if(digitalRead(encodPinB1)==HIGH)   count ++;
 }
-/****************************************************************************/
-void testeencoder(){
-    Serial.println(digitalRead(Lencoder1));
+
+void rencoderB() {
+    if (digitalRead(encodPinB1)) countB++;
 }
-/****************************************************************************/
+
 void setup() {
+    analogReference(EXTERNAL);                            // Current external ref is 3.3V
+    Serial.begin(115200);
 
-    //Set bateria
-    Serial.begin(9600);
-    pinMode(bateria, INPUT);
+    pinMode(InA1, OUTPUT);
+    pinMode(InA2, OUTPUT);
+    pinMode(InB1, OUTPUT);
+    pinMode(InB2, OUTPUT);
+    pinMode(PWMA, OUTPUT);
+    pinMode(PWMB, OUTPUT);
 
-    //set the pinmode of encoder
-    pinMode (lSensor,INPUT);
-    pinMode (rSensor,INPUT);
+    pinMode(encodPinA1, INPUT);
+    pinMode(encodPinB1, INPUT);
+    //digitalWrite(encodPinA1, HIGH);                      // turn on pullup resistor
+    //digitalWrite(encodPinB1, HIGH);
+    //Interrupt para contagem dos encoders
+    attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, FALLING);
+    attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, FALLING);
 
-    //Setup de RPM
-    //Interrupcao "0" - pino digital 2 (Lencoder1)
-    //Aciona o contador a cada pulso
-    //attachInterrupt(0, contador, FALLING); //Muda quando 1 vira 0
-    attachInterrupt(digitalPinToInterrupt(Lencoder1), contador, RISING);
-    //Contador de pulsos
-    pulsos = 0;
-    //ultima RPM calculada
-    rpm = 0;
-    // Não sei ainda
-    oldtime = 0;
+    for (int i = 0; i < NUMREADINGS; i++) readings[i] = 0;  // initialize readings to 0
 
-    //motor output
-    pinMode(LmotorPWM, OUTPUT);
-    pinMode(LmotorPOS, OUTPUT);
-    pinMode(LmotorNEG, OUTPUT);
-    pinMode(RmotorPWM, OUTPUT);
-    pinMode(RmotorPOS, OUTPUT);
-    pinMode(RmotorNEG, OUTPUT);
-    pinMode(motorSTBY, OUTPUT);
-
-    if (DEBUG) {
-        Serial.begin(9600);
-        Serial.println("Remote Control Spider Bot using Arduino Bluetooth Contoller App");
-        Serial.println("Arduino with HC-0x FC-114 is ready");
-    }
-
-    // FC-114 default baud rate is 9600
-    BTSerial.begin(9600);
-
-
-    if (DEBUG) {
-        Serial.println("BTserial started at 9600");
-    }
-
+    analogWrite(PWMA, PWM_valA);
+    digitalWrite(InA1, HIGH);
+    digitalWrite(InA2, LOW);
+    analogWrite(PWMB, PWM_valB);
+    digitalWrite(InB1, HIGH);
+    digitalWrite(InB2, LOW);
 }
-/****************************************************************************/
 
-void goStraight() {
-    analogWrite (LmotorPWM, LmotorSpeed);
-    digitalWrite (LmotorPOS, HIGH);
-    digitalWrite (LmotorNEG, LOW);
-
-    analogWrite (RmotorPWM, RmotorSpeed);
-    digitalWrite (RmotorPOS, HIGH);
-    digitalWrite (RmotorNEG, LOW);
-
-    digitalWrite (motorSTBY, HIGH);
-}
-/****************************************************************************/
-
-void goReverse() {
-    analogWrite (LmotorPWM, LmotorSpeed);
-    digitalWrite (LmotorPOS, LOW);
-    digitalWrite (LmotorNEG, HIGH);
-
-    analogWrite (RmotorPWM, RmotorSpeed);
-    digitalWrite (RmotorPOS, LOW);
-    digitalWrite (RmotorNEG, HIGH);
-
-    digitalWrite (motorSTBY, HIGH);
-}
-/****************************************************************************/
-
-void goLeft() {
-    analogWrite (LmotorPWM, LmotorSpeed);
-    digitalWrite (LmotorPOS, LOW);
-    digitalWrite (LmotorNEG, HIGH);
-
-    analogWrite (RmotorPWM, RmotorSpeed);
-    digitalWrite (RmotorPOS, HIGH);
-    digitalWrite (RmotorNEG, LOW);
-
-    digitalWrite (motorSTBY, HIGH);
-}
-/****************************************************************************/
-
-void goRight() {
-    analogWrite (LmotorPWM, LmotorSpeed);
-    digitalWrite (LmotorPOS, HIGH);
-    digitalWrite (LmotorNEG, LOW);
-
-    analogWrite (RmotorPWM, RmotorSpeed);
-    digitalWrite (RmotorPOS, LOW);
-    digitalWrite (RmotorNEG, HIGH);
-
-    digitalWrite (motorSTBY, HIGH);
-}
-/****************************************************************************/
-
-void stop() {
-    analogWrite (LmotorPWM, 0);
-    digitalWrite (LmotorPOS, LOW);
-    digitalWrite (LmotorNEG, LOW);
-
-    analogWrite (RmotorPWM, 0);
-    digitalWrite (RmotorPOS, LOW);
-    digitalWrite (RmotorNEG, LOW);
-
-    digitalWrite (motorSTBY, LOW);
-}
-/****************************************************************************/
-
-//if RC mode, run this routine
-void RC_mode() {
-
-    if (BTSerial.available()) {
-
-        command = BTSerial.read();
-        //Serial.print(command);
-
-        //program the following buttons into Arduino Bluetooth Controller App
-        switch(command) {
-            case 'u':
-                goStraight();
-                if (DEBUG) Serial.println("go straight");
-                digitalWrite(ledPin, HIGH);
-                break;
-            case 'd':
-                goReverse();
-                if (DEBUG) Serial.println("go reverse");
-                break;
-            case 'l':
-                goLeft();
-                if (DEBUG) Serial.println("go left");
-                break;
-            case 'r':
-                goRight();
-                if (DEBUG) Serial.println("go right");
-                break;
-            case 's':
-                stop();
-                if (DEBUG) Serial.println("stop");
-                digitalWrite(ledPin, LOW);
-                break;
-            case 't':
-                stop();
-                if (DEBUG) Serial.println("Toggle to Line Following Mode");
-                opMode = 1;   //toggle to line following mode
-                break;
-        }
-    }
-
-}
-/****************************************************************************/
-
-//if line following mode, run this routine
-void LineFollowing_mode() {
-
-    int lSensStat = analogRead (lSensor);  //0 = signal detected (white surface): 1 = black line
-    int rSensStat = analogRead (rSensor);  //0 = signal detected (white surface): 1 = black line
-
-    if (DEBUG) if (!lSensStat) { Serial.print ("Left on line   ");} else { Serial.print ("Left no line   ");};
-    if (DEBUG) if (!rSensStat) { Serial.println ("Right on line");} else { Serial.println ("Right no line");};
-
-    if (lSensStat && rSensStat) { goStraight();};  //both sensors detected white floor. go straight
-    if (lSensStat && !rSensStat) { goRight();};    //detected black surface on right (off), so turn right
-    if (!lSensStat && rSensStat) { goLeft();};     //detected black surface on left (off), so turn left
-    if (!lSensStat && !rSensStat) { stop();};      //detected black surface on both sensor, so stop!
-
-    //delay(20);
+void printMotorInfo() {                                                      // display data
+    if ((millis() - lastMilliPrint) >= 500) {
+        lastMilliPrint = millis();
+        //Motor A informações
+        Serial.print("SP:");
+        Serial.print(speed_reqA);
+        Serial.print("  RPM:");
+        Serial.print(speed_actA);
+        Serial.print("  PWM:");
+        Serial.print(PWM_valA);
+        Serial.print("  V:");
+        Serial.print(float(voltage) / 1000, 1);
+        Serial.print("  mA:");
+        Serial.println(current);
+        //Motor B informações
+        Serial.print("SP:");
+        Serial.print(speed_reqB);
+        Serial.print("  RPM:");
+        Serial.print(speed_actB);
+        Serial.print("  PWM:");
+        Serial.print(PWM_valB);
+        Serial.print("  V:");
+        Serial.print(float(voltage) / 1000, 1);
+        Serial.print("  mA:");
+        Serial.println(current);
 
 
-    //check for toggle button
-    if (BTSerial.available()) {
-
-        command = BTSerial.read();
-        //Serial.print(command);
-
-        if (command == 't') {
-            stop();
-            opMode = 0;   //toggle to RC mode
-        }
+        if (current > CURRENT_LIMIT) Serial.println("*** CURRENT_LIMIT ***");
+        if (voltage > 1000 && voltage < LOW_BAT) Serial.println("*** LOW_BAT ***");
     }
 }
-/****************************************************************************/
 
-//main program
-void loop() {
-    //Inicio Encoder
-
-
-/****************************************************************************/
-    // Bateria inicio
-    unsigned long currentMillis = millis();
-    bat = analogRead(bateria);
-    outbat = map(bat, 0, 1023, 0, 255);
-    if(DEBUG) {
-        Serial.print("sensor = ");
-        Serial.print(bat);
-        Serial.print("\t output = ");
-        Serial.println(outbat);
-        delay(10);
-    }
-    analogWrite (ledPin, outbat);
-    if (outbat < 140){
-        if (currentMillis - previousMillis >= intervalo) {
-            // save the last time you blinked the LED
-            previousMillis = currentMillis;
-
-            // if the LED is off turn it on and vice-versa:
-            if (estadoLed == HIGH) {
-                estadoLed = LOW;
-            } else {
-                estadoLed = HIGH;
+int getParam() {
+    char param, cmd;
+    if (!Serial.available()) return 0;
+    delay(10);
+    param = Serial.read();                              // get parameter byte
+    if (!Serial.available()) return 0;
+    cmd = Serial.read();                                // get command byte
+    Serial.flush();
+    switch (param) {
+        case 'v':                                         // adjust speed
+            if (cmd == '+') {
+                speed_reqA += 20;
+                if (speed_reqA > 400) speed_reqA = 400;
             }
-        }
-        // set the LED with the ledState of the variable:
-        digitalWrite(ledPin, estadoLed);
-    }
-    else
-        digitalWrite(ledPin, LOW);
-    //Bateria fim
-
-/****************************************************************************/
-    //Atualiza contador a cada segundo
-    if (millis() - oldtime >= 1000)
-    {
-        //Desabilita interrupcao durante o calculo
-        detachInterrupt(digitalPinToInterrupt(Lencoder1));
-        rpm = (60 * 1000 / pulsos_por_volta ) / (millis() - oldtime) * pulsos;
-        oldtime = millis();
-        pulsos = 0;
-
-        //Mostra o valor de RPM no serial monitor
-        Serial.print("RPM = ");
-        Serial.println(rpm, DEC);
-        //Habilita interrupcao
-        attachInterrupt(digitalPinToInterrupt(Lencoder1), contador, RISING);
-    }
-/****************************************************************************/
-    //default mode is RC mode
-    if (opMode == 0) {
-        RC_mode();
-        if (DEBUG) Serial.println("RC mode");
-    } else if (opMode == 1) {
-        LineFollowing_mode();
-        if (DEBUG) Serial.println("Line Following mode");
+            if (cmd == '-') {
+                speed_reqA -= 20;
+                if (speed_reqA < 0) speed_reqA = 0;
+            }
+            break;
+        case 's':                                        // adjust direction
+            if (cmd == '+') {
+                digitalWrite(InA1, LOW);
+                digitalWrite(InB1, HIGH);
+            }
+            if (cmd == '-') {
+                digitalWrite(InA1, HIGH);
+                digitalWrite(InB1, LOW);
+            }
+            break;
+        case 'o':                                        // user should type "oo"
+            digitalWrite(InA1, LOW);
+            digitalWrite(InB1, LOW);
+            speed_reqA = 0;
+            break;
+        default:
+            Serial.println("???");
     }
 }
-/****************************************************************************/
+
+int digital_smooth(int value, int *data_array) {    // remove signal noise
+    static int ndx = 0;
+    static int count = 0;
+    static int total = 0;
+    total -= data_array[ndx];
+    data_array[ndx] = value;
+    total += data_array[ndx];
+    ndx = (ndx + 1) % NUMREADINGS;
+    if (count < NUMREADINGS) count++;
+    return total / count;
+}
+
+void getMotorData() {                                      // calculate speed, volts and Amps
+    static long countAntA = 0;                                      // last count
+    static long countAntB = 0;                                      // last count
+    speed_actA = ((countA - countAntA) * (60 * (1000 / LOOPTIME))) /
+                 (pulsos); // '34' 16 pulses X 29 gear ratio = 464 counts per output shaft rev
+    speed_actB = ((countB - countAntB) * (60 * (1000 / LOOPTIME))) /
+                 (pulsos); // '34' 16 pulses X 29 gear ratio = 464 counts per output shaft rev
+    countAntA = countA;
+    countAntB = countB;
+    voltage = int(analogRead(Vpin) * 3.22 * 12.2 /
+                  2.2);             // battery voltage: mV=ADC*3300/1024, voltage divider 10K+2K
+    current = int(analogRead(Apin) * 3.22 * .77 * (1000.0 / 132.0));  // motor current - output: 130mV per Amp
+    current = digital_smooth(current, readings);                   // remove signal noise
+}
+
+int updatePid(int command, int targetValue, int currentValue) {  // compute PWM value
+    float pidTerm = 0;                                             // PID correction
+    int error = 0;
+    static int last_error = 0;
+
+    error = abs(targetValue) - abs(currentValue);
+
+    pidTerm = (Kp * error) + (Kd * (error - last_error));
+
+    last_error = error;
+
+    return constrain(command + int(pidTerm), 0, 255);
+}
+
+void loop() {
+    Serial.println(PWM_valA);
+    getParam();                                                    // check keyboard
+
+    if (aaa = true) {
+        analogWrite(PWMA, 50);
+        digitalWrite(InA1, HIGH);
+        digitalWrite(InA2, LOW);
+
+        analogWrite(PWMB, 50);
+        digitalWrite(InB1, HIGH);
+        digitalWrite(InB2, LOW);
+
+        digitalWrite(motorSTBY, HIGH);
+        aaa = false;
+    }
+
+    if ((millis() - lastMilli) >= LOOPTIME) {                       // enter tmed loop
+        lastMilli = millis();
+        getMotorData();                                            // calculate speed, volts and Amps
+//        PWM_valA = updatePid(PWM_valA, speed_reqA, speed_actA);     // compute PWM value
+//        analogWrite(PWMA, PWM_valA);                                // send PWM to motor
+//
+//        PWM_valB = updatePid(PWM_valB, speed_reqB, speed_actB);      // compute PWM value
+//        analogWrite(PWMB, PWM_valB);                                 // send PWM to motor
+        myPID.SetTunings(Kp,Ki,Kd);
+        myPID.Compute();
+        analogWrite(PWMA, PWM_valA);
+        Serial.println(PWM_valA);
+
+    }
+    printMotorInfo();                                              // display data
+}
+

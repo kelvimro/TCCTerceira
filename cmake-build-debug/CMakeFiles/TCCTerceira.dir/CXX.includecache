@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+../lib/Arduino-PID-Library-master/PID_v1.h
+
 /home/kelvimro/.platformio/packages/framework-arduinoavr/cores/arduino/Arduino.h
 stdlib.h
 -
@@ -1504,5 +1506,7 @@ sys/_types.h
 Arduino.h
 -
 SoftwareSerial.h
+-
+../lib/Arduino-PID-Library-master/PID_v1.h
 -
 
