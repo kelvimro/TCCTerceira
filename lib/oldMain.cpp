@@ -316,6 +316,7 @@ void loop() {
         //Desabilita interrupcao durante o calculo
         detachInterrupt(digitalPinToInterrupt(Lencoder1));
         rpm = (60 * 1000 / pulsos_por_volta ) / (millis() - oldtime) * pulsos;
+
         oldtime = millis();
         pulsos = 0;
 

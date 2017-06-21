@@ -2,17 +2,17 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="TCCTerceira" targetName="PLATFORMIO_BUILD" />
-      <config projectName="TCCTerceira" targetName="TCCTerceira" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO_CLEAN" />
+      <config projectName="TCCTerceira" targetName="DEBUG" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO_TEST" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO_UPLOAD" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_UPDATE_ALL" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_UPLOADFS" />
-      <config projectName="TCCTerceira" targetName="PLATFORMIO" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_REBUILD_PROJECT_INDEX" />
-      <config projectName="TCCTerceira" targetName="PLATFORMIO_TEST" />
-      <config projectName="TCCTerceira" targetName="PLATFORMIO_CLEAN" />
-      <config projectName="TCCTerceira" targetName="PLATFORMIO_UPLOAD" />
-      <config projectName="TCCTerceira" targetName="DEBUG" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO_BUILD" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_PROGRAM" />
+      <config projectName="TCCTerceira" targetName="TCCTerceira" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -22,27 +22,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec922180-b3d3-40f1-af0b-2568113a9075" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.pioenvs/do-not-modify-files-here.url" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.pioenvs/structure.hash" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CMakeListsPrivate.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/PID_v1.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/PID_v1.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/README.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_AdaptiveTunings/PID_AdaptiveTunings.ino" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_Basic/PID_Basic.ino" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_PonM/PID_PonM.ino" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_RelayOutput/PID_RelayOutput.ino" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/keywords.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/library.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/library.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/oldMain.cpp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/PID_v1.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/PID_v1.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/README.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_AdaptiveTunings/PID_AdaptiveTunings.ino" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_Basic/PID_Basic.ino" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_PonM/PID_PonM.ino" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/examples/PID_RelayOutput/PID_RelayOutput.ino" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/keywords.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/library.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/Arduino-PID-Library-master/library.properties" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" afterPath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/src/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/src/main.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/serialmonitor_settings.xml" afterPath="$PROJECT_DIR$/.idea/serialmonitor_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/CXX.includecache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.internal" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/oldMain.cpp" afterPath="$PROJECT_DIR$/lib/oldMain.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
     </list>
     <ignored path="platformio.iws" />
@@ -67,7 +63,7 @@
       <file leaf-file-name="platformio.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/platformio.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="140">
               <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
               <folding />
             </state>
@@ -77,7 +73,7 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
+            <state relative-caret-position="700">
               <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
               <folding />
             </state>
@@ -87,8 +83,8 @@
       <file leaf-file-name="oldMain.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/oldMain.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="275" column="7" lean-forward="false" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
+            <state relative-caret-position="124">
+              <caret line="316" column="53" lean-forward="false" selection-start-line="316" selection-start-column="53" selection-end-line="316" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -97,8 +93,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-121">
-              <caret line="221" column="32" lean-forward="true" selection-start-line="221" selection-start-column="32" selection-end-line="221" selection-end-column="32" />
+            <state relative-caret-position="140">
+              <caret line="199" column="49" lean-forward="false" selection-start-line="199" selection-start-column="49" selection-end-line="199" selection-end-column="49" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -113,6 +109,7 @@
       <find>debug</find>
       <find>forward</find>
       <find>current</find>
+      <find>SetMode</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -122,6 +119,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/oldMain.cpp" />
+        <option value="$PROJECT_DIR$/lib/oldMain.cpp" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
       </list>
     </option>
@@ -144,6 +142,9 @@
         <expanded-state>
           <State>
             <id />
+          </State>
+          <State>
+            <id>C/C++</id>
           </State>
         </expanded-state>
         <selected-state>
@@ -210,13 +211,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TCCTerceira" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TCCTerceira" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Arduino-PID-Library-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/platformio.ini" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -496,11 +515,12 @@
       <workItem from="1497904746850" duration="5680000" />
       <workItem from="1497982837671" duration="201000" />
       <workItem from="1497984474704" duration="12767000" />
+      <workItem from="1498068289597" duration="9386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23966000" />
+    <option name="totallyTimeSpent" value="33352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -510,12 +530,12 @@
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Serial Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Serial Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3305509" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32554257" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22534142" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22534142" sideWeight="0.49127182" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22534142" sideWeight="0.5087282" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -570,6 +590,40 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/platformio.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/oldMain.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5500">
+          <caret line="275" column="7" lean-forward="false" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4420">
+          <caret line="221" column="32" lean-forward="true" selection-start-line="221" selection-start-column="32" selection-end-line="221" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/platformio.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -754,7 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/platformio.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="140">
           <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
           <folding />
         </state>
@@ -762,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
+        <state relative-caret-position="700">
           <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
           <folding />
         </state>
@@ -772,15 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="53" column="11" lean-forward="false" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Arduino-PID-Library-master/PID_v1.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,7 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="111" column="2" lean-forward="false" selection-start-line="111" selection-start-column="2" selection-end-line="111" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,18 +852,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Arduino-PID-Library-master/PID_v1.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/oldMain.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="275" column="7" lean-forward="false" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
+        <state relative-caret-position="124">
+          <caret line="316" column="53" lean-forward="false" selection-start-line="316" selection-start-column="53" selection-end-line="316" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-121">
-          <caret line="221" column="32" lean-forward="true" selection-start-line="221" selection-start-column="32" selection-end-line="221" selection-end-column="32" />
+        <state relative-caret-position="140">
+          <caret line="199" column="49" lean-forward="false" selection-start-line="199" selection-start-column="49" selection-end-line="199" selection-end-column="49" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <../lib/Arduino-PID-Library-master/PID_v1.h>
+#include "../lib/Arduino-PID-Library-master/PID_v1.h"
+
 
 // Test MD03a / Pololu motor with encoder
 // speed control (PI), V & I display
@@ -10,7 +11,7 @@
 //   bobbyorr (nice connection diagram) http://forum.pololu.com/viewtopic.php?f=15&t=1923
 
 
-boolean aaa = true;
+
 
 //Motor Esquerdo = A
 #define PWMA            5                      // PWM motor pin
@@ -62,6 +63,7 @@ float Kd = 0.5;                                // PID Derivitave control gain
 //Specify the links and initial tuning parameters
 PID myPID(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 
+int treta = 0;
 
 void rencoderA() {                               // pulse and direction, direct port reading to save cycles
     if (digitalRead(encodPinA1)) countA++;    // if(digitalRead(encodPinB1)==HIGH)   count ++;
@@ -72,8 +74,12 @@ void rencoderB() {
 }
 
 void setup() {
-    analogReference(EXTERNAL);                            // Current external ref is 3.3V
+    // Current external ref is 3.3V
+    analogReference(EXTERNAL);
+
     Serial.begin(115200);
+
+    myPID.SetMode(AUTOMATIC);
 
     pinMode(InA1, OUTPUT);
     pinMode(InA2, OUTPUT);
@@ -86,6 +92,7 @@ void setup() {
     pinMode(encodPinB1, INPUT);
     //digitalWrite(encodPinA1, HIGH);                      // turn on pullup resistor
     //digitalWrite(encodPinB1, HIGH);
+
     //Interrupt para contagem dos encoders
     attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, FALLING);
     attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, FALLING);
@@ -104,7 +111,7 @@ void printMotorInfo() {                                                      // 
     if ((millis() - lastMilliPrint) >= 500) {
         lastMilliPrint = millis();
         //Motor A informações
-        Serial.print("SP:");
+        Serial.print("A! SP:");
         Serial.print(speed_reqA);
         Serial.print("  RPM:");
         Serial.print(speed_actA);
@@ -115,7 +122,7 @@ void printMotorInfo() {                                                      // 
         Serial.print("  mA:");
         Serial.println(current);
         //Motor B informações
-        Serial.print("SP:");
+        Serial.print("B! SP:");
         Serial.print(speed_reqB);
         Serial.print("  RPM:");
         Serial.print(speed_actB);
@@ -186,16 +193,27 @@ int digital_smooth(int value, int *data_array) {    // remove signal noise
 void getMotorData() {                                      // calculate speed, volts and Amps
     static long countAntA = 0;                                      // last count
     static long countAntB = 0;                                      // last count
-    speed_actA = ((countA - countAntA) * (60 * (1000 / LOOPTIME))) /
-                 (pulsos); // '34' 16 pulses X 29 gear ratio = 464 counts per output shaft rev
-    speed_actB = ((countB - countAntB) * (60 * (1000 / LOOPTIME))) /
-                 (pulsos); // '34' 16 pulses X 29 gear ratio = 464 counts per output shaft rev
+
+/*****************************************/
+    //Desabilita interrupcao durante o calculo
+    detachInterrupt(digitalPinToInterrupt(encodPinA1));
+    speed_actA = (countA - countAntA) / (pulsos * (60 * (1000/LOOPTIME)));
     countAntA = countA;
-    countAntB = countB;
-    voltage = int(analogRead(Vpin) * 3.22 * 12.2 /
-                  2.2);             // battery voltage: mV=ADC*3300/1024, voltage divider 10K+2K
-    current = int(analogRead(Apin) * 3.22 * .77 * (1000.0 / 132.0));  // motor current - output: 130mV per Amp
-    current = digital_smooth(current, readings);                   // remove signal noise
+    //Habilita interrupcao
+    attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, FALLING);
+/*****************************************/
+    // Atualiza velocidade atual
+    //speed_actA = ((countA - countAntA) * (60 * (1000 / LOOPTIME)))/(pulsos);
+    //speed_actB = ((countB - countAntB) * (60 * (1000 / LOOPTIME)))/(pulsos);
+    //countAntA = countA;
+    //countAntB = countB;
+
+    // battery voltage: mV=ADC*3300/1024, voltage divider 10K+2K
+    voltage = int(analogRead(Vpin) * 3.22 * 12.2 / 2.2);
+    // motor current - output: 130mV per Amp
+    current = int(analogRead(Apin) * 3.22 * .77 * (1000.0 / 132.0));
+    // remove signal noise
+    current = digital_smooth(current, readings);
 }
 
 int updatePid(int command, int targetValue, int currentValue) {  // compute PWM value
@@ -213,36 +231,43 @@ int updatePid(int command, int targetValue, int currentValue) {  // compute PWM 
 }
 
 void loop() {
-    Serial.println(PWM_valA);
-    getParam();                                                    // check keyboard
+    delay(10);
 
-    if (aaa = true) {
-        analogWrite(PWMA, 50);
+    //getParam(); // check keyboard
+
+    if (Serial.available()){
+        speed_reqA = Serial.parseInt();
+    }
+
+    while (treta < 5){
+        delay(1500);
+        analogWrite(PWMA, 30);
         digitalWrite(InA1, HIGH);
         digitalWrite(InA2, LOW);
 
-        analogWrite(PWMB, 50);
-        digitalWrite(InB1, HIGH);
+        analogWrite(PWMB, 0);
+        digitalWrite(InB1, LOW);
         digitalWrite(InB2, LOW);
 
         digitalWrite(motorSTBY, HIGH);
-        aaa = false;
+        Serial.println("Setup OK");
+        treta++;
     }
 
     if ((millis() - lastMilli) >= LOOPTIME) {                       // enter tmed loop
-        lastMilli = millis();
+        lastMilli    = millis();
         getMotorData();                                            // calculate speed, volts and Amps
 //        PWM_valA = updatePid(PWM_valA, speed_reqA, speed_actA);     // compute PWM value
 //        analogWrite(PWMA, PWM_valA);                                // send PWM to motor
 //
 //        PWM_valB = updatePid(PWM_valB, speed_reqB, speed_actB);      // compute PWM value
 //        analogWrite(PWMB, PWM_valB);                                 // send PWM to motor
-        myPID.SetTunings(Kp,Ki,Kd);
+
+        //myPID.SetTunings(Kp,Ki,Kd);
         myPID.Compute();
         analogWrite(PWMA, PWM_valA);
-        Serial.println(PWM_valA);
+        printMotorInfo();                                              // display data
 
     }
-    printMotorInfo();                                              // display data
 }
 
