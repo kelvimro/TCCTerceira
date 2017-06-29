@@ -14,14 +14,14 @@
 
 /*****************************************************************************************/
 //Motor Esquerdo = A
-const int PWMA =5;                      // PWM motor pin
-const int InA1 = 9;                      // INA motor pin
-const int InA2 = 10;                     // INB motor pin
+const int PWMA = 5;                      // PWM motor pin
+const int InA1 = 9;                     // INA1 motor pin - Para frente
+const int InA2 = 10;                    // INA2 motor pin - Para trás
 
 //Motor Direito = B
 const int PWMB = 6;                       // PWM motor pin
-const int InB1 = 11;                     // INA motor pin
-const int InB2 = 12;                      // INB motor pin
+const int InB1 = 11;                      // INB1 motor pin - Para frente
+const int InB2 = 12;                      // INB2 motor pin - Para trás
 
 const int motorSTBY = 13;  //STBY pin on TB6612FNG. Must be HIGH to enable motor
 
@@ -33,21 +33,28 @@ const int pulsos = 17;
 
 /*****************************************************************************************/
 
-#define Vpin            A7                      // battery monitoring analog pin
-#define Apin            1                       // motor current monitoring analog pin
+#define Vpin A7                      // battery monitoring analog pin
+const int Apin = 1;                       // motor current monitoring analog pin
 
 /*****************************************************************************************/
 
-#define CURRENT_LIMIT   1000                    // high current warning
-#define LOW_BAT         10000                   // low bat warning
-#define LOOPTIME        100                     // PID loop time
-#define NUMREADINGS     10                      // samples for Amp average
+// high current warning
+const int CURRENT_LIMIT = 1000;
+// low bat warning
+const int LOW_BAT = 10000;
+// PID loop time
+const int LOOPTIME = 100;
+// samples for Amp average
+const int NUMREADINGS = 10;
 
 /*****************************************************************************************/
 
 int readings[NUMREADINGS];
-unsigned long lastMilli = 0;                    // loop timing
-unsigned long lastMilliPrint = 0;               // loop timing
+// loop timing
+unsigned long lastMilliPrint = 0;
+// loop timing
+unsigned long lastMilli = 0;
+// speed timing
 unsigned long oldtime = 0;
 //PWM
 double PWM_valA = 0;                               // (25% = 64; 50% = 127; 75% = 191; 100% = 255)
@@ -56,8 +63,8 @@ double PWM_valB = 0;                               // (25% = 64; 50% = 127; 75% 
 int voltage = 0;                                // in mV
 int current = 0;                                // in mA
 
-volatile byte countA = 0;                        // rev counter
-volatile double countB = 0;                        // rev counter
+double volatile countA = 0;                        // rev counter
+double volatile countB = 0;                        // rev counter
 
 
 /*****************************************************************************************/
@@ -77,82 +84,105 @@ float Kp = .4;                                // PID proportional control Gain
 float Ki = 0.02;
 float Kd = 0.5;                                // PID Derivitave control gain
 
+//Varaveis myPID do tipo PID
 //Specify the links and initial tuning parameters
 //PID MPID(&input, &output, &setpoint, Kp, Ki, Kd, OPITON);
-PID myPIDA(&speed_actA, &PWM_valA, &speed_actB, Kp, Ki, Kd, DIRECT);
-PID myPIDB(&speed_actB, &PWM_valB, &speed_reqA, Kp, Ki, Kd, DIRECT);
+PID myPIDA(&speed_actA, &PWM_valA, &speed_actB, Kp, Ki, Kd, REVERSE);
+PID myPIDB(&speed_actB, &PWM_valB, &speed_actA, Kp, Ki, Kd, REVERSE);
+
 PID myPIDX(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 
 /*****************************************************************************************/
 /*****************************************************************************************/
 int treta = 0;
+int treta2 = 0;
+
 /*****************************************************************************************/
 
 void rencoderA() {                               // pulse and direction, direct port reading to save cycles
     countA++;    // if(digitalRead(encodPinB1)==HIGH)   count ++;
 }
+
 /*****************************************************************************************/
 void rencoderB() {
     countB++;
 }
+
 /*****************************************************************************************/
 
 void setup() {
     // Current external ref is 3.3V
     analogReference(EXTERNAL);
 
-    Serial.begin(115200);
-
+    Serial.begin(9600);
+    // PID setado para automatico
     myPIDA.SetMode(AUTOMATIC);
     myPIDB.SetMode(AUTOMATIC);
 
     pinMode(InA1, OUTPUT);
     pinMode(InA2, OUTPUT);
+    pinMode(PWMA, OUTPUT);
     pinMode(InB1, OUTPUT);
     pinMode(InB2, OUTPUT);
-    pinMode(PWMA, OUTPUT);
     pinMode(PWMB, OUTPUT);
 
     pinMode(encodPinA1, INPUT);
     pinMode(encodPinB1, INPUT);
-    //digitalWrite(encodPinA1, HIGH);                      // turn on pullup resistor
+
+    //turn on pullup resistor
+    //digitalWrite(encodPinA1, HIGH);
     //digitalWrite(encodPinB1, HIGH);
 
-    //Interrupt para contagem dos encoders
-    attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, FALLING);
-    attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, FALLING);
+    //Interrupt para contagem dos encoders - interrupt evita perda de contagens por outros processos
+    attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, CHANGE);
 
-    for (int i = 0; i < NUMREADINGS; i++) readings[i] = 0;  // initialize readings to 0
+    // initialize readings to 0
+    for (int i = 0; i < NUMREADINGS; i++) readings[i] = 0;
 
-    digitalWrite(PWMA, PWM_valA);
+    //Start motor com configurações inicais "á frente"
+    analogWrite(PWMA, PWM_valA);
     digitalWrite(InA1, HIGH);
     digitalWrite(InA2, LOW);
-    digitalWrite(PWMB, PWM_valB);
+    analogWrite(PWMB, PWM_valB);
     digitalWrite(InB1, HIGH);
     digitalWrite(InB2, LOW);
 }
 /*****************************************************************************************/
 
-void printMotorInfo() {                                                      // display data
+// display data
+void printMotorInfo() {
+    //Controle de tempo (evitar excesso de prints)
     if ((millis() - lastMilliPrint) >= 500) {
         lastMilliPrint = millis();
         //Motor A informações
-        Serial.print("A! SP:");        Serial.print(speed_reqA);
-        Serial.print("  RPM:");        Serial.print(speed_actA);
-        Serial.print("  PWM:");        Serial.print(PWM_valA);
-        Serial.print("  V:");          Serial.print(float(voltage) / 1000, 1);
-        Serial.print("  mA:");         Serial.println(current);
+        Serial.print("A! SP:");
+        Serial.print(speed_reqA);
+        Serial.print("  RPM:");
+        Serial.print(speed_actA);
+        Serial.print("  PWM:");
+        Serial.print(PWM_valA);
+        Serial.print("  V:");
+        Serial.print(float(voltage) / 1000, 1);
+        Serial.print("  mA:");
+        Serial.println(current);
         //Motor B informações
-        Serial.print("B! SP:");        Serial.print(speed_reqB);
-        Serial.print("  RPM:");        Serial.print(speed_actB);
-        Serial.print("  PWM:");        Serial.print(PWM_valB);
-        Serial.print("  V:");          Serial.print(float(voltage) / 1000, 1);
-        Serial.print("  mA:");         Serial.println(current);
+        Serial.print("B! SP:");
+        Serial.print(speed_reqB);
+        Serial.print("  RPM:");
+        Serial.print(speed_actB);
+        Serial.print("  PWM:");
+        Serial.print(PWM_valB);
+        Serial.print("  V:");
+        Serial.print(float(voltage) / 1000, 1);
+        Serial.print("  mA:");
+        Serial.println(current);
 
         if (current > CURRENT_LIMIT) Serial.println("*** CURRENT_LIMIT ***");
         if (voltage > 1000 && voltage < LOW_BAT) Serial.println("*** LOW_BAT ***");
     }
 }
+
 /*****************************************************************************************/
 
 int getParam() {
@@ -194,8 +224,8 @@ int getParam() {
     }
 }
 /*****************************************************************************************/
-
-int digital_smooth(int value, int *data_array) {    // remove signal noise
+// remove signal noise
+int digital_smooth(int value, int *data_array) {
     static int ndx = 0;
     static int count = 0;
     static int total = 0;
@@ -206,28 +236,30 @@ int digital_smooth(int value, int *data_array) {    // remove signal noise
     if (count < NUMREADINGS) count++;
     return total / count;
 }
+
 /*****************************************************************************************/
 
 void getMotorData() {                                      // calculate speed, volts and Amps
-   // static long countAntA = 0;                                      // last count
-   // static long countAntB = 0;                                      // last count
+    // static long countAntA = 0;                                      // last count
+    // static long countAntB = 0;                                      // last count
 
 /*****************************************/
     //Desabilita interrupcao durante o calculo
     detachInterrupt(digitalPinToInterrupt(encodPinA1));
     detachInterrupt(digitalPinToInterrupt(encodPinB1));
 
-    //Desabilita interrupcao durante o calculo
-    speed_actA = ((60 * 1000 / pulsos) / (millis() - oldtime) * countA)/10000;
-    speed_actB = ((60 * 1000 / pulsos) / (millis() - oldtime) * countB)/10000;
+    //speed_actA = (60 * 1000 / pulsos) / (millis() - oldtime) * countA;
+    //speed_actB = (60 * 1000 / pulsos) / (millis() - oldtime) * countB;
 
+    speed_actA = countA;
+    speed_actB = countB;
     oldtime = millis();
     countA = 0;
     countB = 0;
 
     //Habilita interrupcao
-    attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, FALLING);
-    attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, FALLING);
+    attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, CHANGE);
 /*****************************************/
     // Atualiza velocidade atual
     //speed_actA = ((countA - countAntA) * (60 * (1000 / LOOPTIME)))/(pulsos);
@@ -242,6 +274,7 @@ void getMotorData() {                                      // calculate speed, v
     // remove signal noise
     current = digital_smooth(current, readings);
 }
+
 /*****************************************************************************************/
 
 int updatePid(int command, int targetValue, int currentValue) {  // compute PWM value
@@ -257,42 +290,51 @@ int updatePid(int command, int targetValue, int currentValue) {  // compute PWM 
 
     return constrain(command + int(pidTerm), 0, 255);
 }
+
 /*****************************************************************************************/
 
 void loop() {
     delay(10);
 
     //getParam(); // check keyboard
-    /*if (Serial.available()){
+    if (Serial.available()) {
+        delay(10);
         int mimimi;
         int teste;
-        mimimi = Serial.read();
-        Serial.flush();
+        mimimi = Serial.parseInt();
+        Serial.print("Res: ");
+        Serial.println(mimimi);
         teste = map(mimimi, 0, 9, 0, 255);
+        Serial.print("Map: ");
+        Serial.println(teste);
         PWM_valA = teste;
         PWM_valB = teste;
-        digitalWrite(PWMA, PWM_valA);
-        digitalWrite(PWMB, PWM_valB);
+        analogWrite(PWMA, PWM_valA);
+        analogWrite(PWMB, PWM_valB);
+        treta2 = 0;
+        countA = 0;
+        countB = 0;
+        delay(100);
+        getMotorData();
         lastMilli = millis();
-    }*/
+    }
 
-    while (treta < 3){
-        delay(1500);
-        digitalWrite(PWMA, 30);
+    while (treta < 3) {
+        PWM_valA = 35; PWM_valB = 35;
+        analogWrite(PWMA, PWM_valA);
         digitalWrite(InA1, HIGH);
         digitalWrite(InA2, LOW);
-
-        digitalWrite(PWMB, 30);
-        digitalWrite(InB1, HIGH);
-        digitalWrite(InB2, LOW);
-
+        analogWrite(PWMB, PWM_valB);
+        digitalWrite(InB1, LOW);
+        digitalWrite(InB2, HIGH);
         digitalWrite(motorSTBY, HIGH);
-
         Serial.println("Setup OK");
-        treta++;
+        delay(1500);
+        treta2 = 1;
         countA = 0;
         countB = 0;
         lastMilli = millis();
+        treta++;
     }
 
     if ((millis() - lastMilli) >= LOOPTIME) {                       // enter tmed loop
@@ -310,20 +352,46 @@ void loop() {
 //        analogWrite(PWMB, PWM_valB);                                 // send PWM to motor
 
         //myPID.SetTunings(Kp,Ki,Kd);
-        if(speed_actA > speed_actB) {
-            myPIDA.Compute();
-            PWM_valA = constrain(PWM_valA, 0, 255);
-            analogWrite(PWMA, PWM_valA);
-            digitalWrite(InA1, HIGH);
-            digitalWrite(InA2, LOW);
-            digitalWrite(motorSTBY, HIGH);
-        } else if (speed_actB > speed_actA) {
-            myPIDB.Compute();
-            PWM_valB = constrain(PWM_valB, 0, 255);
-            analogWrite(PWMB, PWM_valB);
-            digitalWrite(InB1, HIGH);
-            digitalWrite(InB2, LOW);
-            digitalWrite(motorSTBY, HIGH);
+        if (treta2 == 0) {
+            delay(100);
+            getMotorData();
+            if(countA > countB) treta2 = 1;
+            if(countB > countA) treta2 = 2;
+            while (speed_actA >= (speed_actB * 1.05) && treta2 == 1) {
+                myPIDA.Compute();
+                PWM_valA = constrain(PWM_valA, 0, 255);
+                Serial.print("PID A ");
+                Serial.println(PWM_valA);
+                Serial.print("CNT A ");
+                Serial.println(countA);
+                Serial.print("CNT B ");
+                Serial.println(countB);
+                analogWrite(PWMA, PWM_valA);
+                digitalWrite(InA1, HIGH);
+                digitalWrite(InA2, LOW);
+                digitalWrite(motorSTBY, HIGH);
+                getMotorData();
+                printMotorInfo();
+                delay(100);
+            }
+            while (speed_actB >= (speed_actA * 1.05) && treta2 == 2) {
+                myPIDB.Compute();
+                PWM_valB = constrain(PWM_valB, 0, 255);
+                Serial.print("PID B ");
+                Serial.println(PWM_valB);
+                Serial.print("CNT A ");
+                Serial.println(countA);
+                Serial.print("CNT B ");
+                Serial.println(countB);
+                analogWrite(PWMB, PWM_valB);
+                digitalWrite(InB1, LOW);
+                digitalWrite(InB2, HIGH);
+                digitalWrite(motorSTBY, HIGH);
+                getMotorData();
+                printMotorInfo();
+                delay(100);
+            }
+
         }
     }
 }
