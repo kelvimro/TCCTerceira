@@ -70,12 +70,19 @@ double volatile countB = 0;                        // rev counter
 /*****************************************************************************************/
 
 //Velocidade solicitada
-double speed_reqA = 300;                           // speed (Set Point)
-double speed_reqB = 300;                           // speed (Set Point)
+double speed_reqA = 0;                           // speed (Set Point)
+double speed_reqB = 0;                           // speed (Set Point)
 
 //Velocidade atual
 double speed_actA = 0;                             // speed (actual value)
 double speed_actB = 0;                             // speed (actual value)
+
+//Comandos
+double cmdA = 0;
+double cmdB = 0;
+double oldcmdA = 0;
+double oldcmdB = 0;
+int atualizado = 0;
 
 /*****************************************************************************************/
 
@@ -87,8 +94,8 @@ float Kd = 0.5;                                // PID Derivitave control gain
 //Varaveis myPID do tipo PID
 //Specify the links and initial tuning parameters
 //PID MPID(&input, &output, &setpoint, Kp, Ki, Kd, OPITON);
-PID myPIDA(&speed_actA, &PWM_valA, &speed_actB, Kp, Ki, Kd, REVERSE);
-PID myPIDB(&speed_actB, &PWM_valB, &speed_actA, Kp, Ki, Kd, REVERSE);
+PID myPIDA(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, REVERSE);
+PID myPIDB(&speed_actB, &PWM_valB, &speed_reqB, Kp, Ki, Kd, REVERSE);
 
 PID myPIDX(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 
@@ -292,12 +299,49 @@ int updatePid(int command, int targetValue, int currentValue) {  // compute PWM 
 }
 
 /*****************************************************************************************/
+//int cmd "0 = frente" "1 = tras" "2 = z3r1nh0"
+void motorupdate(int cmd) {
+    analogWrite(PWMA, PWM_valA);
+    analogWrite(PWMB, PWM_valB);
+    if (cmd == 0) {
+        digitalWrite(InA1, HIGH);
+        digitalWrite(InA2, LOW);
+        digitalWrite(InB1, HIGH);
+        digitalWrite(InB2, LOW);
+        digitalWrite(motorSTBY, HIGH);
+    } else if (cmd == 1) {
+        digitalWrite(InA1, LOW);
+        digitalWrite(InA2, HIGH);
+        digitalWrite(InB1, LOW);
+        digitalWrite(InB2, HIGH);
+        digitalWrite(motorSTBY, HIGH);
+    } else if (cmd == 2) {
+        digitalWrite(InA1, HIGH);
+        digitalWrite(InA2, LOW);
+        digitalWrite(InB1, LOW);
+        digitalWrite(InB2, HIGH);
+        digitalWrite(motorSTBY, HIGH);
+    }
+    getMotorData();
+}
 
 void loop() {
-    delay(10);
 
     //getParam(); // check keyboard
     if (Serial.available()) {
+        oldcmdA = cmdA;
+        cmdA = Serial.parseInt();
+        oldcmdB = cmdB;
+        cmdB = Serial.parseInt();
+        if (oldcmdA != cmdA || oldcmdB != cmdB) {
+            PWM_valA = map(cmdA, 0, 100, 0, 255);
+            PWM_valB = map(cmdB, 0, 100, 0, 255);
+            motorupdate(2);
+            getMotorData();
+            lastMilli = millis();
+        }
+        atualizado = 0;
+        /*
         delay(10);
         int mimimi;
         int teste;
@@ -317,10 +361,11 @@ void loop() {
         delay(100);
         getMotorData();
         lastMilli = millis();
+         */
     }
 
     while (treta < 3) {
-        PWM_valA = 35; PWM_valB = 35;
+        PWM_valA = PWM_valB = 35;
         analogWrite(PWMA, PWM_valA);
         digitalWrite(InA1, HIGH);
         digitalWrite(InA2, LOW);
@@ -331,19 +376,53 @@ void loop() {
         Serial.println("Setup OK");
         delay(1500);
         treta2 = 1;
-        countA = 0;
-        countB = 0;
+        countA = countB = 0;
+        atualizado = 1;
         lastMilli = millis();
         treta++;
     }
 
-    if ((millis() - lastMilli) >= LOOPTIME) {                       // enter tmed loop
+    // enter tmed loop
+    if ((millis() - lastMilli) > LOOPTIME) {
         lastMilli = millis();
-
         // display data
         printMotorInfo();
         // calculate speed, volts and Amps
         getMotorData();
+        if (atualizado == 0) {
+            if (cmdA == cmdB) {
+                if (speed_actA > (speed_actB + 2)) {
+                    speed_reqA = speed_actB;
+                    myPIDA.Compute();
+                    atualizado = 1;
+                    PWM_valA = constrain(PWM_valA, 0, 255);
+                    Serial.print("PID A ");
+                    Serial.println(PWM_valA);
+                } else if (speed_actB > (speed_actA + 2)) {
+                    speed_reqB = speed_actA;
+                    myPIDB.Compute();
+                    atualizado = 1;
+                    PWM_valB = constrain(PWM_valB, 0, 255);
+                    Serial.print("PID B ");
+                    Serial.println(PWM_valB);
+                }
+            } else if (cmdA > cmdB) {
+                speed_reqB = (PWM_valB * speed_actA) / PWM_valA;
+                myPIDB.Compute();
+                atualizado = 1;
+                PWM_valB = constrain(PWM_valB, 0, 255);
+                Serial.print("PID B Curva ");
+                Serial.println(PWM_valB);
+            } else if (cmdB > cmdA) {
+                speed_reqA = (PWM_valA * speed_actB) / PWM_valB;
+                myPIDA.Compute();
+                atualizado = 1;
+                PWM_valA = constrain(PWM_valA, 0, 255);
+                Serial.print("PID A Curva ");
+                Serial.println(PWM_valA);
+            }
+            motorupdate(2);
+        }
 
 //        PWM_valA = updatePid(PWM_valA, speed_reqA, speed_actA);     // compute PWM value
 //        analogWrite(PWMA, PWM_valA);                                // send PWM to motor
@@ -352,11 +431,11 @@ void loop() {
 //        analogWrite(PWMB, PWM_valB);                                 // send PWM to motor
 
         //myPID.SetTunings(Kp,Ki,Kd);
-        if (treta2 == 0) {
+        /*if (treta2 == 0) {
             delay(100);
             getMotorData();
-            if(countA > countB) treta2 = 1;
-            if(countB > countA) treta2 = 2;
+            if (countA > countB) treta2 = 1;
+            if (countB > countA) treta2 = 2;
             while (speed_actA >= (speed_actB * 1.05) && treta2 == 1) {
                 myPIDA.Compute();
                 PWM_valA = constrain(PWM_valA, 0, 255);
@@ -392,7 +471,7 @@ void loop() {
                 delay(100);
             }
 
-        }
+        }*/
     }
 }
 /*****************************************************************************************/
