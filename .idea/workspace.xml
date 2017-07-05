@@ -22,14 +22,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec922180-b3d3-40f1-af0b-2568113a9075" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/ControleBT/cmdBT.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/ControleBT/controleBT.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/ControleBT/controleBT.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" afterPath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/src/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/src/main.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pioenvs/structure.hash" afterPath="$PROJECT_DIR$/.pioenvs/structure.hash" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/ControleBT/controleBT.h" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/ControleBT/controleBT.cpp" afterPath="$PROJECT_DIR$/lib/ControleBT/controleBT.cpp" />
     </list>
     <ignored path="platformio.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controleBT.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.h">
+      <file leaf-file-name="controleBT.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+            <state relative-caret-position="840">
+              <caret line="42" column="18" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -132,6 +126,7 @@
         <option value="$PROJECT_DIR$/lib/oldMain.cpp" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/lib/ControleBT/controleBT.h" />
+        <option value="$PROJECT_DIR$/lib/ControleBT/controleBT.cpp" />
       </list>
     </option>
   </component>
@@ -543,12 +538,12 @@
       <workItem from="1499104221360" duration="9227000" />
       <workItem from="1499126119863" duration="1058000" />
       <workItem from="1499191466025" duration="3197000" />
-      <workItem from="1499279322952" duration="1027000" />
+      <workItem from="1499279322952" duration="1159000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87074000" />
+    <option name="totallyTimeSpent" value="87206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -1014,13 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3976">
@@ -1041,8 +1029,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        <state relative-caret-position="80">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="42" column="18" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="18" />
           <folding />
         </state>
       </provider>
