@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SoftwareSerial.h>
 
 const byte PIN_ANALOG_X = 0;
 const byte PIN_ANALOG_Y = 1;
@@ -8,10 +9,12 @@ double sendA;
 double sendB;
 int looptime = 200;
 int oldtime = 0;
+SoftwareSerial mySerial(10, 11);
 
 
 void setup() {
     Serial.begin(9600);
+    mySerial.begin(9600);
     oldtime = millis();
 }
 
@@ -19,8 +22,6 @@ void setup() {
 void loop() {
 
     if ((millis() - oldtime) >= looptime) {
-
-        oldtime = millis();
         //Leitura do eixo Y = vertical = Potencias dos motores
         cmdY = analogRead(PIN_ANALOG_Y);
         //Leitura do eixo X = horizontal = Utilizado como "diferença de potencia entre A e B"
@@ -55,10 +56,13 @@ void loop() {
         a = sendA;
         b = sendB;
 
-        Serial.print(" x: ");
-        Serial.print(a);
-        Serial.print(" y: ");
-        Serial.println(b);
+        String espaco=" ";
+        String vai = "";
+        vai = a + espaco + b;
+        Serial.println(vai);
+        mySerial.print(vai);
+
+        oldtime = millis();
     }
 }
 

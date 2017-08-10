@@ -43,10 +43,10 @@ RM = /opt/clion-2017.1.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kelvimro/CLionProjects/TCCTerceira
+CMAKE_SOURCE_DIR = /home/kelvimro/TCCArduino/TCCTerceira
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug
+CMAKE_BINARY_DIR = /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug
 
 # Utility rule file for PLATFORMIO_PROGRAM.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug
 include CMakeFiles/PLATFORMIO_PROGRAM.dir/progress.make
 
 CMakeFiles/PLATFORMIO_PROGRAM:
-	cd /home/kelvimro/CLionProjects/TCCTerceira && /usr/local/bin/platformio -f -c clion run --target program
+	cd /home/kelvimro/TCCArduino/TCCTerceira && /usr/local/bin/platformio -f -c clion run --target program
 
 PLATFORMIO_PROGRAM: CMakeFiles/PLATFORMIO_PROGRAM
 PLATFORMIO_PROGRAM: CMakeFiles/PLATFORMIO_PROGRAM.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/PLATFORMIO_PROGRAM.dir/clean:
 .PHONY : CMakeFiles/PLATFORMIO_PROGRAM.dir/clean
 
 CMakeFiles/PLATFORMIO_PROGRAM.dir/depend:
-	cd /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kelvimro/CLionProjects/TCCTerceira /home/kelvimro/CLionProjects/TCCTerceira /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug/CMakeFiles/PLATFORMIO_PROGRAM.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kelvimro/TCCArduino/TCCTerceira /home/kelvimro/TCCArduino/TCCTerceira /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug/CMakeFiles/PLATFORMIO_PROGRAM.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/PLATFORMIO_PROGRAM.dir/depend
 

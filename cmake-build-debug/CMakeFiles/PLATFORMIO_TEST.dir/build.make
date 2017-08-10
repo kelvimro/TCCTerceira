@@ -43,10 +43,10 @@ RM = /opt/clion-2017.1.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kelvimro/CLionProjects/TCCTerceira
+CMAKE_SOURCE_DIR = /home/kelvimro/TCCArduino/TCCTerceira
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug
+CMAKE_BINARY_DIR = /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug
 
 # Utility rule file for PLATFORMIO_TEST.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug
 include CMakeFiles/PLATFORMIO_TEST.dir/progress.make
 
 CMakeFiles/PLATFORMIO_TEST:
-	cd /home/kelvimro/CLionProjects/TCCTerceira && /usr/local/bin/platformio -f -c clion test
+	cd /home/kelvimro/TCCArduino/TCCTerceira && /usr/local/bin/platformio -f -c clion test
 
 PLATFORMIO_TEST: CMakeFiles/PLATFORMIO_TEST
 PLATFORMIO_TEST: CMakeFiles/PLATFORMIO_TEST.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/PLATFORMIO_TEST.dir/clean:
 .PHONY : CMakeFiles/PLATFORMIO_TEST.dir/clean
 
 CMakeFiles/PLATFORMIO_TEST.dir/depend:
-	cd /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kelvimro/CLionProjects/TCCTerceira /home/kelvimro/CLionProjects/TCCTerceira /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug /home/kelvimro/CLionProjects/TCCTerceira/cmake-build-debug/CMakeFiles/PLATFORMIO_TEST.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kelvimro/TCCArduino/TCCTerceira /home/kelvimro/TCCArduino/TCCTerceira /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug /home/kelvimro/TCCArduino/TCCTerceira/cmake-build-debug/CMakeFiles/PLATFORMIO_TEST.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/PLATFORMIO_TEST.dir/depend
 

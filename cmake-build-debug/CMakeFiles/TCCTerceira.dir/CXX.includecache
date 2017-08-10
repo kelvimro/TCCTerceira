@@ -1500,13 +1500,13 @@ machine/ansi.h
 sys/_types.h
 -
 
-/home/kelvimro/CLionProjects/TCCTerceira/lib/Arduino-PID-Library-master/PID_v1.h
+/home/kelvimro/TCCArduino/TCCTerceira/lib/Arduino-PID-Library-master/PID_v1.h
 
-/home/kelvimro/CLionProjects/TCCTerceira/src/main.cpp
+/home/kelvimro/TCCArduino/TCCTerceira/src/main.cpp
 Arduino.h
 -
 SoftwareSerial.h
 -
 ../lib/Arduino-PID-Library-master/PID_v1.h
-/home/kelvimro/CLionProjects/TCCTerceira/lib/Arduino-PID-Library-master/PID_v1.h
+/home/kelvimro/TCCArduino/TCCTerceira/lib/Arduino-PID-Library-master/PID_v1.h
 

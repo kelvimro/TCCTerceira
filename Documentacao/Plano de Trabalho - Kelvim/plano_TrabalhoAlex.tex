@@ -1,0 +1,260 @@
+%====================================================================================================
+% Vaucangraph 3.0: Aprimorando uma ferramenta gráfica.
+%====================================================================================================
+% Plano de Trabalho
+%----------------------------------------------------------------------------------------------------
+% Autor			: Kelvim Rodrigues de Oliveira	
+% Orientador		: Gedson Faria
+% Instituição 		: UFMS - Universidade Federal do Mato Grosso do Sul
+% Unidade		: CPCX - Campus de Coxim
+%----------------------------------------------------------------------------------------------------
+% Arquivo		: plano_trab_kelvim.tex
+% Data de criação	: 13 de Maio de 2017
+%====================================================================================================
+
+\documentclass[a4paper,12pt,portuguese]{ufms-cpcx}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=30mm,bottom=25mm,left=25mm,right=20mm]{geometry}
+\usepackage{pdfpages}
+\usepackage [onehalfspacing]{setspace} 
+\usepackage{indentfirst}
+%\usepackage{caption}
+\usepackage[font=small]{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+
+\usepackage{booktabs}	% http://ctan.org/pkg/booktabs
+\usepackage{array}	% http://ctan.org/pkg/array
+\newcolumntype{M}{>{\centering\arraybackslash}m{\dimexpr.25\linewidth-2\tabcolsep}}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+
+
+\titulo{ Plano de Trabalho\vskip 1.5cm 
+	Vaucangraph 3.0: Aprimorando uma ferramenta gráfica. }\vskip 0.5cm
+\autor{Alex Vieira Alves}
+
+\orientacao{Prof. Me. Kleber Kruger}
+%\docarea{Bacharelado em Sistemas de Informação}
+\textofree{\large Bacharelado em Sistemas de Informação}
+
+\vfill \centerline{\includegraphics[scale=0.15]{figuras/ufms-logo.jpg}}
+
+\vskip 0.5cm
+\begin{center}
+	Universidade Federal de Mato Grosso do Sul\\ 
+	Campus de Coxim\\ \vskip 1.0cm
+	08 de Maio de 2017
+\end{center}
+
+\chapter*{}
+
+\begin{center}
+	
+	\begin{minipage}[t]{10cm}
+		\begin{center}
+			\vspace{-2cm}
+			{{\Large Vaucangraph 3.0: Aprimorando uma ferramenta gráfica.}}  
+		\end{center}
+	\end{minipage}
+	
+\end{center}
+
+\vskip 3.0cm \textofree{\large Plano de Trabalho}
+
+\begin{flushright}
+	\vspace{12cm}
+	Coxim, 08 de Maio de 2017.
+\end{flushright}
+
+%\vspace{2cm}
+
+
+
+%\tableofcontents
+
+%\printglossaries
+
+%\cleardoublepage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Lista de Tabelas}
+%\listoftables
+
+
+
+\chapter{Introdução}
+Atualmente torna-se cada vez mais comum o uso de editores para a criação de artigos, textos e documentos em geral nas mais diversas áreas de atuação. Diversos editores tornaram-se populares no mundo inteiro porém, oferecem certas limitações ou dificuldades ao usuário quando os arquivos produzidos tratam-se de documentos científicos e/ou possuem fórmulas  matemáticas.
+
+Buscando melhorar a qualidade da notação matemática em seus livros em relação às ferramentas de criação existentes, Donald Knuth criou uma linguagem de descrição de páginas denominada \TeX, dando total controle ao usuário sob a inclusão de gráficos, notações, fórmulas e precisas formatações em um documento técnico, o que dependeria apenas da habilidade do usuário, segundo a \cite{BritannicaOnlineAcademicEditionT}.
+
+ À procura de tornar mais fácil a utilização do \TeX, Lamport \cite{Lamport, L 1985} criou um pacote de software livre denominado \LaTeX, que trabalharia de forma complementar. Diferente das demais ferramentas de edição e criação de textos, \LaTeX busca manter o foco longe da apresentação visual do documento, pois a preocupação com a formatação acaba desviando o pensamento do que está sendo escrito. \LaTeX possui ainda suporte à pacotes que possibilitam desde a modificação das fontes utilizadas na escrita, estilos e até mesmo a criação de desenhos como por exemplo, grafos e autômatos \cite{BritannicaOnlineAcademicEditionL}.
+ 
+ Um entre os vários pacotes disponíveis para \LaTeX é o \textit{VauCanSon-G}, pacote de macros que permite o desenho  de autômatos e grafos de forma facilitada, buscando manter comandos fáceis aos quais se tornariam mais complexos de forma gradativa, dependendo diretamente da dificuldade da figura a ser representada. O pacote possibilita ainda a manipulação do estilo de cada elemento e a alteração do tamanho e aparência da figura sem modificá-las.
+ 
+ Mesmo com o pacote \textit{VauCanSon-G} disponível para \LaTeX, é necessário certo nível de conhecimento dos comandos aplicados para sua utilização, fazendo-se assim necessária a existência de uma aplicação gráfica, que eliminaria a necessidade de conhecimento dos comandos internos do pacote, expandindo assim o uso à pessoas leigas ou com menos conhecimento na ferramenta. Pensando nisso em seu trabalho de conclusão de curso, Mazui\cite {Mazui, 2007} desenvolveu uma aplicação gráfica que posteriormente foi aprimorada por Souza e Kruger \cite{Souza, Kruger (2010)} em seu trabalho de conclusão de curso. Entretanto, as aplicações já desenvolvidas e citadas anteriormente apresentam certas limitações tais como: transições de linha dupla, transições de forma livre e integração com o compilador. 
+ 
+ 
+ 
+ \section{Justificativa} 
+ 
+ Muitos documentos científicos são produzidos utilizando o \LaTeX e quando faz-se necessário a criação de fórmulas, autômatos ou grafos, é comum o uso do pacote \textit {Vaucanson-G} porém, exige-se certo nível de conhecimento do usuário, podendo assim reduzir a produtividade e aumentar o nível de dificuldade empregado no documento a ser escrito. 
+ 
+ Em seus trabalhos de conclusão de curso tanto Mazui \cite{Mazui(2007}) quanto Souza e Kruger \cite{Souza e Kruger(2010)} buscaram desenvolver ferramentas que facilitassem o uso do pacote \textit{Vaucanson-G} no \LaTeX. Entretanto são poucas as ferramentas existentes que executam tais funcionalidades e as já existentes apresentam certas limitações. Portanto, faz-se necessária a implementação de uma ferramenta que aprimore as desenvolvidas anteriormente, visando então auxiliar à todos que buscam desenvolver documentos científicos ou que necessitem utilizar o pacote \textit{Vaucanson-G}.
+ 
+
+
+ \section{Objetivos}
+ 
+ 
+ \section{Objetivo Geral}
+  
+  
+ O objetivo deste trabalho é implementar uma nova versão do \textit {software} denominado \textit{Vaucangraph} 2.0 desenvolvido por Souza e Kruger \cite{Souza e Kruger(2010)} em seu trabalho de conclusão de curso, utilizando técnicas e tecnologias não existentes na época, visando a inclusão de novas funcionalidades e com uma interface mais intuitiva procurando despertar o interesse do usuário em relação à utilização da ferramenta. Dessa forma, pessoas com pouco ou nenhum conhecimento da ferramenta poderão utilizá-la facilmente, elaborando assim autômatos e grafos  complexos de forma facilitada e sem a necessidade de conhecimento aprofundado nos pacotes utilizados.
+ 
+
+\section{Objetivos Específicos}
+
+\begin{itemize}
+	%lista de itens
+	
+	
+	\item Criar uma interface simples e intuitiva para que qualquer pessoa sem alto nível de conhecimento no pacote \textit{Vaucanson-G} possa utilizá-lo.
+	
+	\item Desenvolver o sistema de transição livre.
+	
+	\item Desenvolver o sistema de transição dupla.
+	
+	
+\end{itemize}
+
+\section {Organização da Monografia}
+
+
+
+\chapter{Revisão da Literatura}
+
+\section{ Grafos} %subtitulo
+
+Diversas situações em nosso cotidiano podem ser representadas utilizando-se da modelagem de grafos, como cita \cite{ziviani2013}, em que trata a internet como um imenso grafo, ao qual os objetos (vértices) seriam representados por documentos e os \textit{links} retratariam as arestas responsáveis pelas conexões de um objeto a outro. Segundo \cite{jurkiewicz2009grafos}, muitos termos utilizados na teoria dos grafos tem origem da representação em diagramas, aos quais vértices seriam representados por pontos e linhas representariam as arestas responsáveis pela ligação entre os pontos/extremos.
+
+Grafos podem ainda ser divididos em duas categorias, denominados \textbf{Grafos direcionados} e \textbf{Grafos não  direcionados}.
+
+\subsection{Grafos direcionados}
+
+\subsection{Grafos não direcionados}
+	
+\section{ Autômatos} %subtitulo
+
+**livro cipser
+
+\cite{AllanPatrickDosSantos2017ADEF} "Autômatos finitos são máquinas reconhecedoras de palavras ou caracteres. É um modelo computacional de interpretação de linguagens que são definidas por mecanismos de reconhecimento. Sua aplicação se dá no processo de automatização de diversas áreas desde processos industriais a processos mais complexos. Esta literatura é uma introdução à autômatos de estados finitos, foi desenvolvida com base em artigos científicos com o objetivo de esclarecer o conceito de autômatos nas mais diversas áreas. Esta revisão tem como objetivo, introduzir um conhecimento básico a respeito de autômatos de estados finitos, assim, auxiliando estudantes que necessitam o conhecimento do mesmo. O desenvolvimento desta revisão literária conta com o embasamento em 30 artigos científicos. Após o estudo, concluímos que autômatos de estados finitos é um modelo computacional de definição de linguagens que são definidas por mecanismo de reconhecimento."
+
+\section{ \TeX, \LaTeX e \textit {Vaucanson-G}} %subtitulo
+
+\subsection{\TeX}
+Ao início da década de 80, um professor da Universidade \textit{Stanford} chamado \cite{Donald Knuth}, buscando melhorar a qualidade da representação gráfica em seus livros, desenvolveu uma linguagem de descrição de páginas intitulada \TeX.
+
+ \TeX trabalharia de forma que o usuário inserisse comandos de formatação simples e o compilador os interpretaria e daria origem a um arquivo formatado. Segundo \cite{Salzberg:2005:LWF:1099435.1099490} a utilização do \TeX manteria o autor dedicado apenas ao conteúdo, pois o que está sendo produzido e sua formatação são tratados de forma separada, assim sua atenção e foco não seriam dispersos.
+ 
+\cite{Salzberg:2005:LWF:1099435.1099490}  menciona \TeX como uma linguagem de marcação semelhante ao \textbf{HTML} \textit{  (HyperText Markup Language)}.
+ 
+ 
+\subsection{\LaTeX}
+Em 1985 o cientista americano \textit{Leslie Lamport}\cite{Lamport, L 1985} criou um pacote de software gratuito denominado \LaTeX, com o intuito de reunir uma coleção de macros \TeX mais comuns \cite{Crowder:2000:LL:364412.364435}. Por possuir a capacidade do \TeX em compor documentos que possuam fórmulas matemáticas e por facilitar seu uso, logo \LaTeX tornou-se popular no meio científico.
+
+Embora existam diversos programas para auxiliar a criação de documentos no \LaTeX, faz-se necessário o conhecimento prático na ferramenta para que seu uso seja feito de forma correta e aprimorada, ampliando assim a qualidade dos resultados esperados .\LaTeX foi um dos primeiros programas utilizados na criação de documentos científicos capazes de produzir fórmulas complexas e com o passar dos anos sua utilização foi feita para a criação de revistas científicas \cite{BritannicaOnlineAcademicEditionL}.
+
+
+\subsection{\textit {Vaucanson-G}}
+
+\textit {Vaucanson-G} é um pacote de macros amplamente utilizados no \LaTeX que permite a criação de desenhos de grafos e autômatos \cite{lombardy2008vaucanson}. Seu funcionamento se daria por meio da utilização de comandos simples e que possuiriam seu grau de dificuldade ampliado relativamente ao nível de complexidade empregado na imagem a ser gerada. 
+
+Para a utilização do pacote, o usuário deve fornecer as coordenadas de dois pontos (inferior esquerdo e superior direito) que representam os limites da imagem a ser gerada, desta forma seria criado um sistema de coordenadas bidimensionais que possibilitaria a inclusão dos estados de um autômato na imagem. A inserção de novos estados seria feita utilizando o comando \textit{ \ State} fazendo-se necessário que o usuário informe as coordenadas em que o estado será posicionado e um \textit{id} (identificador) para cada inserção realizada \cite{dainteractive}. 
+
+Os comandos do \textit {Vaucanson-G} devem ser utilizados em um arquivo \LaTeX pois, faz-se necessário o uso de comandos não existentes em um \TeX simples.
+
+\section{\textit{Vaucangraph} e \textit{Vauncangraph 2.0}} %subtitulo
+
+\subsection{\textit{Vaucangraph}}
+
+\subsection{\textit{Vauncangraph 2.0}}
+
+\section{ Jgraph} %subtitulo
+
+\section{ Netbeans} %subtitulo
+
+\chapter{Metodologia} \label{cap: metodologia}
+
+\begin{enumerate}[(A)]
+	
+	\item Desenvolvimento e entrega do plano de trabalho;
+	\item Escrita da introdução, levantamentos dos dados teóricos e bibliográficos.
+	\item Revisão da literatura. 
+	\item Implementar a aplicação
+	\item Escritas do trabalho de conclusão do curso.		
+	
+	
+\end{enumerate}
+
+
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{|c|cccccccc|}
+		%\hline
+		%& \multicolumn{12}{c|}{Meses} \\
+		\hline
+		\multirow{2}{*}{\textbf{Etapas}} & \multicolumn{8}{c|}{\textbf{2017}} \\
+		& \textbf{Abr} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Set} & \textbf{Out} & \textbf{Nov} & \textbf{Dez}  \\
+		\hline
+		A & \checkmark & \checkmark & & & & & &  \\
+		\hline
+		B & & \checkmark & \checkmark & & & & &  \\
+		\hline
+		C & & & \checkmark & \checkmark & & & & \\
+		\hline
+		D & & & & \checkmark & \checkmark & \checkmark & &  \\
+		\hline
+		E & & & & & & & \checkmark & \checkmark \\
+		\hline
+	
+		
+	\end{tabular}
+	\caption[Cronograma de atividades]{Cronograma de atividades.}
+	\label{Tab:cronograma}
+\end{table}
+
+\chapter{Considerações Finais}
+
+
+\vskip 10cm
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{cccccccc}
+		& & & & & & & \\
+		Prof. Me. Kleber Kruger & & & & & & & Alex Vieira Alves \\
+		Orientador & & & & & & & Acadêmico \\
+	\end{tabular}
+\end{table}
+
+
+\cleardoublepage
+%\phantomsection
+\addcontentsline{toc}{chapter}{Referências Bibliográficas} 
+\bibliographystyle{abnt}
+%\bibliographystyle{apalike} 
+%\bibliographystyle{ieeetr} % Ordena por ordem de aparição.  
+%\bibliographystyle{abbr} % Ordena por ordem alfabetica com nomes abreviados.
+%\bibliographystyle{plain} % Ordena por ordem alfabetica com nomes por extenso.
+\bibliography{bibliografia} % commented if *.bbl file included.
+
+%\addcontentsline{toc}{chapter}{Ap\^endices}
+%\appendix
+%\include{apendice}
+
+\end{document}
