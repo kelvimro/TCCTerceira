@@ -9,6 +9,8 @@ double sendA;
 double sendB;
 int looptime = 200;
 int oldtime = 0;
+String command = "";
+//RX e TX para o Bluetooth
 SoftwareSerial mySerial(10, 11);
 
 
@@ -20,7 +22,6 @@ void setup() {
 
 
 void loop() {
-
     if ((millis() - oldtime) >= looptime) {
         //Leitura do eixo Y = vertical = Potencias dos motores
         cmdY = analogRead(PIN_ANALOG_Y);
@@ -56,12 +57,21 @@ void loop() {
         a = sendA;
         b = sendB;
 
-        String espaco=" ";
-        String vai = "";
+        //Concatenação dos comandos
+        String espaco = "|";
+        String vai = "*";
         vai = a + espaco + b;
-        Serial.println(vai);
-        mySerial.print(vai);
 
+        //Enviando via BT
+        mySerial.print(vai);
+        if (mySerial.available()) {
+            while (mySerial.available()) { // While there is more to be read, keep reading.
+                command += (char) mySerial.read();
+            }
+            Serial.println(command);
+            command = ""; // No repeats
+        }
+        //Zera timer
         oldtime = millis();
     }
 }

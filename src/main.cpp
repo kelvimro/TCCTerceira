@@ -100,6 +100,10 @@ PID myPIDB(&speed_actB, &PWM_valB, &speed_reqB, Kp, Ki, Kd, REVERSE);
 PID myPIDX(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 
 /*****************************************************************************************/
+
+#define START_CMD_CHAR '*'
+#define DIV_CMD_CHAR '|'
+
 /*****************************************************************************************/
 int treta = 0;
 int treta2 = 0;
@@ -299,44 +303,96 @@ int updatePid(int command, int targetValue, int currentValue) {  // compute PWM 
 }
 
 /*****************************************************************************************/
-//int cmd "0 = frente" "1 = tras" "2 = z3r1nh0"
-void motorupdate(int cmd) {
-    analogWrite(PWMA, PWM_valA);
-    analogWrite(PWMB, PWM_valB);
-    if (cmd == 0) {
+void motorupdate() {
+    // + + Ambos para frente
+    if (PWM_valA > 0 && PWM_valB > 0) {
         digitalWrite(InA1, HIGH);
         digitalWrite(InA2, LOW);
         digitalWrite(InB1, HIGH);
         digitalWrite(InB2, LOW);
         digitalWrite(motorSTBY, HIGH);
-    } else if (cmd == 1) {
-        digitalWrite(InA1, LOW);
-        digitalWrite(InA2, HIGH);
-        digitalWrite(InB1, LOW);
-        digitalWrite(InB2, HIGH);
-        digitalWrite(motorSTBY, HIGH);
-    } else if (cmd == 2) {
+        Serial.print("+ + ");
+        Serial.print(PWM_valA);
+        Serial.print("  ");
+        Serial.println(PWM_valB);
+    }
+        // + - Curva a direita (B)
+    else if (PWM_valA > 0 && PWM_valB < 0) {
+        PWM_valB *= PWM_valB * -1;
         digitalWrite(InA1, HIGH);
         digitalWrite(InA2, LOW);
         digitalWrite(InB1, LOW);
         digitalWrite(InB2, HIGH);
         digitalWrite(motorSTBY, HIGH);
+        Serial.print("+ - ");
+        Serial.print(PWM_valA);
+        Serial.print("  ");
+        Serial.println(PWM_valB);
     }
+        // - + Curva a esquerda(A)
+    else if (PWM_valA < 0 && PWM_valB > 0) {
+        PWM_valA *= -1;
+        digitalWrite(InA1, LOW);
+        digitalWrite(InA2, HIGH);
+        digitalWrite(InB1, HIGH);
+        digitalWrite(InB2, LOW);
+        digitalWrite(motorSTBY, HIGH);
+        Serial.print("- + ");
+        Serial.print(PWM_valA);
+        Serial.print("  ");
+        Serial.println(PWM_valB);
+    }
+        // - - Ambos para tras
+    else if (PWM_valA < 0 && PWM_valB < 0) {
+        PWM_valA *= -1;
+        PWM_valB *= -1;
+        digitalWrite(InA1, LOW);
+        digitalWrite(InA2, HIGH);
+        digitalWrite(InB1, LOW);
+        digitalWrite(InB2, HIGH);
+        digitalWrite(motorSTBY, HIGH);
+        Serial.print("- - ");
+        Serial.print(PWM_valA);
+        Serial.print("  ");
+        Serial.println(PWM_valB);
+    }
+        // 0 0 Motores parados
+    else if (PWM_valA == 0 && PWM_valB == 0) {
+        digitalWrite(InA1, LOW);
+        digitalWrite(InA2, LOW);
+        digitalWrite(InB1, LOW);
+        digitalWrite(InB2, LOW);
+        digitalWrite(motorSTBY, HIGH);
+        Serial.print("0 0 ");
+        Serial.print(PWM_valA);
+        Serial.print("  ");
+        Serial.println(PWM_valB);
+    }
+    analogWrite(PWMA, PWM_valA);
+    analogWrite(PWMB, PWM_valB);
     getMotorData();
 }
 
 void loop() {
-
+    char get_char = ' ';
     //getParam(); // check keyboard
     if (Serial.available()) {
+        get_char = Serial.read();
+        if (get_char != START_CMD_CHAR) return;
         oldcmdA = cmdA;
         cmdA = Serial.parseInt();
         oldcmdB = cmdB;
         cmdB = Serial.parseInt();
+
+        Serial.print("cmdA: ");
+        Serial.print(cmdA);
+        Serial.print(" cmdB: ");
+        Serial.println(cmdB);
+
         if (oldcmdA != cmdA || oldcmdB != cmdB) {
             PWM_valA = map(cmdA, 0, 100, 0, 255);
             PWM_valB = map(cmdB, 0, 100, 0, 255);
-            motorupdate(2);
+            motorupdate();
             getMotorData();
             lastMilli = millis();
         }
@@ -362,8 +418,9 @@ void loop() {
         getMotorData();
         lastMilli = millis();
          */
-    }
 
+    }
+    /*
     while (treta < 3) {
         PWM_valA = PWM_valB = 35;
         analogWrite(PWMA, PWM_valA);
@@ -380,7 +437,7 @@ void loop() {
         atualizado = 1;
         lastMilli = millis();
         treta++;
-    }
+    }*/
 
     // enter tmed loop
     if ((millis() - lastMilli) > LOOPTIME) {
@@ -421,7 +478,7 @@ void loop() {
                 Serial.print("PID A Curva ");
                 Serial.println(PWM_valA);
             }
-            motorupdate(2);
+            motorupdate();
         }
 
 //        PWM_valA = updatePid(PWM_valA, speed_reqA, speed_actA);     // compute PWM value
