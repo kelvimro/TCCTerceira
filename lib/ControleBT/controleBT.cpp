@@ -9,14 +9,19 @@ double sendA;
 double sendB;
 int looptime = 200;
 int oldtime = 0;
+
 String command = "";
+String START_CMD_CHAR = "*";
+String DIV_CMD_CHAR = "|";
+String END_CMD_CHAR = "#";
+
 //RX e TX para o Bluetooth
 SoftwareSerial mySerial(10, 11);
 
 
 void setup() {
-    Serial.begin(9600);
-    mySerial.begin(9600);
+    Serial.begin(38400);
+    mySerial.begin(38400);
     oldtime = millis();
 }
 
@@ -54,14 +59,13 @@ void loop() {
         }
 
         int a, b;
+        String vai;
+        vai = "";
         a = sendA;
         b = sendB;
 
         //Concatenação dos comandos
-        String espaco = "|";
-        String vai = "*";
-        vai = a + espaco + b;
-
+        vai = START_CMD_CHAR + a + DIV_CMD_CHAR + b + END_CMD_CHAR;
         //Enviando via BT
         mySerial.print(vai);
         if (mySerial.available()) {

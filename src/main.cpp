@@ -43,7 +43,7 @@ const int CURRENT_LIMIT = 1000;
 // low bat warning
 const int LOW_BAT = 10000;
 // PID loop time
-const int LOOPTIME = 100;
+const int LOOPTIME = 180;
 // samples for Amp average
 const int NUMREADINGS = 10;
 
@@ -103,6 +103,7 @@ PID myPIDX(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 
 #define START_CMD_CHAR '*'
 #define DIV_CMD_CHAR '|'
+#define END_CMD_CHAR '#'
 
 /*****************************************************************************************/
 int treta = 0;
@@ -125,7 +126,7 @@ void setup() {
     // Current external ref is 3.3V
     analogReference(EXTERNAL);
 
-    Serial.begin(9600);
+    Serial.begin(38400);
     // PID setado para automatico
     myPIDA.SetMode(AUTOMATIC);
     myPIDB.SetMode(AUTOMATIC);
@@ -195,7 +196,7 @@ void printMotorInfo() {
 }
 
 /*****************************************************************************************/
-
+/*****************************************************************************************/
 int getParam() {
     char param, cmd;
     if (!Serial.available()) return 0;
@@ -235,6 +236,7 @@ int getParam() {
     }
 }
 /*****************************************************************************************/
+/*****************************************************************************************/
 // remove signal noise
 int digital_smooth(int value, int *data_array) {
     static int ndx = 0;
@@ -262,9 +264,11 @@ void getMotorData() {                                      // calculate speed, v
     //speed_actA = (60 * 1000 / pulsos) / (millis() - oldtime) * countA;
     //speed_actB = (60 * 1000 / pulsos) / (millis() - oldtime) * countB;
 
+    // Atualiza contagens do encoder
     speed_actA = countA;
     speed_actB = countB;
     oldtime = millis();
+    //Zera contagem
     countA = 0;
     countB = 0;
 
@@ -302,7 +306,9 @@ int updatePid(int command, int targetValue, int currentValue) {  // compute PWM 
     return constrain(command + int(pidTerm), 0, 255);
 }
 
-/*****************************************************************************************/
+/****************************************************************************************************/
+/****************************************************************************************************/
+
 void motorupdate() {
     // + + Ambos para frente
     if (PWM_valA > 0 && PWM_valB > 0) {
@@ -311,10 +317,10 @@ void motorupdate() {
         digitalWrite(InB1, HIGH);
         digitalWrite(InB2, LOW);
         digitalWrite(motorSTBY, HIGH);
-        Serial.print("+ + ");
-        Serial.print(PWM_valA);
-        Serial.print("  ");
-        Serial.println(PWM_valB);
+        //Serial.print("+ + ");
+        //Serial.print(PWM_valA);
+        //Serial.print("  ");
+        //Serial.println(PWM_valB);
     }
         // + - Curva a direita (B)
     else if (PWM_valA > 0 && PWM_valB < 0) {
@@ -324,10 +330,10 @@ void motorupdate() {
         digitalWrite(InB1, LOW);
         digitalWrite(InB2, HIGH);
         digitalWrite(motorSTBY, HIGH);
-        Serial.print("+ - ");
-        Serial.print(PWM_valA);
-        Serial.print("  ");
-        Serial.println(PWM_valB);
+        //Serial.print("+ - ");
+        //Serial.print(PWM_valA);
+        //Serial.print("  ");
+        //Serial.println(PWM_valB);
     }
         // - + Curva a esquerda(A)
     else if (PWM_valA < 0 && PWM_valB > 0) {
@@ -337,10 +343,10 @@ void motorupdate() {
         digitalWrite(InB1, HIGH);
         digitalWrite(InB2, LOW);
         digitalWrite(motorSTBY, HIGH);
-        Serial.print("- + ");
-        Serial.print(PWM_valA);
-        Serial.print("  ");
-        Serial.println(PWM_valB);
+        //Serial.print("- + ");
+        //Serial.print(PWM_valA);
+        //Serial.print("  ");
+        //Serial.println(PWM_valB);
     }
         // - - Ambos para tras
     else if (PWM_valA < 0 && PWM_valB < 0) {
@@ -351,10 +357,10 @@ void motorupdate() {
         digitalWrite(InB1, LOW);
         digitalWrite(InB2, HIGH);
         digitalWrite(motorSTBY, HIGH);
-        Serial.print("- - ");
-        Serial.print(PWM_valA);
-        Serial.print("  ");
-        Serial.println(PWM_valB);
+        //Serial.print("- - ");
+        //Serial.print(PWM_valA);
+        //Serial.print("  ");
+        //Serial.println(PWM_valB);
     }
         // 0 0 Motores parados
     else if (PWM_valA == 0 && PWM_valB == 0) {
@@ -363,32 +369,41 @@ void motorupdate() {
         digitalWrite(InB1, LOW);
         digitalWrite(InB2, LOW);
         digitalWrite(motorSTBY, HIGH);
-        Serial.print("0 0 ");
-        Serial.print(PWM_valA);
-        Serial.print("  ");
-        Serial.println(PWM_valB);
+        //Serial.print("0 0 ");
+        //Serial.print(PWM_valA);
+        //Serial.print("  ");
+        //Serial.println(PWM_valB);
     }
     analogWrite(PWMA, PWM_valA);
     analogWrite(PWMB, PWM_valB);
     getMotorData();
 }
 
+/****************************************************************************************************/
+/****************************************************************************************************/
+
 void loop() {
+    // Esvazia comandos recebidos
     char get_char = ' ';
     //getParam(); // check keyboard
+    // Espera por comando
     if (Serial.available()) {
+        // Parce do primero char do comando
         get_char = Serial.read();
+        // Se diferente de comando inicial retorna loop
         if (get_char != START_CMD_CHAR) return;
+        //Salva comando anteriores para comparação
         oldcmdA = cmdA;
-        cmdA = Serial.parseInt();
         oldcmdB = cmdB;
+        //Parceia os proximos 2 inteiros descatando o '|'
+        cmdA = Serial.parseInt();
         cmdB = Serial.parseInt();
 
-        Serial.print("cmdA: ");
-        Serial.print(cmdA);
-        Serial.print(" cmdB: ");
-        Serial.println(cmdB);
-
+        //Serial.print("cmdA: ");
+        //Serial.print(cmdA);
+        //Serial.print(" cmdB: ");
+        //Serial.println(cmdB);
+        //Atualiza se cmdA ou cmdB seja diferente do anterior
         if (oldcmdA != cmdA || oldcmdB != cmdB) {
             PWM_valA = map(cmdA, 0, 100, 0, 255);
             PWM_valB = map(cmdB, 0, 100, 0, 255);
@@ -438,26 +453,30 @@ void loop() {
         lastMilli = millis();
         treta++;
     }*/
-
     // enter tmed loop
     if ((millis() - lastMilli) > LOOPTIME) {
-        lastMilli = millis();
-        // display data
-        printMotorInfo();
         // calculate speed, volts and Amps
         getMotorData();
+        // display data
+        printMotorInfo();
+        // Se ainda não foi atualizado
         if (atualizado == 0) {
+            // Comandos iguais === velocidades iguais
             if (cmdA == cmdB) {
                 if (speed_actA > (speed_actB + 2)) {
+                    // Velocidade requerida de A = Velocidade atual de B
                     speed_reqA = speed_actB;
                     myPIDA.Compute();
+                    // Flag atualizado torna verdadeira
                     atualizado = 1;
                     PWM_valA = constrain(PWM_valA, 0, 255);
                     Serial.print("PID A ");
                     Serial.println(PWM_valA);
                 } else if (speed_actB > (speed_actA + 2)) {
+                    // Velocidade requerida de B = Velocidade atual de A
                     speed_reqB = speed_actA;
                     myPIDB.Compute();
+                    // Flag atualizado torna verdadeira
                     atualizado = 1;
                     PWM_valB = constrain(PWM_valB, 0, 255);
                     Serial.print("PID B ");
@@ -466,6 +485,7 @@ void loop() {
             } else if (cmdA > cmdB) {
                 speed_reqB = (PWM_valB * speed_actA) / PWM_valA;
                 myPIDB.Compute();
+                // Flag atualizado torna verdadeira
                 atualizado = 1;
                 PWM_valB = constrain(PWM_valB, 0, 255);
                 Serial.print("PID B Curva ");
@@ -473,6 +493,7 @@ void loop() {
             } else if (cmdB > cmdA) {
                 speed_reqA = (PWM_valA * speed_actB) / PWM_valB;
                 myPIDA.Compute();
+                // Flag atualizado torna verdadeira
                 atualizado = 1;
                 PWM_valA = constrain(PWM_valA, 0, 255);
                 Serial.print("PID A Curva ");
@@ -529,7 +550,11 @@ void loop() {
             }
 
         }*/
+        // Atualiza relogio para ciclo de updade do PID
+        lastMilli = millis();
     }
 }
-/*****************************************************************************************/
+
+/****************************************************************************************************/
+/****************************************************************************************************/
 

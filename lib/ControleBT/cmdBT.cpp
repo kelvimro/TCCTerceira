@@ -16,10 +16,10 @@ String command = ""; // Stores response of bluetooth device
 void setup()
 {
     //Inicia a serial
-    Serial.begin(9600);
+    Serial.begin(38400);
     Serial.println("Digite os comandos AT :");
     //Inicia a serial configurada nas portas 10 e 11
-    mySerial.begin(9600);
+    mySerial.begin(38400);
 }
 
 void loop()
