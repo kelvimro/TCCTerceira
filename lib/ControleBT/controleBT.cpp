@@ -7,7 +7,7 @@ double cmdX;
 double cmdY;
 double sendA;
 double sendB;
-int looptime = 200;
+long looptime = 99999;
 int oldtime = 0;
 
 String command = "";
@@ -27,6 +27,21 @@ void setup() {
 
 
 void loop() {
+    // Read user input if available.
+    if (Serial.available()) {
+        delay(10); // The DELAY!
+        mySerial.write(Serial.read());
+    }
+
+    //Rescebe do BT
+    if (mySerial.available()) {
+        while (mySerial.available()) { // While there is more to be read, keep reading.
+            command += (char) mySerial.read();
+        }
+        Serial.println(command);
+        command = ""; // No repeats
+    }
+
     if ((millis() - oldtime) >= looptime) {
         //Leitura do eixo Y = vertical = Potencias dos motores
         cmdY = analogRead(PIN_ANALOG_Y);
@@ -68,16 +83,12 @@ void loop() {
         vai = START_CMD_CHAR + a + DIV_CMD_CHAR + b + END_CMD_CHAR;
         //Enviando via BT
         mySerial.print(vai);
-        if (mySerial.available()) {
-            while (mySerial.available()) { // While there is more to be read, keep reading.
-                command += (char) mySerial.read();
-            }
-            Serial.println(command);
-            command = ""; // No repeats
-        }
+
         //Zera timer
         oldtime = millis();
     }
+
+
 }
 
 
