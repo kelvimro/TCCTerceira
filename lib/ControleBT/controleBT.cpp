@@ -7,7 +7,7 @@ double cmdX;
 double cmdY;
 double sendA;
 double sendB;
-long looptime = 99999;
+long looptime = 200;
 int oldtime = 0;
 
 String command = "";

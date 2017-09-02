@@ -1500,10 +1500,6 @@ machine/ansi.h
 sys/_types.h
 -
 
-/home/kelvimro/TCCArduino/TCCTerceira/lib/Arduino-PID-Library-master/PID_v1.h
-
-/home/kelvimro/TCCArduino/TCCTerceira/lib/PID_AutoTune_v0/PID_AutoTune_v0.h
-
 /home/kelvimro/TCCArduino/TCCTerceira/lib/QueueArray/QueueArray.h
 Arduino.h
 -
@@ -1513,10 +1509,6 @@ Arduino.h
 -
 SoftwareSerial.h
 -
-../lib/Arduino-PID-Library-master/PID_v1.h
-/home/kelvimro/TCCArduino/TCCTerceira/lib/Arduino-PID-Library-master/PID_v1.h
-../lib/PID_AutoTune_v0/PID_AutoTune_v0.h
-/home/kelvimro/TCCArduino/TCCTerceira/lib/PID_AutoTune_v0/PID_AutoTune_v0.h
 ../lib/QueueArray/QueueArray.h
 /home/kelvimro/TCCArduino/TCCTerceira/lib/QueueArray/QueueArray.h
 
