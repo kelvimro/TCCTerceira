@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="TCCTerceira" targetName="PLATFORMIO_BUILD" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO_UPLOAD" />
       <config projectName="TCCTerceira" targetName="TCCTerceira" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_UPDATE_ALL" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_UPLOADFS" />
@@ -10,7 +10,7 @@
       <config projectName="TCCTerceira" targetName="PLATFORMIO_REBUILD_PROJECT_INDEX" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_TEST" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_CLEAN" />
-      <config projectName="TCCTerceira" targetName="PLATFORMIO_UPLOAD" />
+      <config projectName="TCCTerceira" targetName="PLATFORMIO_BUILD" />
       <config projectName="TCCTerceira" targetName="DEBUG" />
       <config projectName="TCCTerceira" targetName="PLATFORMIO_PROGRAM" />
     </generated>
@@ -25,9 +25,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" afterPath="$PROJECT_DIR$/.pioenvs/.sconsign.dblite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/src/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/src/main.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TCCTerceira.dir/depend.make" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/ControleBT/controleBT.cpp" afterPath="$PROJECT_DIR$/lib/ControleBT/controleBT.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
     </list>
@@ -53,8 +50,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-196">
-              <caret line="515" column="11" lean-forward="false" selection-start-line="515" selection-start-column="11" selection-end-line="515" selection-end-column="11" />
+            <state relative-caret-position="-9">
+              <caret line="550" column="5" lean-forward="false" selection-start-line="550" selection-start-column="5" selection-end-line="550" selection-end-column="5" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -85,8 +82,8 @@
       <file leaf-file-name="controleBT.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+            <state relative-caret-position="255">
+              <caret line="15" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,9 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BEGIN</find>
-      <find>begin</find>
-      <find>getmoto</find>
       <find>milli</find>
       <find>cmd</find>
       <find>update</find>
@@ -113,7 +107,6 @@
       <find>med final</find>
       <find>mediaa</find>
       <find>final</find>
-      <find>serial.print</find>
       <find>med</find>
       <find>&lt;A</find>
       <find>mediaA</find>
@@ -126,6 +119,10 @@
       <find>serial.print(pw</find>
       <find>calibb</find>
       <find>interru</find>
+      <find>serial.print</find>
+      <find>teste</find>
+      <find>motorupda</find>
+      <find>calib</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,7 +232,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PLATFORMIO_BUILD">
+  <component name="RunManager" selected="Application.PLATFORMIO_UPLOAD">
     <configuration default="true" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="" symbolFile="" sysroot="">
       <method />
     </configuration>
@@ -497,12 +494,15 @@
       <workItem from="1504207826870" duration="8165000" />
       <workItem from="1504222335373" duration="4654000" />
       <workItem from="1504289851672" duration="8392000" />
-      <workItem from="1504309871673" duration="1108000" />
+      <workItem from="1504309871673" duration="3526000" />
+      <workItem from="1504635476740" duration="5095000" />
+      <workItem from="1504654430094" duration="879000" />
+      <workItem from="1504719441912" duration="313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89416000" />
+    <option name="totallyTimeSpent" value="98121000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -521,13 +521,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Serial Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -984,6 +984,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="550" column="5" lean-forward="false" selection-start-line="550" selection-start-column="5" selection-end-line="550" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ControleBT/cmdBT.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -994,19 +1004,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/ControleBT/controleBT.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        <state relative-caret-position="255">
+          <caret line="15" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="515" column="11" lean-forward="false" selection-start-line="515" selection-start-column="11" selection-end-line="515" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

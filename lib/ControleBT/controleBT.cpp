@@ -10,10 +10,10 @@ double sendB;
 long looptime = 200;
 int oldtime = 0;
 
-String command = "";
-String START_CMD_CHAR = "*";
-String DIV_CMD_CHAR = "|";
-String END_CMD_CHAR = "#";
+static String command = "";
+static String START_CMD_CHAR = "*";
+static String DIV_CMD_CHAR = "|";
+static String END_CMD_CHAR = "#";
 
 //RX e TX para o Bluetooth
 SoftwareSerial mySerial(10, 11);

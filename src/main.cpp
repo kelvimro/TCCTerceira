@@ -108,7 +108,6 @@ double pesoA = 1;
 double pesoB = 1;
 
 
-
 // Flags
 boolean calibrating = false;
 // char dirA = '+';                // Flag de direção motor A
@@ -166,6 +165,7 @@ PID myPIDX(&speed_actA, &PWM_valA, &speed_reqA, Kp, Ki, Kd, DIRECT);
 // int treta = 0;
 // int treta2 = 0;
 char get_char = ' ';
+static String print = " ";
 
 
 /****************************************************************************************************/
@@ -431,14 +431,14 @@ void motorupdate() {
         digitalWrite(motorSTBY, HIGH);
         // dirA = dirB = '-';
     }
-        /*/ 0 0 Motores parados
-    else if (PWM_valA == 0 && PWM_valB == 0) {
-        digitalWrite(InA1, LOW);
-        digitalWrite(InA2, LOW);
-        digitalWrite(InB1, LOW);
-        digitalWrite(InB2, LOW);
-        digitalWrite(motorSTBY, HIGH);
-    } */
+    /*/ 0 0 Motores parados
+else if (PWM_valA == 0 && PWM_valB == 0) {
+    digitalWrite(InA1, LOW);
+    digitalWrite(InA2, LOW);
+    digitalWrite(InB1, LOW);
+    digitalWrite(InB2, LOW);
+    digitalWrite(motorSTBY, HIGH);
+} */
     PWM_valA *= pesoA;
     PWM_valB *= pesoB;
     PWM_valA = int(PWM_valA);
@@ -513,6 +513,7 @@ boolean processMedia() {
     static double _soma = 0;
     static double _med = 0;
     static int _mark = 0;
+    print = "\n";
     while (!calibA.isEmpty()) {
         _soma += calibA.pop();
         _mark++;
@@ -520,7 +521,7 @@ boolean processMedia() {
     _med = _soma / _mark;
     mediaA.push(_med);
     // Imprime média de A
-    Serial.print(_med);
+    print += _med;
 
     _soma = _med = 0;
     _mark = 0;
@@ -530,10 +531,11 @@ boolean processMedia() {
     }
     _med = _soma / _mark;
     mediaB.push(_med);
-
     // Imprime indicadores e média de B
-    Serial.print(" <-Med.A Med.B-> ");
-    Serial.println(_med);
+    print += "\t<-Med.A Med.B->\t";
+    print += _med;
+    Serial.println(print);
+    print = " ";
 
     return true;
 }
@@ -547,6 +549,7 @@ boolean processMedia() {
 /****************************************************************************************************/
 
 void getAmostras(int _PWM) {
+    print = " ";
     // Disables interrupts (you can re-enable them with interrupts()).
     // https://www.arduino.cc/en/Reference/NoInterrupts
     noInterrupts();
@@ -555,7 +558,7 @@ void getAmostras(int _PWM) {
     // Set PWM
     PWM_valA = _PWM;
     PWM_valB = 0;
-    motorupdate();
+    motorRefresh();
     countB = countA = 0;
     // calibMillis timer de loop
     static double calibMillis = millis();
@@ -576,7 +579,7 @@ void getAmostras(int _PWM) {
         }
         // Reduz vel. mas mantem sentido
         PWM_valA = PWM_valB = 2;
-        motorupdate();
+        motorRefresh();
     }
     // Disables interrupts (you can re-enable them with interrupts()).
     // https://www.arduino.cc/en/Reference/NoInterrupts
@@ -584,7 +587,7 @@ void getAmostras(int _PWM) {
     // Set PWM - config inicial
     PWM_valA = 0;
     PWM_valB = _PWM;
-    motorupdate();
+    motorRefresh();
     countB = countA = 0;
     calibMillis = millis();
     interrupts();
@@ -607,8 +610,11 @@ void getAmostras(int _PWM) {
     }
 
     if (processMedia()) {
-        Serial.print("Calibrado PWM = ");
-        Serial.println(_PWM);
+        print = "";
+        print += "Calib. PWM =\t";
+        print += _PWM;
+        Serial.println(print);
+        print = " ";
     }
 }
 
@@ -616,10 +622,10 @@ void getAmostras(int _PWM) {
 /****************************************************************************************************/
 
 
-boolean setMarc() {
+void setMarc() {
     PWM_valA = PWM_valB = 50;
     motorupdate();
-    delayMicroseconds(2000);
+    delayMicroseconds(7000);
     PWM_valA = PWM_valB = LOW_SPEED;
     motorRefresh();
     // Garantir ambos encoder em falso
@@ -678,11 +684,13 @@ boolean setMarc() {
     PWM_valA = PWM_valB = 0;
     motorRefresh();
     // Log
-    Serial.println("#Alinhados#");
-    Serial.print(digitalRead(encodPinA1));
-    Serial.print("<-encodA encodB->");
-    Serial.println(digitalRead(encodPinB1));
-    return true;
+    print = "\n";
+    print += "Alinhados\n";
+    print += digitalRead(encodPinA1);
+    print += "\t<-encodA encodB->\t";
+    print += digitalRead(encodPinB1);
+    Serial.println(print);
+    print = " ";
 }
 
 
@@ -735,9 +743,71 @@ boolean finalMedia() {
 /****************************************************************************************************/
 /****************************************************************************************************/
 
+/****************************************************************************************************/
+/****************************************************************************************************/
+
+// Processa os pesos com o vetor de medias
+boolean finalTeste() {
+    static double _soma = 0;
+    static double _med = 0;
+    // Marcador #de testes
+    static int _mark = 0;
+    static String _print = "\nTeste\n";
+    while (!mediaA.isEmpty()) {
+        _soma += mediaA.pop();
+        _mark++;
+    }
+    _med = _soma / _mark;
+    // pesoA para print, utilizado apenas localmente
+    static double _pA = _med;
+
+    _soma = _med = 0;
+    _mark = 0;
+    while (!mediaB.isEmpty()) {
+        _soma += mediaB.pop();
+        _mark++;
+    }
+    _med = _soma / _mark;
+    // pesoB para print, utilizado apenas localmente
+    static double _pB = _med;
+
+    if (_pA > _pB) {
+        _pA = _pB / _pA;
+        _print += (_pA * 100);
+    } else if (_pA < _pB) {
+        _pB = _pA / _pB;
+        _print += (_pB * 100);
+    } else if (_pA == _pB) {
+        _print += 100;
+    } else {
+        // Log de erro em caso de cmd não localizado
+        Serial.println("#### PESOS não mapeados #####");
+        Serial.print(_pA);
+        Serial.print(" <- _pA _pB -> ");
+        Serial.print(_pB);
+        return false;
+    }
+    _print += "%\tde precisão\n";
+    _print += pesoA;
+    _print += "\t<-pesoA pesoB->\t";
+    _print += pesoB;
+    _print += "\n";
+    _print += NUM_AMOSTRA;
+    _print += "\t<-Amostras Invervalo(ms)->\t";
+    _print += CALIBMILLIS;
+    _print += "\n";
+    Serial.print(_print);
+    return true;
+}
+
+/****************************************************************************************************/
+/****************************************************************************************************/
+
+
+
 boolean calibrate() {
     calibrating = true;
-    Serial.print(setMarc());
+    setMarc();
 
     PWM_valA = PWM_valB = 7;
     motorupdate();
@@ -748,17 +818,29 @@ boolean calibrate() {
     getAmostras(100);
 
     if (finalMedia()) {
-        Serial.println("~Calibragem finalizada~");
-        Serial.print(pesoA,5);
-        Serial.print(" <-pesoA pesoB-> ");
-        Serial.println(pesoB,5);
-        Serial.print(NUM_AMOSTRA);
-        Serial.print(" <-Amostras Invervalo(ms)-> ");
-        Serial.println(CALIBMILLIS);
+        print = "\n";
+        print += "~Calibragem finalizada~\n";
+        print += pesoA, 5;
+        print += "\t<-pesoA pesoB->\t";
+        print += pesoB, 5;
+        print += "\n";
+        print += NUM_AMOSTRA;
+        print += "\t<-Amostras Invervalo(ms)->\t";
+        print += CALIBMILLIS;
+        Serial.println(print);
+        print = " ";
     } else {
         Serial.print("+++ Med final False");
         return false;
     }
+    setMarc();
+    getAmostras(255);
+    getAmostras(200);
+    getAmostras(150);
+    getAmostras(100);
+
+    finalTeste();
+
     calibrating = false;
     return true;
 }
@@ -797,13 +879,17 @@ void loop() {
         PWM_valA = map(cmdA, 0, 100, 0, 255);
         PWM_valB = map(cmdB, 0, 100, 0, 255);
         motorupdate();
-        Serial.println("PWM SETS AS");
-        Serial.print(PWM_valA);
-        Serial.print(" <- PWMA pesoA -> ");
-        Serial.println(pesoA,5);
-        Serial.print(PWM_valB);
-        Serial.print(" <- PWMB pesoB -> ");
-        Serial.println(pesoB,5);
+        print = "\n";
+        print += "PWM SETS AS\n";
+        print += PWM_valA;
+        print += "\t<- PWMA pesoA ->\t";
+        print += pesoA, 5;
+        print += "\n";
+        print += PWM_valB;
+        print += "\t<- PWMB pesoB ->\t";
+        print += pesoB, 5;
+        Serial.print(print);
+        print = " ";
     }
 }
 
