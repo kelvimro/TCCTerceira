@@ -316,9 +316,12 @@ void printMotorInfo() {
 /*****************************************************************************************/
 // remove signal noise
 int digital_smooth(int value, int *data_array) {
-    static int ndx = 0;
-    static int count = 0;
-    static int total = 0;
+    static int ndx;
+    ndx = 0;
+    static int count;
+    count = 0;
+    static int total;
+    total = 0;
     total -= data_array[ndx];
     data_array[ndx] = value;
     total += data_array[ndx];
@@ -374,7 +377,8 @@ void getMotorData() {                                      // calculate speed, v
 int updatePid(int command, int targetValue, int currentValue) {  // compute PWM value
     float pidTerm = 0;                                             // PID correction
     int error = 0;
-    static int last_error = 0;
+    static int last_error;
+    last_error = 0;
 
     error = abs(targetValue) - abs(currentValue);
 
@@ -510,10 +514,13 @@ void attach() {
 /****************************************************************************************************/
 
 boolean processMedia() {
-    static double _soma = 0;
-    static double _med = 0;
-    static int _mark = 0;
-    print = "\n";
+    static double _soma;
+    _soma = 0;
+    static double _med;
+    _med = 0;
+    static int _mark;
+    _mark = 0;
+    print = "\nMédia\t";
     while (!calibA.isEmpty()) {
         _soma += calibA.pop();
         _mark++;
@@ -532,7 +539,7 @@ boolean processMedia() {
     _med = _soma / _mark;
     mediaB.push(_med);
     // Imprime indicadores e média de B
-    print += "\t<-Med.A Med.B->\t";
+    print += "\t";
     print += _med;
     Serial.println(print);
     print = " ";
@@ -549,19 +556,22 @@ boolean processMedia() {
 /****************************************************************************************************/
 
 void getAmostras(int _PWM) {
-    print = " ";
+    print = "Calib.PWM =\t";
+    print += _PWM;
     // Disables interrupts (you can re-enable them with interrupts()).
     // https://www.arduino.cc/en/Reference/NoInterrupts
     noInterrupts();
     // Media de NUM_AMOSTRAS com PWM _PWM
     // _motor A = motorA | B = motorB
     // Set PWM
+    print += "\nA:\n";
     PWM_valA = _PWM;
-    PWM_valB = 0;
+    PWM_valB = 1;
     motorRefresh();
     countB = countA = 0;
     // calibMillis timer de loop
-    static double calibMillis = millis();
+    static double calibMillis;
+    calibMillis = millis();
     interrupts();
     while (PWM_valA >= 5) {
         for (int i = 0; i < NUM_AMOSTRA; ++i) {
@@ -571,6 +581,8 @@ void getAmostras(int _PWM) {
             // Desarma interrupts
             noInterrupts();
             calibA.push(countA);
+            print += countA;
+            print += "\n";
             // Zera contadores de marcos do encoder
             countA = 0;
             calibMillis = millis();
@@ -585,7 +597,8 @@ void getAmostras(int _PWM) {
     // https://www.arduino.cc/en/Reference/NoInterrupts
     noInterrupts();
     // Set PWM - config inicial
-    PWM_valA = 0;
+    print += "B:\n";
+    PWM_valA = 1;
     PWM_valB = _PWM;
     motorRefresh();
     countB = countA = 0;
@@ -599,6 +612,8 @@ void getAmostras(int _PWM) {
             // Desarma interrupts
             noInterrupts();
             calibB.push(countB);
+            print += countB;
+            print += "\n";
             // Zera contadores de marcos do encoder
             countB = 0;
             calibMillis = millis();
@@ -608,13 +623,10 @@ void getAmostras(int _PWM) {
         PWM_valA = PWM_valB = 2;
         motorRefresh();
     }
+    Serial.print(print);
+    print = "";
 
     if (processMedia()) {
-        print = "";
-        print += "Calib. PWM =\t";
-        print += _PWM;
-        Serial.println(print);
-        print = " ";
     }
 }
 
@@ -685,7 +697,6 @@ void setMarc() {
     motorRefresh();
     // Log
     print = "\n";
-    print += "Alinhados\n";
     print += digitalRead(encodPinA1);
     print += "\t<-encodA encodB->\t";
     print += digitalRead(encodPinB1);
@@ -700,9 +711,12 @@ void setMarc() {
 
 // Processa os pesos com o vetor de medias
 boolean finalMedia() {
-    static double _soma = 0;
-    static double _med = 0;
-    static int _mark = 0;
+    static double _soma;
+    _soma = 0;
+    static double _med;
+    _med = 0;
+    static int _mark;
+    _mark = 0;
     while (!mediaA.isEmpty()) {
         _soma += mediaA.pop();
         _mark++;
@@ -748,18 +762,23 @@ boolean finalMedia() {
 
 // Processa os pesos com o vetor de medias
 boolean finalTeste() {
-    static double _soma = 0;
-    static double _med = 0;
+    static double _soma;
+    _soma = 0;
+    static double _med;
+    _med = 0;
     // Marcador #de testes
-    static int _mark = 0;
-    static String _print = "\nTeste\n";
+    static int _mark;
+    _mark = 0;
+    static String _print;
+    _print = "\nTeste\n";
     while (!mediaA.isEmpty()) {
         _soma += mediaA.pop();
         _mark++;
     }
     _med = _soma / _mark;
     // pesoA para print, utilizado apenas localmente
-    static double _pA = _med;
+    static double _pA;
+    _pA = _med;
 
     _soma = _med = 0;
     _mark = 0;
@@ -769,7 +788,8 @@ boolean finalTeste() {
     }
     _med = _soma / _mark;
     // pesoB para print, utilizado apenas localmente
-    static double _pB = _med;
+    static double _pB;
+    _pB = _med;
 
     if (_pA > _pB) {
         _pA = _pB / _pA;

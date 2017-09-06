@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 
+const int d5 = 5;
+
 const byte PIN_ANALOG_X = 0;
 const byte PIN_ANALOG_Y = 1;
 double cmdX;
@@ -23,10 +25,22 @@ void setup() {
     Serial.begin(38400);
     mySerial.begin(38400);
     oldtime = millis();
+    pinMode(d5, INPUT);
+}
+
+int plebeu(){
+    static int i;
+    i = 0;
+    i++;
+    return i;
 }
 
 
 void loop() {
+    if(digitalRead(d5) > 0) {
+        Serial.println(plebeu());
+    }
+
     // Read user input if available.
     if (Serial.available()) {
         delay(10); // The DELAY!
