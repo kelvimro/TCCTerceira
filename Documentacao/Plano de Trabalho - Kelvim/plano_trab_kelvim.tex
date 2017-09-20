@@ -349,6 +349,50 @@ else cmdX = map(cmdX, 502, 1023, 0, 100);
 \end{lstlisting}
 No eixo X os valores negativos indicam que o motor A tem de se movimentar X\% mais lento em relação ao motor B, fazendo o movimento de curva para o lado de A. Já com os valores positivos de X indica que o motor B deve ser X\% mais lento q o A fazendo a curva para o lado B.
 
+\chapter{Interrupções}
+O processador do Arduino Nano, o qual foi utilizado neste projeto é do modelo Atmega328 e nesta seção discorremos sobre o funcionamento da interrupção neste processador, utilização no projeto, exemplos e !!efeitos colaterais!!.
+Em sua maioria os processadores possuem interrupções dos quais permitem executar algo após determinado evento externo, sendo chamado de interrupções externas. Nas referencias online presentes no site oficial do Arduino, para mais informações a cerca de interrupções é indicado as notas de Nick Gammon, de um modo didático e simples ele faz um paralelo ao cotidiano, ao fazer o jantar e ter de cozinhar as batatas, é colocado um despertador com o tempo de 20 minutos, indo faze outra atividade durante o tempo de cozimento, ao despertar o alarme vc ``interrompe" sua atividade e então termina o jantar. Apesar do exemplo utilizado ser quase uma mudança de estado, não é recomendado invocar funções grandes e complexas, além de sair da linha principal de execução as funções não devem conter argumentos, ou seja, utiliza-se interrupções para trocas de flag, disparo de funções emergenciais, contagens precisas entre outros interrupção é o ``botão vermelho", veremos asseguir que \textit{reset} é a interrupção de maior prioridade.
+
+\section{Interrupção no Atmega328}
+Assim como em outros processadores o Atmega328 possui sua lista de interrupções, logo a baixo podemos ve-la em ordem de prioridade, tendo em primeiro lugar a interrupção de \textit{reset}.
+
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{|c|cc|}
+		\hline
+		1  &                      Reset                      &  \\ \hline
+		2  &     External Interrupt Request 0  (pin D2)      &     (INT0_vect)     \\ \hline
+		3  &     External Interrupt Request 1  (pin D3)      &     (INT1_vect)     \\ \hline
+		4  & Pin Change Interrupt Request 0 (pins D8 to D13) &    (PCINT0_vect)    \\ \hline
+		5  & Pin Change Interrupt Request 1 (pins A0 to A5)  &    (PCINT1_vect)    \\ \hline
+		6  & Pin Change Interrupt Request 2 (pins D0 to D7)  &    (PCINT2_vect)    \\ \hline
+		7  &           Watchdog Time-out Interrupt           &     (WDT_vect)      \\ \hline
+		8  &         Timer/Counter2 Compare Match A          & (TIMER2_COMPA_vect) \\ \hline
+		9  &         Timer/Counter2 Compare Match B          & (TIMER2_COMPB_vect) \\ \hline
+		10 &             Timer/Counter2 Overflow             &  (TIMER2_OVF_vect)  \\ \hline
+		11 &          Timer/Counter1 Capture Event           & (TIMER1_CAPT_vect)  \\ \hline
+		12 &         Timer/Counter1 Compare Match A          & (TIMER1_COMPA_vect) \\ \hline
+		13 &         Timer/Counter1 Compare Match B          & (TIMER1_COMPB_vect) \\ \hline
+		14 &             Timer/Counter1 Overflow             &  (TIMER1_OVF_vect)  \\ \hline
+		15 &         Timer/Counter0 Compare Match A          & (TIMER0_COMPA_vect) \\ \hline
+		16 &         Timer/Counter0 Compare Match B          & (TIMER0_COMPB_vect) \\ \hline
+		17 &             Timer/Counter0 Overflow             &  (TIMER0_OVF_vect)  \\ \hline
+		18 &          SPI Serial Transfer Complete           &   (SPI_STC_vect)    \\ \hline
+		19 &                USART Rx Complete                &   (USART_RX_vect)   \\ \hline
+		20 &           USART, Data Register Empty            &  (USART_UDRE_vect)  \\ \hline
+		21 &               USART, Tx Complete                &   (USART_TX_vect)   \\ \hline
+		22 &             ADC Conversion Complete             &     (ADC_vect)      \\ \hline
+		23 &                  EEPROM Ready                   &   (EE_READY_vect)   \\ \hline
+		24 &                Analog Comparator                & (ANALOG_COMP_vect)  \\ \hline
+		25 &         2-wire Serial Interface  (I2C)          &     (TWI_vect)      \\ \hline
+		26 &           Store Program Memory Ready            &  (SPM_READY_vect)   \\ \hline
+	\end{tabular}
+	\caption[Lista de interrupções]{Lista de interrupções para o Atmega328.}
+	\label{Tab:interrupcoes}
+\end{table}
+
+
 
 \chapter{Metodologia} \label{cap: metodologia}
 
@@ -362,34 +406,6 @@ No eixo X os valores negativos indicam que o motor A tem de se movimentar X\% ma
 	
 	
 \end{enumerate}
-
-
-\begin{table}[!h]
-	\renewcommand{\arraystretch}{1.3}
-	\centering
-	\begin{tabular}{|c|cccccccc|}
-		%\hline
-		%& \multicolumn{12}{c|}{Meses} \\
-		\hline
-		\multirow{2}{*}{\textbf{Etapas}} & \multicolumn{8}{c|}{\textbf{2017}} \\
-		& \textbf{Abr} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Set} & \textbf{Out} & \textbf{Nov} & \textbf{Dez}  \\
-		\hline
-		A & \checkmark & \checkmark & & & & & &  \\
-		\hline
-		B & & \checkmark & \checkmark & & & & &  \\
-		\hline
-		C & & & \checkmark & \checkmark & & & & \\
-		\hline
-		D & & & & \checkmark & \checkmark & \checkmark & &  \\
-		\hline
-		E & & & & & & & \checkmark & \checkmark \\
-		\hline
-	
-		
-	\end{tabular}
-	\caption[Cronograma de atividades]{Cronograma de atividades.}
-	\label{Tab:cronograma}
-\end{table}
 
 \chapter{Considerações Finais}
 

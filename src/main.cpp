@@ -105,7 +105,7 @@ QueueArray<double> mediaB;
 
 // Peso dos motores
 double pesoA = 1;
-double pesoB = 1;
+double pesoB = 0.98;
 
 
 // Flags
@@ -530,7 +530,8 @@ boolean processMedia() {
     // Imprime média de A
     print += _med;
 
-    _soma = _med = 0;
+    _soma = 0;
+    _med = 0;
     _mark = 0;
     while (!calibB.isEmpty()) {
         _soma += calibB.pop();
@@ -541,8 +542,8 @@ boolean processMedia() {
     // Imprime indicadores e média de B
     print += "\t";
     print += _med;
+    delayMicroseconds(999);
     Serial.println(print);
-    print = " ";
 
     return true;
 }
@@ -556,7 +557,7 @@ boolean processMedia() {
 /****************************************************************************************************/
 
 void getAmostras(int _PWM) {
-    print = "Calib.PWM =\t";
+    print = "PWM =\t";
     print += _PWM;
     // Disables interrupts (you can re-enable them with interrupts()).
     // https://www.arduino.cc/en/Reference/NoInterrupts
@@ -597,7 +598,7 @@ void getAmostras(int _PWM) {
     // https://www.arduino.cc/en/Reference/NoInterrupts
     noInterrupts();
     // Set PWM - config inicial
-    print += "B:\n";
+    print += "\nB:\n";
     PWM_valA = 1;
     PWM_valB = _PWM;
     motorRefresh();
@@ -624,7 +625,7 @@ void getAmostras(int _PWM) {
         motorRefresh();
     }
     Serial.print(print);
-    print = "";
+    print = " ";
 
     if (processMedia()) {
     }
@@ -761,6 +762,48 @@ boolean finalMedia() {
 /****************************************************************************************************/
 
 // Processa os pesos com o vetor de medias
+boolean getPercent() {
+    static double _soma;
+    _soma = 0;
+    static double _med;
+    _med = 0;
+    static int _mark;
+    _mark = 0;
+    while (!mediaA.isEmpty()) {
+        _soma += mediaA.pop();
+        _mark++;
+    }
+    _med = _soma / _mark;
+    static double _pA;
+    _pA = _med;
+
+    _soma = _med = 0;
+    _mark = 0;
+    while (!mediaB.isEmpty()) {
+        _soma += mediaB.pop();
+        _mark++;
+    }
+    _med = _soma / _mark;
+    static double _pB;
+    _pB = _med;
+
+    delayMicroseconds(8000);
+    print = "\nPerc\t";
+    print += ((_pA/_pB)*100);
+    print += "%";
+    Serial.println(print);
+
+
+}
+
+/****************************************************************************************************/
+/****************************************************************************************************/
+
+
+/****************************************************************************************************/
+/****************************************************************************************************/
+
+// Processa os pesos com o vetor de medias
 boolean finalTeste() {
     static double _soma;
     _soma = 0;
@@ -831,7 +874,10 @@ boolean calibrate() {
 
     PWM_valA = PWM_valB = 7;
     motorupdate();
-
+/*
+    getAmostras(100);
+    getPercent();
+*/
     getAmostras(255);
     getAmostras(200);
     getAmostras(150);
@@ -840,19 +886,22 @@ boolean calibrate() {
     if (finalMedia()) {
         print = "\n";
         print += "~Calibragem finalizada~\n";
-        print += pesoA, 5;
+        print += pesoA,5;
         print += "\t<-pesoA pesoB->\t";
-        print += pesoB, 5;
+        print += pesoB,5;
         print += "\n";
         print += NUM_AMOSTRA;
         print += "\t<-Amostras Invervalo(ms)->\t";
         print += CALIBMILLIS;
         Serial.println(print);
         print = " ";
+        Serial.print(pesoA,5);
+        Serial.print(pesoB,5);
     } else {
         Serial.print("+++ Med final False");
         return false;
     }
+    /*
     setMarc();
     getAmostras(255);
     getAmostras(200);
@@ -860,6 +909,7 @@ boolean calibrate() {
     getAmostras(100);
 
     finalTeste();
+    */
 
     calibrating = false;
     return true;
