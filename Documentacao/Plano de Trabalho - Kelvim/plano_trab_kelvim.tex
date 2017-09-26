@@ -153,7 +153,7 @@ países do mundo, incluindo nossa pátria, o que fez com que o futebol de robôs
 A RoboCup Criada no Japão por meio da iniciativa de um grupo de pesquisadores que tinham como objetivo em comum, o jogo de futebol, afim de promover o crescimento da ciência e tecnologia. De forma independente, os professores Minoru Asada,da Universidade de Osaka, e a Professora Manuela Veloso junto a seu aluno Peter Stone da Universidade Carnegie Mellon, EUA, estavam também trabalhando em robôs jogadores de futebol.
 O primeiro campeonato da Robocup junto a primeira conferência, foram realizados em 1997. Onde compareceram mais de 40 equipes e mais de 5.000 espectadores. Infelizmente no Brasil até o momento não foram realizados eventos da Robocup com âmbito mundial.
 
-\section{Modalidade} %subtitulo
+\section{Modalidade} \label{modalidade}
 Assim como o futebol jogado por humanos, o futebol de robôs também tem suas regras de jogo bem definidas. A FIRA Cup é um evento organizado com competições várias categorias, destacam-se as categorias Micro-Robot Soccer Tournament (MiroSot) e a Humanoid Robot Soccer Tournament (HuroSot), ambas são disputadas sob o olhar de um árbitro humano, já a categoria Simulated Robot Soccer Tournament (SimuroSot), que como o próprio nome sugere, trata-se de uma modalidade de simulação, quando não se tem a disposição de os recursos de hardware referentes aos robôs.
 
 Este trabalho tem como foco o estudo das velocidades dos motores da categoria MiroSot. O acrônimo MiroSot, vem da denominação Micro Robot Soccer Tournament, cuja categoria é voltada para partidas com pequenos robôs que se movimentam através de dois motor, um motor para cada roda, realizando movimentos rápidos, enviados a partir de um computador disposto com uma inteligencia artificial com suas estratégias. Sendo este o ambiente principal do trabalho.
@@ -163,19 +163,34 @@ Esta categoria conta com duas ligas, a "Large league" (Liga grande) considerado 
 
 ======== INSERIR IMAGEM DAS DIMENSÕES DO CAMPO =========
 
+\chapter{O robô}
+O time de futebol de robôs do campus de Coxim é participante da modalidade MiroSot confome a seção \ref{modalidade} esta limitado as dimensões de 7,5 cm x 7,5 cm x 7,5 cm, dotado de um Arduino nano o qual realiza o controle de todo o robô, um bluetooth do modelo \textbf{HC-06} que possui apenas o modo \textit{slave}(apenas recebe conexão, não busca a mesma) cujo função principal é estabelecer a conexão entre o robô e o computador da equipe, um driver para motor de corrente continua do modelo \textbf{TB6612FNG} capais de controlar dois motores utilizados para realizar os movimentos, dois sensores ópticos do modelo \textbf{TCRT1000} os quais serão utilizados como encoder afim de determinar as velocidades das rodas.
 
-\chapter{Controlador PID}
-== https://www.citisystems.com.br/controle-pid/ ===
-Neste capítulo, explanarei sobre o controle PID -que é abreviatura para Proporcional, Integral e Derivativo- e como utiliza-lo em aplicações de controle que requerem um controle de precisão. Começaremos pelo exemplo onde um carro tenta manter uma distancia X do carro da frente.
+\section{Arduino Nano}\label{arduinonano}
 
-\section{P - Proporcional}
-Ao tentar manter uma distancia X o carro de trás deve acelerar proporcionalmente quando o carro da frente acelerar e começar a distanciar, tentando alcançar o mesmo. No entanto, caso o carro de trás venha acelerar mais que o carro da frente a distancia será menor que a desejada, X, então a nova correção é frear para aumentar a distancia buscando a distancia desejada de X. Novamente caso a correção, que desta vez é a frenagem(desaceleração), for muito, a sua distancia se será superior a distancia desejada de X, então novamente terá de acelerar. Isso ocorrera indefinitivamente caso a aceleração não proporcional não esteja correta, ou seja, acelerando de mais e freando de menos e não atingindo o ponto alvo(set point). Então esta aceleração é chapada de ganho ou proporcional(P) em um controle PID.
+\section{Sensor Optico TCRT1000}\label{tcrt1000}
+O sensor optico utilizado do modelo TCRT1000 é um sensor refletivo o qual inclui um emissor infravermelho e um phototransistor dentro de um invólucro de chumbo o qual bloquei a luz visível, um sensor de pequenas dimensões medindo apenas 7mm x 4mm x 2.5mm e de grande precisão.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{TCRT1000.jpg}
+	\caption{Sendor optico TCRT1000}
+\end{figure}
 
-\section{I - Integral}
-A integral, neste exemplo dos carros, seria como recuperar a distancia X a cada instante, caso o veiculo da frente venha a acelerar, o veiculo de trás acelera gradualmente afim de atingir a distancia X com mais suavidade, este procedimento pode ser comparado a integral de um controle PID.
+\section{Roda}\label{roda}
+O robô Modu possui apenas um par de rodas de XXmm e uma faixa de marcadores, utilizados juntamente com os sensores opticos \ref{tcrt1000} transformando o conjunto em um encoder \ref{encoder} descrito na próxima sessão, tendo 17 marcadores brancos e 17 marcadores preto totalizando 34 marcadores.
 
-\section{D - Derivativo}
-A derivada é utilizada para eliminar erros acumulados na integral, neste exemplo dos carros, seria quando o carro de trás percebe que a distancia desce ou decresce muito rapidamente em relação a desejada X, deixando as correções da integral ainda mais suaves, diminuindo a oscilação das correções em volta do Setpoint.
+\section{Encoder}\label{encoder}
+
+
+\section{Bluetooth HC-06}\label{bthc06}
+O modulo foi utilizado para comunicação sem fio entre o robô e o computador, as informações são trocadas utilizando do protocolo \textit{Serial}, o alcance do módulo segue o padrão da comunicação bluethooth, aproximadamente 10 metros, o suficiente, visto que o campo não passa pouco dos dois metros. Uma característica deste modelo (HC-06) possui apenas o modo \textit{slave} neste modo é apenas permitido receber conexão de outros dispositivos, ou seja, não permite que este modelo busque e solicite conexão com outros dispositivos, assim como ocorre com fones de ouvido e caixas de som.
+\begin{figure}[H]	
+	\centering
+	\includegraphics[width=0.5\textwidth]{BTHC06.jpg}
+	\caption{Bluetooth HC-06}
+\end{figure}
+
+
 
 \chapter{Ambiente de desenvolvimento}
 Este capítulo aborda as ferramentas utilizadas para o desenvolvimento da programação dos robôs jogadores. O sistema operacional escolhido foi o Ubuntu Gnome 17.04 64-bit, por ser uma distribuição linux o Ubuntu já possui os drivers USB para comunicação a placas de teste, a utilizada no projeto foi a placa Arduino Nano 328, com o driver USB, como o FTDI. Sera descrito também neste capítulo a instalação e configuração dos softwares: IDE Arduino, IDE Clion 2017.1 e PlatformIO.
@@ -349,12 +364,49 @@ else cmdX = map(cmdX, 502, 1023, 0, 100);
 \end{lstlisting}
 No eixo X os valores negativos indicam que o motor A tem de se movimentar X\% mais lento em relação ao motor B, fazendo o movimento de curva para o lado de A. Já com os valores positivos de X indica que o motor B deve ser X\% mais lento q o A fazendo a curva para o lado B.
 
-\chapter{Interrupções}
-O processador do Arduino Nano, o qual foi utilizado neste projeto é do modelo Atmega328 e nesta seção discorremos sobre o funcionamento da interrupção neste processador, utilização no projeto, exemplos e !!efeitos colaterais!!.
-Em sua maioria os processadores possuem interrupções dos quais permitem executar algo após determinado evento externo, sendo chamado de interrupções externas. Nas referencias online presentes no site oficial do Arduino, para mais informações a cerca de interrupções é indicado as notas de Nick Gammon, de um modo didático e simples ele faz um paralelo ao cotidiano, ao fazer o jantar e ter de cozinhar as batatas, é colocado um despertador com o tempo de 20 minutos, indo faze outra atividade durante o tempo de cozimento, ao despertar o alarme vc ``interrompe" sua atividade e então termina o jantar. Apesar do exemplo utilizado ser quase uma mudança de estado, não é recomendado invocar funções grandes e complexas, além de sair da linha principal de execução as funções não devem conter argumentos, ou seja, utiliza-se interrupções para trocas de flag, disparo de funções emergenciais, contagens precisas entre outros interrupção é o ``botão vermelho", veremos asseguir que \textit{reset} é a interrupção de maior prioridade.
+\chapter{Controlador PID}\label{pid}
+== https://www.citisystems.com.br/controle-pid/ ===
+Neste capítulo, explanarei sobre o controle PID -que é abreviatura para Proporcional, Integral e Derivativo- e como utiliza-lo em aplicações de controle que requerem um controle de precisão. Começaremos pelo exemplo onde um carro tenta manter uma distancia X do carro da frente.
 
-\section{Interrupção no Atmega328}
-Assim como em outros processadores o Atmega328 possui sua lista de interrupções, logo a baixo podemos ve-la em ordem de prioridade, tendo em primeiro lugar a interrupção de \textit{reset}.
+\section{P - Proporcional}
+Ao tentar manter uma distancia X o carro de trás deve acelerar proporcionalmente quando o carro da frente acelerar e começar a distanciar, tentando alcançar o mesmo. No entanto, caso o carro de trás venha acelerar mais que o carro da frente a distancia será menor que a desejada, X, então a nova correção é frear para aumentar a distancia buscando a distancia desejada de X. Novamente caso a correção, que desta vez é a frenagem(desaceleração), for muito, a sua distancia se será superior a distancia desejada de X, então novamente terá de acelerar. Isso ocorrera indefinitivamente caso a aceleração não proporcional não esteja correta, ou seja, acelerando de mais e freando de menos e não atingindo o ponto alvo(\textit{set point}). Então esta aceleração é chapada de ganho ou proporcional(P) em um controle PID.
+
+\section{I - Integral}
+A integral, neste exemplo dos carros, seria como recuperar a distancia X a cada instante, caso o veiculo da frente venha a acelerar, o veiculo de trás acelera gradualmente afim de atingir a distancia X com mais suavidade, este procedimento pode ser comparado a integral de um controle PID.
+
+\section{D - Derivativo}
+A derivada é utilizada para eliminar erros acumulados na integral, neste exemplo dos carros, seria quando o carro de trás percebe que a distancia desce ou decresce muito rapidamente em relação a desejada X, deixando as correções da integral ainda mais suaves, diminuindo a oscilação das correções em volta do Setpoint.
+
+\section{Utilização do PID}
+O controle do tipo PID foi empregado para controlar a velocidade da roda mais rápida em relação a mais lenta, como pode ser visto até o então, o controle PID se utiliza de dados obtidos durante a sua execução, no caso deste trabalho o tempo de um ciclo foi de 200 milissegundos(ms), ou seja, a cada 200 ms o controle obtém a velocidade de rotação de ambas as rodas por meio do encoder\ref{encoder} utilizando a velocidade do motor mais lento como \textit{set point} do motor mais rápido, calculando a proporcional, a integral e derivando, utilizando o resultado como o novo valor do PWM do motor mais rápido o deixando com a velocidade de rotação mais próxima do motor de referencia.
+
+\subsection{Problemas de ciclo}
+Durante o emprego do controle PID para equalizar as velocidades dos motores foi percebido que o tempo de ciclo para o controle se tornar eficiente é superior o intervalo de comandos recebidos pelo computador de controle o qual envia novos comandos a cada 200ms. O controle do tipo PID não consegue equalizar as velocidades na primeira correção, então ao se aproximar da segunda ou terceira correção o robô recebe a próxima instrução mudando todas as referencias de velocidades.
+
+\subsection{Problemas devido interrupções}
+Como pode ser visto o encoder\ref{encoder} é o conjunto da roda\ref{roda} provida de marcadores e  dos sensores ópticos\ref{tcrt1000}, para realizar a contagem de marcadores os sensores ópticos estão conectados nos pinos digitais 2 e 3, se utilizando da função de interrupção para contagem dos marcadores e determinas as velocidades, veremos no próximo capitulo, mais precisamente na seção de rotinas de interrupção\ref{isr}, que ao gerar uma interrupção todo o sistema ``para" temporariamente, trazendo discrepância nas contagens devido a sobreposição de interrupções.
+Concluindo então que a utilização de controle do tipo PID do modo implementado não é recomendado.
+  
+
+\chapter{Interrupções}
+O processador do Arduino Nano, o qual foi utilizado neste projeto é do modelo Atmega328 e nesta seção discorreremos sobre o funcionamento da interrupção neste processador, utilização no projeto, exemplos e !!efeitos colaterais!!.
+Em sua maioria os processadores possuem interrupções dos quais permitem executar algo após determinado evento externo, sendo chamado de interrupções externas. Nas referencias online presentes no site oficial do Arduino, para mais informações a cerca de interrupções é indicado as notas de Nick Gammon!!(https://gammon.com.au/interrupts)!!, de um modo didático e simples ele faz um paralelo ao cotidiano, ao fazer o jantar e ter de cozinhar as batatas, é colocado um despertador com o tempo de 20 minutos, indo faze outra atividade durante o tempo de cozimento, ao despertar o alarme vc ``interrompe" sua atividade e então termina o jantar. Apesar do exemplo utilizado ser quase uma mudança de estado, não é recomendado invocar funções grandes e complexas pois além de sair da linha principal de execução, as funções não contem argumentos, utilizamos então variáveis do tipo voláteis. Logo recomenda-se as interrupções para trocas de \textit{flag}, disparo de funções emergenciais, contagens precisas entre outros a interrupção é o ``botão vermelho", veremos a seguir que \textit{reset} é a interrupção de maior prioridade.
+
+\section{Rotinas de serviço de interrupção (ISR)}\label{isr}
+As rotinas de serviço de interrupção conhecidas pela siga ISR que vem do inglês \textit{Interruption Service Rotines} é uma rotinha a qual se encontra fora da função \textbf{loop}, ou sejá, é uma função a qual será executada quando ocorrer uma interrupção, interrompendo a execução do código \textbf{loop} onde quer que ele esteja, retornando ao ponto de ``pausa" ao fim da ISR. Algo de suma importância é citado por Simon Monk em seu livro, Programação com Arduino vol. 2 \begin{quote}``Quando uma ISR está sendo executada, as interrupções são automaticamente desligadas. Isso evita a confusão que poderia ser causada se as ISRs interrompessem umas as outras."\end{quote}
+Ou seja, enquanto uma ISR estiver ativa outras não serão executadas, exceto uma interrupção de maior prioridade como o \textit{reset}.
+
+\section{Modos de Interrupção}\label{modointerrupcao}
+Os chamados modos de interrupção é como gatilho, irá disparar a ISR, ou seja, uma ISR é uma função a ser executada sempre quando o gatilho é acionado. O Atmega328 possui quatro modos de interrupção, são eles:
+LOW - Dispara uma interrupção continuamente enquanto o pino selecionado estiver em nível baixo (\textit{low}).
+RISING - Dispara uma interrupção sempre que o pino passar de baixo (\textit{low}) para alto (\textit{high}).
+FALLING - Dispara uma interrupção sempre que o pino passar de alto (\textit{high}) para baixo (\textit{low}).
+CHANGE - Dispara uma interrupção sempre que o pino mudar de nível, em ambos os sentidos.
+Vale ressaltar que o modelo Arduino Due tem um quinto modo de interrupção, o \textit{HIGH}.
+HIGH - Dispara uma interrupção continuamente enquanto o pino estiver em nível alto (\textit{high}), assim como o modo \textit{LOW}.
+
+\section{Interrupção no Atmega328}\label{interrupcao328}
+Assim como em outros processadores o Atmega328 possui sua lista de interrupções, logo a baixo podemos ve-la em ordem de prioridade, tendo em primeiro lugar -maior prioridade- a interrupção de \textit{reset}.
 
 \begin{table}[!h]
 	\renewcommand{\arraystretch}{1.3}
@@ -362,37 +414,90 @@ Assim como em outros processadores o Atmega328 possui sua lista de interrupçõe
 	\begin{tabular}{|c|cc|}
 		\hline
 		1  &                      Reset                      &  \\ \hline
-		2  &     External Interrupt Request 0  (pin D2)      &     (INT0_vect)     \\ \hline
-		3  &     External Interrupt Request 1  (pin D3)      &     (INT1_vect)     \\ \hline
-		4  & Pin Change Interrupt Request 0 (pins D8 to D13) &    (PCINT0_vect)    \\ \hline
-		5  & Pin Change Interrupt Request 1 (pins A0 to A5)  &    (PCINT1_vect)    \\ \hline
-		6  & Pin Change Interrupt Request 2 (pins D0 to D7)  &    (PCINT2_vect)    \\ \hline
-		7  &           Watchdog Time-out Interrupt           &     (WDT_vect)      \\ \hline
-		8  &         Timer/Counter2 Compare Match A          & (TIMER2_COMPA_vect) \\ \hline
-		9  &         Timer/Counter2 Compare Match B          & (TIMER2_COMPB_vect) \\ \hline
-		10 &             Timer/Counter2 Overflow             &  (TIMER2_OVF_vect)  \\ \hline
-		11 &          Timer/Counter1 Capture Event           & (TIMER1_CAPT_vect)  \\ \hline
-		12 &         Timer/Counter1 Compare Match A          & (TIMER1_COMPA_vect) \\ \hline
-		13 &         Timer/Counter1 Compare Match B          & (TIMER1_COMPB_vect) \\ \hline
-		14 &             Timer/Counter1 Overflow             &  (TIMER1_OVF_vect)  \\ \hline
-		15 &         Timer/Counter0 Compare Match A          & (TIMER0_COMPA_vect) \\ \hline
-		16 &         Timer/Counter0 Compare Match B          & (TIMER0_COMPB_vect) \\ \hline
-		17 &             Timer/Counter0 Overflow             &  (TIMER0_OVF_vect)  \\ \hline
-		18 &          SPI Serial Transfer Complete           &   (SPI_STC_vect)    \\ \hline
-		19 &                USART Rx Complete                &   (USART_RX_vect)   \\ \hline
-		20 &           USART, Data Register Empty            &  (USART_UDRE_vect)  \\ \hline
-		21 &               USART, Tx Complete                &   (USART_TX_vect)   \\ \hline
-		22 &             ADC Conversion Complete             &     (ADC_vect)      \\ \hline
-		23 &                  EEPROM Ready                   &   (EE_READY_vect)   \\ \hline
-		24 &                Analog Comparator                & (ANALOG_COMP_vect)  \\ \hline
-		25 &         2-wire Serial Interface  (I2C)          &     (TWI_vect)      \\ \hline
-		26 &           Store Program Memory Ready            &  (SPM_READY_vect)   \\ \hline
+		2  &     External Interrupt Request 0  (pin D2)      &     (INT0\_vect)     \\ \hline
+		3  &     External Interrupt Request 1  (pin D3)      &     (INT1\_vect)     \\ \hline
+		4  & Pin Change Interrupt Request 0 (pins D8 to D13) &    (PCINT0\_vect)    \\ \hline
+		5  & Pin Change Interrupt Request 1 (pins A0 to A5)  &    (PCINT1\_vect)    \\ \hline
+		6  & Pin Change Interrupt Request 2 (pins D0 to D7)  &    (PCINT2\_vect)    \\ \hline
+		7  &           Watchdog Time-out Interrupt           &     (WDT\_vect)      \\ \hline
+		8  &         Timer/Counter2 Compare Match A          & (TIMER2\_COMPA\_vect) \\ \hline
+		9  &         Timer/Counter2 Compare Match B          & (TIMER2\_COMPB\_vect) \\ \hline
+		10 &             Timer/Counter2 Overflow             &  (TIMER2\_OVF\_vect)  \\ \hline
+		11 &          Timer/Counter1 Capture Event           & (TIMER1\_CAPT\_vect)  \\ \hline
+		12 &         Timer/Counter1 Compare Match A          & (TIMER1\_COMPA\_vect) \\ \hline
+		13 &         Timer/Counter1 Compare Match B          & (TIMER1\_COMPB\_vect) \\ \hline
+		14 &             Timer/Counter1 Overflow             &  (TIMER1\_OVF\_vect)  \\ \hline
+		15 &         Timer/Counter0 Compare Match A          & (TIMER0\_COMPA\_vect) \\ \hline
+		16 &         Timer/Counter0 Compare Match B          & (TIMER0\_COMPB\_vect) \\ \hline
+		17 &             Timer/Counter0 Overflow             &  (TIMER0\_OVF\_vect)  \\ \hline
+		18 &          SPI Serial Transfer Complete           &   (SPI\_STC\_vect)    \\ \hline
+		19 &                USART Rx Complete                &   (USART\_RX\_vect)   \\ \hline
+		20 &           USART, Data Register Empty            &  (USART\_UDRE\_vect)  \\ \hline
+		21 &               USART, Tx Complete                &   (USART\_TX\_vect)   \\ \hline
+		22 &             ADC Conversion Complete             &     (ADC\_vect)      \\ \hline
+		23 &                  EEPROM Ready                   &   (EE\_READY\_vect)   \\ \hline
+		24 &                Analog Comparator                & (ANALOG\_COMP\_vect)  \\ \hline
+		25 &         2-wire Serial Interface  (I2C)          &     (TWI\_vect)      \\ \hline
+		26 &           Store Program Memory Ready            &  (SPM\_READY\_vect)   \\ \hline
 	\end{tabular}
 	\caption[Lista de interrupções]{Lista de interrupções para o Atmega328.}
 	\label{Tab:interrupcoes}
 \end{table}
 
+Como podemos na tabela acima as interrupções externas nomeadas de INT0\_vect e INT1\_vect que correspondem aos pinos digitais 2 e 3 respectivamente, no Arduino Nano(os pinos de interrupção podem mudar de acordo com a placa) sendo as maiores prioridades seguidas do \textit{reset}, aproveitamos para observar as interrupções de 7 a 17, as quais são interrupções de tempos e a interrupção de prioridade 25 a qual é a interrupção para uso da interface serial.
 
+\section{Utilizando interrupção no Arduino}
+Nesta seção foi como exemplos os códigos utilizados no robô no desenvolvimento do trabalho, conforme visto na seção anterior \ref{interrupcao328} os pinos de interrupção são os pinos digitais 2 e 3. Declaramos então no código as variáveis das quais irá representar os pinos, utilizando o código.
+\begin{lstlisting}
+const int encodPinA1 = 2;                       // encoder A pino 2
+const int encodPinB1 = 3;                       // encoder B pino 3
+\end{lstlisting}
+Dentro da função \textit{setup} !!intanciamos!! os pinos como \textit{INPUT} pois estes pinos farão a entradas de informação ao pino de interrupção.
+\begin{lstlisting}
+pinMode(encodPinA1, INPUT);
+pinMode(encodPinB1, INPUT);
+\end{lstlisting}
+Segundo as refecias disposta na documentação do site oficial do Arduino temos três sintaxes diferentes para acoplar\//iniciar, porem dentre elas apenas uma é recomendada pelos desenvolvedores, sendo assim foi utilizado a sintaxe recomendada.
+\begin{lstlisting}
+attachInterrupt(digitalPinToInterrupt(pin), ISR, mode);
+\end{lstlisting}
+A função \textit{digitalPinToInterrupt(pin)} é utilizada para traduzir o pino digital para o numero especifico da interrupção.
+ISR\ref{isr} é o nome da função a ser chamada quando a interrupção ocorrer, lembrando que esta função não deve conter argumentos.
+Mode define o modo de quando a interrupção deve disparar, conforme descrito na seção \ref{modointerrupcao}.
+Seguindo então a sintaxe recomendada para iniciar nossa interrupção com o pino e função desejada.
+\begin{lstlisting}
+attachInterrupt(digitalPinToInterrupt(encodPinA1), rencoderA, CHANGE);
+attachInterrupt(digitalPinToInterrupt(encodPinB1), rencoderB, CHANGE);
+\end{lstlisting}
+Como pode ser visto no código acima, a função com nome de rencoderA (ISR) será executada sempre que seu valor do pino encodPinA1 mudar, pois seu modo foi defino como \textit{CHANGE}, o mesmo acontece com o pino encodPinB1 chamando sua respectiva ISR nomeada como rencoderB. 
+\begin{lstlisting}
+	void rencoderA() {
+	countA++;
+	}
+	void rencoderB() {
+	countB++;
+	}
+\end{lstlisting}
+Do mesmo modo que podemos acoplar uma interrupção a um pino especifico, também podemos desacopla-lo utilizando o código a seguir sempre que achar necessário.
+\begin{lstlisting}
+detachInterrupt(digitalPinToInterrupt(encodPinA1));
+detachInterrupt(digitalPinToInterrupt(encodPinB1));
+\end{lstlisting}
+O código exemplificado acima tem a função de desativar a interrupção do pino ``encodPinA1" e do pino ``encodPinB1" exclusivamente.
+
+Existe um modo alternativo de ativar e ativar\//desativar as interrupções, mas estas funções ativam\//desativam todas a interrupções -exceto \textit{rest}-
+\begin{lstlisting}
+interrupts();		// Ativa interrupções
+noInterrupts();		// Desativa interrupções
+\end{lstlisting}
+Lembrando que ao desativando as interrupções utilizando-se da função acima citada, as interrupções citadas na tabela\ref{Tab:interrupcoes}como a \textit{Serial} também são desativada. Sendo muito útil quando nos trechos de códigos sensíveis ao tempo, no código a seguir desativamos as interrupções para evitar que os valores da variável contadora sejam alterados durante a execução, evitando erros de leitura quanto as velocidades das rodas.
+\begin{lstlisting}
+	noInterrupts();				// Desarma interrupts
+	calibA.push(countA);		// Adiciona a ultima contagem a fila de amostras
+	countA = 0;					// Zera contadores de marcos do encoder
+	calibMillis = millis();		// Zera o contador de tempo
+	interrupts();				// Arma interrupsts
+\end{lstlisting}
 
 \chapter{Metodologia} \label{cap: metodologia}
 

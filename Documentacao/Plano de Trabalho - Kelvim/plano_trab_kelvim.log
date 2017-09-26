@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.8.3)  19 SEP 2017 15:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.8.3)  26 SEP 2017 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -882,43 +882,56 @@ Cap\'{\i }tulo 3.
 
 ] [7]
 Cap\'{\i }tulo 4.
-[8
+<figuras/TCRT1000.jpg, id=32, 348.30125pt x 308.15125pt>
+File: figuras/TCRT1000.jpg Graphic file (type jpg)
 
-] [9]
+<use figuras/TCRT1000.jpg>
+Package pdftex.def Info: figuras/TCRT1000.jpg used on input line 175.
+(pdftex.def)             Requested size: 234.73524pt x 207.67807pt.
+ [8
+
+]
+<figuras/BTHC06.jpg, id=36, 602.25pt x 602.25pt>
+File: figuras/BTHC06.jpg Graphic file (type jpg)
+ <use figuras/BTHC06.jpg>
+Package pdftex.def Info: figuras/BTHC06.jpg used on input line 189.
+(pdftex.def)             Requested size: 234.73524pt x 234.73871pt.
+
+[9 <./figuras/TCRT1000.jpg>] [10 <./figuras/BTHC06.jpg>]
 Cap\'{\i }tulo 5.
-<figuras/dlArduino.jpg, id=38, 329.73187pt x 135.50626pt>
+<figuras/dlArduino.jpg, id=44, 329.73187pt x 135.50626pt>
 File: figuras/dlArduino.jpg Graphic file (type jpg)
 
 <use figuras/dlArduino.jpg>
-Package pdftex.def Info: figuras/dlArduino.jpg used on input line 192.
+Package pdftex.def Info: figuras/dlArduino.jpg used on input line 207.
 (pdftex.def)             Requested size: 234.73524pt x 96.46855pt.
- [10
+ [11
 
 ]
-<figuras/unrarArduino.jpg, id=42, 341.77687pt x 287.57437pt>
+<figuras/unrarArduino.jpg, id=48, 341.77687pt x 287.57437pt>
 File: figuras/unrarArduino.jpg Graphic file (type jpg)
 
 <use figuras/unrarArduino.jpg>
-Package pdftex.def Info: figuras/unrarArduino.jpg used on input line 198.
+Package pdftex.def Info: figuras/unrarArduino.jpg used on input line 213.
 (pdftex.def)             Requested size: 234.73524pt x 197.51382pt.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/installArduino.jpg, id=43, 448.67625pt x 281.55188pt>
+<figuras/installArduino.jpg, id=49, 448.67625pt x 281.55188pt>
 File: figuras/installArduino.jpg Graphic file (type jpg)
 
 <use figuras/installArduino.jpg>
-Package pdftex.def Info: figuras/installArduino.jpg used on input line 208.
+Package pdftex.def Info: figuras/installArduino.jpg used on input line 223.
 (pdftex.def)             Requested size: 234.73524pt x 147.2971pt.
- [11 <./figuras/dlArduino.jpg> <./figuras/unrarArduino.jpg>]
-Overfull \hbox (30.50777pt too wide) in paragraph at lines 213--215
+ [12 <./figuras/dlArduino.jpg> <./figuras/unrarArduino.jpg>]
+Overfull \hbox (30.50777pt too wide) in paragraph at lines 228--230
 []\OT1/cmr/m/n/12 ====== https://www.jetbrains.com/clion/ ======= CLion ^^Se um
 a IDE multi-plataforma,
  []
 
 
-Overfull \hbox (34.59511pt too wide) in paragraph at lines 216--217
+Overfull \hbox (34.59511pt too wide) in paragraph at lines 231--232
 []\OT1/cmr/m/n/12 Na p^^Sagina ofi-cial de down-load do Clion ``https://www.jet
 brains.com/clion/download/#[]linux"foi
  []
@@ -931,79 +944,79 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [12 <./figuras/installArduino.jpg>] (/usr/share/texlive/texmf-dist/tex/latex/
+) [13 <./figuras/installArduino.jpg>] (/usr/share/texlive/texmf-dist/tex/latex/
 base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/pluginClion.jpg, id=53, 469.755pt x 318.43968pt>
+<figuras/pluginClion.jpg, id=59, 469.755pt x 318.43968pt>
 File: figuras/pluginClion.jpg Graphic file (type jpg)
 
 <use figuras/pluginClion.jpg>
-Package pdftex.def Info: figuras/pluginClion.jpg used on input line 241.
+Package pdftex.def Info: figuras/pluginClion.jpg used on input line 256.
 (pdftex.def)             Requested size: 234.73524pt x 159.12227pt.
 
-<figuras/pluginClion2.jpg, id=54, 468.24937pt x 403.5075pt>
+<figuras/pluginClion2.jpg, id=60, 468.24937pt x 403.5075pt>
 File: figuras/pluginClion2.jpg Graphic file (type jpg)
 
 <use figuras/pluginClion2.jpg>
-Package pdftex.def Info: figuras/pluginClion2.jpg used on input line 246.
+Package pdftex.def Info: figuras/pluginClion2.jpg used on input line 261.
 (pdftex.def)             Requested size: 234.73524pt x 202.28276pt.
- [13]
+ [14]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/boardPlatformio.jpg, id=59, 469.755pt x 222.07968pt>
+<figuras/boardPlatformio.jpg, id=64, 469.755pt x 222.07968pt>
 File: figuras/boardPlatformio.jpg Graphic file (type jpg)
 
 <use figuras/boardPlatformio.jpg>
-Package pdftex.def Info: figuras/boardPlatformio.jpg used on input line 260.
+Package pdftex.def Info: figuras/boardPlatformio.jpg used on input line 275.
 (pdftex.def)             Requested size: 234.73524pt x 110.97179pt.
- [14 <./figuras/pluginClion.jpg> <./figuras/pluginClion2.jpg>] (/usr/share/texl
+ [15 <./figuras/pluginClion.jpg> <./figuras/pluginClion2.jpg>] (/usr/share/texl
 ive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/initPlatformio.jpg, id=63, 469.755pt x 239.39438pt>
+<figuras/initPlatformio.jpg, id=68, 469.755pt x 239.39438pt>
 File: figuras/initPlatformio.jpg Graphic file (type jpg)
 
 <use figuras/initPlatformio.jpg>
-Package pdftex.def Info: figuras/initPlatformio.jpg used on input line 269.
+Package pdftex.def Info: figuras/initPlatformio.jpg used on input line 284.
 (pdftex.def)             Requested size: 234.73524pt x 119.62383pt.
 
-<figuras/reloadCmake.jpg, id=64, 430.60875pt x 490.83376pt>
+<figuras/reloadCmake.jpg, id=69, 430.60875pt x 490.83376pt>
 File: figuras/reloadCmake.jpg Graphic file (type jpg)
 
 <use figuras/reloadCmake.jpg>
-Package pdftex.def Info: figuras/reloadCmake.jpg used on input line 275.
+Package pdftex.def Info: figuras/reloadCmake.jpg used on input line 290.
 (pdftex.def)             Requested size: 234.73524pt x 267.57024pt.
- [15 <./figuras/boardPlatformio.jpg> <./figuras/initPlatformio.jpg>] (/usr/shar
+ [16 <./figuras/boardPlatformio.jpg> <./figuras/initPlatformio.jpg>] (/usr/shar
 e/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [16 <./figuras/reloadCmake.jpg>] <figuras/buildClion.jpg, id=71, 630.85687pt 
+) [17 <./figuras/reloadCmake.jpg>] <figuras/buildClion.jpg, id=76, 630.85687pt 
 x 426.84468pt>
 File: figuras/buildClion.jpg Graphic file (type jpg)
 
 <use figuras/buildClion.jpg>
-Package pdftex.def Info: figuras/buildClion.jpg used on input line 303.
+Package pdftex.def Info: figuras/buildClion.jpg used on input line 318.
 (pdftex.def)             Requested size: 234.73524pt x 158.82236pt.
 
-<figuras/upload.jpg, id=72, 531.48563pt x 267.24844pt>
+<figuras/upload.jpg, id=77, 531.48563pt x 267.24844pt>
 File: figuras/upload.jpg Graphic file (type jpg)
 
 <use figuras/upload.jpg>
-Package pdftex.def Info: figuras/upload.jpg used on input line 310.
+Package pdftex.def Info: figuras/upload.jpg used on input line 325.
 (pdftex.def)             Requested size: 234.73524pt x 118.03416pt.
  (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [17 <./figuras/buildClion.jpg> <./figuras/upload.jpg>] [18]
+) [18 <./figuras/buildClion.jpg> <./figuras/upload.jpg>] [19]
 Cap\'{\i }tulo 6.
 
-Overfull \hbox (80.61548pt too wide) in paragraph at lines 324--331
+Overfull \hbox (80.61548pt too wide) in paragraph at lines 339--346
 \OT1/cmr/m/n/12 con-trado no link: https://github.com/kelvimro/TCCTerceira/blob
 /master/lib/ControleBT/controleBT.cpp
  []
@@ -1013,541 +1026,88 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [19
+) [20
 
 ]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [20]
+) [21]
 Cap\'{\i }tulo 7.
-LaTeX Font Info:    Try loading font information for U+msa on input line 362.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+[22
+
+] [23] [24]
+Cap\'{\i }tulo 8.
+[25
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 414.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 362.
+LaTeX Font Info:    Try loading font information for U+msb on input line 414.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-! Missing $ inserted.
-<inserted text> 
-                $
-l.365 ...upt Request 0  (pin D2)      &     (INT0_
-                                                  vect)     \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.365 ... D2)      &     (INT0_vect)     \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.366 ...upt Request 1  (pin D3)      &     (INT1_
-                                                  vect)     \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.366 ... D3)      &     (INT1_vect)     \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.367 ... Request 0 (pins D8 to D13) &    (PCINT0_
-                                                  vect)    \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.367 ...8 to D13) &    (PCINT0_vect)    \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.368 ... Request 1 (pins A0 to A5)  &    (PCINT1_
-                                                  vect)    \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.368 ...0 to A5)  &    (PCINT1_vect)    \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.369 ... Request 2 (pins D0 to D7)  &    (PCINT2_
-                                                  vect)    \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.369 ...0 to D7)  &    (PCINT2_vect)    \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.370 ... Time-out Interrupt           &     (WDT_
-                                                  vect)      \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.370 ...          &     (WDT_vect)      \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.371 ...nter2 Compare Match A          & (TIMER2_
-                                                  COMPA_vect) \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.371 ...          & (TIMER2_COMPA_vect) \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.372 ...nter2 Compare Match B          & (TIMER2_
-                                                  COMPB_vect) \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.372 ...          & (TIMER2_COMPB_vect) \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.373 ...Counter2 Overflow             &  (TIMER2_
-                                                  OVF_vect)  \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.373 ...          &  (TIMER2_OVF_vect)  \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.374 ...unter1 Capture Event           & (TIMER1_
-                                                  CAPT_vect)  \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.374 ...          & (TIMER1_CAPT_vect)  \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.375 ...nter1 Compare Match A          & (TIMER1_
-                                                  COMPA_vect) \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.375 ...          & (TIMER1_COMPA_vect) \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.376 ...nter1 Compare Match B          & (TIMER1_
-                                                  COMPB_vect) \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.376 ...          & (TIMER1_COMPB_vect) \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.377 ...Counter1 Overflow             &  (TIMER1_
-                                                  OVF_vect)  \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.377 ...          &  (TIMER1_OVF_vect)  \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.378 ...nter0 Compare Match A          & (TIMER0_
-                                                  COMPA_vect) \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.378 ...          & (TIMER0_COMPA_vect) \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.379 ...nter0 Compare Match B          & (TIMER0_
-                                                  COMPB_vect) \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.379 ...          & (TIMER0_COMPB_vect) \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.380 ...Counter0 Overflow             &  (TIMER0_
-                                                  OVF_vect)  \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.380 ...          &  (TIMER0_OVF_vect)  \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.381 ...ial Transfer Complete           &   (SPI_
-                                                  STC_vect)    \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.381 ...          &   (SPI_STC_vect)    \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.382 ...RT Rx Complete                &   (USART_
-                                                  RX_vect)   \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.382 ...          &   (USART_RX_vect)   \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.383 ...Data Register Empty            &  (USART_
-                                                  UDRE_vect)  \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.383 ...          &  (USART_UDRE_vect)  \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.384 ...T, Tx Complete                &   (USART_
-                                                  TX_vect)   \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.384 ...          &   (USART_TX_vect)   \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.385 ...nversion Complete             &     (ADC_
-                                                  vect)      \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.385 ...          &     (ADC_vect)      \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.386 ...  EEPROM Ready                   &   (EE_
-                                                  READY_vect)   \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.386 ...          &   (EE_READY_vect)   \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.387 ...alog Comparator                & (ANALOG_
-                                                  COMP_vect)  \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.387 ...          & (ANALOG_COMP_vect)  \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.388 ...ial Interface  (I2C)          &     (TWI_
-                                                  vect)      \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.388 ...          &     (TWI_vect)      \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.389 ... Program Memory Ready            &  (SPM_
-                                                  READY_vect)   \\ \hline
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.389 ...          &  (SPM_READY_vect)   \\ \hline
-                                                  
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21
-
-] [22]
-Cap\'{\i }tulo 8.
-[23
+[26] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) [27]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) [28]
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) [29]
+Cap\'{\i }tulo 9.
+[30
 
 ]
-Cap\'{\i }tulo 9.
-[24
+Cap\'{\i }tulo 10.
+[31
 
-] (./plano_trab_kelvim.bbl) [25
+] (./plano_trab_kelvim.bbl) [32
 
 
-] (./plano_trab_kelvim.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] (./plano_trab_kelvim.aux) ) 
 Here is how much of TeX's memory you used:
- 8624 strings out of 494925
- 121548 string characters out of 6180252
+ 8703 strings out of 494925
+ 123287 string characters out of 6180252
  262754 words of memory out of 5000000
- 11698 multiletter control sequences out of 15000+600000
- 12077 words of font info for 45 fonts, out of 8000000 for 9000
+ 11759 multiletter control sequences out of 15000+600000
+ 12384 words of font info for 46 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 39i,12n,58p,1108b,2162s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mtt10.pfb>
-Output written on plano_trab_kelvim.pdf (25 pages, 752993 bytes).
+ 39i,13n,58p,1205b,2175s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on plano_trab_kelvim.pdf (32 pages, 972199 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 156 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

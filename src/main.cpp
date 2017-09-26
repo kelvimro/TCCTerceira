@@ -579,16 +579,13 @@ void getAmostras(int _PWM) {
             // Enquanto conta durante CALIBMILLIS, faça nada ;)
             while ((millis() - calibMillis) <= CALIBMILLIS) {
             }
-            // Desarma interrupts
-            noInterrupts();
-            calibA.push(countA);
+            noInterrupts();            // Desarma interrupts
+            calibA.push(countA);       // Adiciona a ultima contagem a fila de amostras
             print += countA;
             print += "\n";
-            // Zera contadores de marcos do encoder
-            countA = 0;
-            calibMillis = millis();
-            // Arma interrupsts
-            interrupts();
+            countA = 0;                // Zera contadores de marcos do encoder
+            calibMillis = millis();    // Zera o contador de tempo
+            interrupts();              // Arma interrupsts
         }
         // Reduz vel. mas mantem sentido
         PWM_valA = PWM_valB = 2;
@@ -789,7 +786,7 @@ boolean getPercent() {
 
     delayMicroseconds(8000);
     print = "\nPerc\t";
-    print += ((_pA/_pB)*100);
+    print += ((_pA / _pB) * 100);
     print += "%";
     Serial.println(print);
 
@@ -886,17 +883,17 @@ boolean calibrate() {
     if (finalMedia()) {
         print = "\n";
         print += "~Calibragem finalizada~\n";
-        print += pesoA,5;
+        print += pesoA, 5;
         print += "\t<-pesoA pesoB->\t";
-        print += pesoB,5;
+        print += pesoB, 5;
         print += "\n";
         print += NUM_AMOSTRA;
         print += "\t<-Amostras Invervalo(ms)->\t";
         print += CALIBMILLIS;
         Serial.println(print);
         print = " ";
-        Serial.print(pesoA,5);
-        Serial.print(pesoB,5);
+        Serial.print(pesoA, 5);
+        Serial.print(pesoB, 5);
     } else {
         Serial.print("+++ Med final False");
         return false;
