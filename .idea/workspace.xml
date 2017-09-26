@@ -21,15 +21,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec922180-b3d3-40f1-af0b-2568113a9075" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.pdf" afterPath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.synctex.gz" afterPath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.synctex.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.aux" afterPath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.aux" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.log" afterPath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.tex" afterPath="$PROJECT_DIR$/Documentacao/Plano de Trabalho - Kelvim/plano_trab_kelvim.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
-    </list>
+    <list default="true" id="ec922180-b3d3-40f1-af0b-2568113a9075" name="Default" comment="" />
     <ignored path="platformio.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -52,8 +44,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="54" />
+            <state relative-caret-position="68">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -496,12 +488,12 @@
       <workItem from="1505410780371" duration="8493000" />
       <workItem from="1505497966959" duration="689000" />
       <workItem from="1506018542571" duration="3863000" />
-      <workItem from="1506447050166" duration="531000" />
+      <workItem from="1506447050166" duration="809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133386000" />
+    <option name="totallyTimeSpent" value="133664000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -977,8 +969,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="54" />
+        <state relative-caret-position="68">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
