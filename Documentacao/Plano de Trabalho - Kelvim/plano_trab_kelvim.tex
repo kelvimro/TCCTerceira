@@ -58,11 +58,11 @@
 
 
 
-\titulo{ Plano de Trabalho\vskip 1.5cm 
-	Controle de velocidade utilizando P.I.D. }\vskip 0.5cm
+\titulo{ Monografia apresentada\vskip 1.5cm 
+	para obtenção de controle equilibrado de velocidade.}\vskip 0.5cm
 \autor{Kelvim Rodrigues de Oliveira}
 
-\orientacao{Prof. Doc. Gedson Faria}
+\orientacao{Prof. Dr. Gedson Faria}
 %\docarea{Bacharelado em Sistemas de Informação}
 \textofree{\large Bacharelado em Sistemas de Informação}
 
@@ -82,13 +82,13 @@
 	\begin{minipage}[t]{10cm}
 		\begin{center}
 			\vspace{-2cm}
-			{{\Large Controle de velocidade utilizando P.I.D.}}  
+			{{\Large Controle equilibrado de velocidade.}}  
 		\end{center}
 	\end{minipage}
 	
 \end{center}
 
-\vskip 3.0cm \textofree{\large Plano de Trabalho}
+\vskip 3.0cm \textofree{\large Monografia apresentada para obtenção de controle equilibrado de velocidade.}
 
 \begin{flushright}
 	\vspace{12cm}
@@ -144,21 +144,22 @@ Bla bla bla
 \chapter{Revisão da Literatura}
 
 \chapter{Futebol de robôs}
-Este capitulo destina-se alguns conceitos, informações e história do futebol de robôs, suas principais modalidades, dinâmica de jogo e movimentos.
+%Este capitulo destina-se alguns conceitos, informações e história do futebol de robôs, suas principais modalidades, dinâmica de jogo e movimentos.
+%
 
 \section{Uma breve história sobre futebol de robôs}
-Com duas organizações de referencia mundial para o estudo e organização quanto ao futebol de robôs, são elas a FIRA, sigla em inglês para \textit{Federation of International Robot-soccer Association} e a RoboCup associaçães que tem como objetivo promover pesquisas nas áreas de robótica e inteligência artificial, colaborando na divulgação científica através atividades afim de estimular o interesse dos participantes a resolver problemas. 
+Com duas organizações de referencia mundial para o estudo e organização quanto ao futebol de robôs, são elas a FIRA, sigla em inglês para \textit{Federation of International Robot-soccer Association} e a RoboCup associaçães que tem como objetivo promover pesquisas nas áreas de robótica e inteligência artificial, estimulando o interesse dos participantes a resolver problemas. 
 
-A FIRA, a qual foi fundada no ano de 1995, pelo professor Kim Jong-Hwan, realizou seu primeiro campeonato mundial na Coréia, em 1997, dois anos após sua fundação, com o objetivo de levar aos leigos e as gerações jovens o espírito da ciência e tecnologia aplicada à robótica. Desde então a FIRA vem realizando diversos eventos em vários
-países do mundo, incluindo nossa pátria, o que fez com que o futebol de robôs obtivesse reconhecimento mundial. Então o Brasil, que teve a oportunidade de sediar a Copa do Mundo em agosto de 1999, realizada entre os dias 4 a 8, na cidade Campinas no estado de São Paulo.
+A FIRA, fundada no ano de 1995 pelo professor Kim Jong-Hwan, realizou seu primeiro campeonato mundial na Coréia em 1997, dois anos após sua fundação, com o objetivo de levar aos leigos e as gerações jovens o espírito da ciência e tecnologia aplicada à robótica. Desde então, a FIRA vem realizando diversos eventos em vários
+países do mundo, incluindo nossa pátria, o que fez com que o futebol de robôs obtivesse reconhecimento mundial. O Brasil, teve a oportunidade de sediar a Copa do Mundo em agosto de 1999, realizada entre os dias 4 a 8, na cidade Campinas no estado de São Paulo.
 
-A RoboCup Criada no Japão por meio da iniciativa de um grupo de pesquisadores que tinham como objetivo em comum, o jogo de futebol, afim de promover o crescimento da ciência e tecnologia. De forma independente, os professores Minoru Asada,da Universidade de Osaka, e a Professora Manuela Veloso junto a seu aluno Peter Stone da Universidade Carnegie Mellon, EUA, estavam também trabalhando em robôs jogadores de futebol.
-O primeiro campeonato da Robocup junto a primeira conferência, foram realizados em 1997. Onde compareceram mais de 40 equipes e mais de 5.000 espectadores. Infelizmente no Brasil até o momento não foram realizados eventos da Robocup com âmbito mundial.
+A RoboCup foi criada no Japão por meio da iniciativa de um grupo de pesquisadores que tinham como objetivo em comum, o jogo de futebol com a finalidade de promover o crescimento da ciência e tecnologia. De forma independente, os professores Minoru Asada da Universidade de Osaka, e a Professora Manuela Veloso junto a seu aluno Peter Stone da Universidade Carnegie Mellon, EUA, estavam também trabalhando em robôs jogadores de futebol.
+O primeiro campeonato da Robocup junto a primeira conferência, foram realizados em 1997, onde compareceram mais de 40 equipes e mais de 5.000 espectadores. Infelizmente no Brasil até o momento não foram realizados eventos da Robocup com âmbito mundial.
 
 \section{Modalidade} \label{modalidade}
 Assim como o futebol jogado por humanos, o futebol de robôs também tem suas regras de jogo bem definidas. A FIRA Cup é um evento organizado com competições várias categorias, destacam-se as categorias \textit{Micro-Robot Soccer Tournament} (MiroSot) e a \textit{Humanoid Robot Soccer Tournament} (HuroSot), ambas são disputadas sob o olhar de um árbitro humano, já a categoria \textit{Simulated Robot Soccer Tournament} (SimuroSot), que como o próprio nome sugere, trata-se de uma modalidade de simulação, quando não se tem a disposição de os recursos de hardware referentes aos robôs.
-
-Este trabalho tem como foco o estudo das velocidades dos motores da categoria MiroSot. O acrônimo MiroSot, vem da denominação \textit{Micro Robot Soccer Tournament}, cuja categoria é voltada para partidas com pequenos robôs que se movimentam através de dois motor, um motor para cada roda, realizando movimentos rápidos, enviados a partir de um computador disposto com uma inteligencia artificial com suas estratégias. Sendo este o ambiente principal do trabalho.
+ 
+Este trabalho tem como foco o estudo das velocidades dos motores da categoria \textbf{VSS} do inglês \textit{\textbf{IEEE Very Small Size}} a competição ocorre durante a RoboCup, a versão sul-americana da competição, cuja categoria é voltada para partidas com pequenos robôs que se movimentam através de dois motor, um motor para cada roda, realizando movimentos rápidos, os robôs são controlados remotamente, mas sem intervenção humana, os comandos são enviados a partir de um computador disposto com uma inteligencia artificial e suas estratégias, está inteligencia por sua vez utiliza-se do processamento das imagens de vido das câmeras dispostas em cima do campo. Sendo este o ambiente principal do trabalho.
 A partida deve ser jogada por duas equipes, com três robôs cada, um robô pode atuar como goleiro de acordo com as estratégias, já fora de campo o time contem três membros humanos, o ``gerente", o ``técnico" e um ``instrutor" os quais só tem acesso ao palco. Cada equipe possui seu computador o qual é principalmente dedicado ao processamento de visão, identificação e de localização.  
 O tamanho dos robôs desta categoria é limitado a 7,5 cm x 7,5 cm x 7,5 cm, altura da antena não deve ser considerada na medição do tamanho de um robô, é utilizado uma bola de golfe de cor laranja afim de facilitar o processo de visão computacional.
 Esta categoria conta com duas ligas, a ``\textit{Large league}" (Liga grande) considerado grande pois o seu campo possui as dimensões de 400cm x 280cm e a ``\textit{Middle league}" (Liga média) que tem seu campo menor com as dimensões de 220cm x 180cm.
@@ -166,14 +167,31 @@ Esta categoria conta com duas ligas, a ``\textit{Large league}" (Liga grande) co
 ======== INSERIR IMAGEM DAS DIMENSÕES DO CAMPO =========
 
 \chapter{O robô}
-O time de futebol de robôs do campus de Coxim é participante da modalidade MiroSot confome a seção \ref{modalidade} esta limitado as dimensões de 7,5 cm x 7,5 cm x 7,5 cm. Dotado de um Arduino nano o qual realiza o controle de todo o robô, um bluetooth do modelo \textbf{HC-06} \ref{bthc06} que possui apenas o modo \textit{slave}(apenas recebe conexão, não busca a mesma) cujo função principal é estabelecer a conexão entre o robô e o computador da equipe, um driver para motor de corrente continua do modelo \textbf{TB6612FNG} \ref{TB6612FNG} capais de controlar dois motores, dos quais são utilizados para realizar os movimentos, dois sensores ópticos do modelo \textbf{TCRT1000} \ref{TCRT1000} os quais são utilizados em conjunto com as rodas \ref{roda} então este conjunto trabalha como um encoder, utilizado para determinar a velocidade de rotação das rodas/motor.
+O time de futebol de robôs do campus de Coxim enquadra-se na modalidade VSS confome a seção \ref{modalidade} esta limitado as dimensões de 7,5 cm x 7,5 cm x 7,5 cm. Dotado de um Arduino nano o qual realiza o controle de todo o robô, um bluetooth do modelo \textbf{HC-06} \ref{bthc06} que possui apenas o modo \textit{slave}(apenas recebe conexão, não busca a mesma) cujo função principal é estabelecer a conexão entre o robô e o computador da equipe, um driver para motor de corrente continua do modelo \textbf{TB6612FNG} \ref{TB6612FNG} capais de controlar dois motores, dos quais são utilizados para realizar os movimentos, dois sensores ópticos do modelo \textbf{TCRT1000} \ref{TCRT1000} os quais são utilizados em conjunto com as rodas \ref{roda} então este conjunto trabalha como um encoder, utilizado para determinar a velocidade de rotação das rodas/motor.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{inferiormodu.jpg}
+	\caption{Vista inferior aberto do robô Modu.}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{superiormodu.jpg}
+	\caption{Vista superior do robô Modu.}
+\end{figure}
 
 \section{Arduino}\label{arduinonano}
-Segundo o livro Arduino em ação\cite{arduinoemacao} todas as versões são baseadas em um microprocessador Atmel AVR de 8 bits de arquitetura RISC. O Arduino Nano versão 3.0 utilizado neste projeto, possui um processador ATmega328 provido de uma memória flash de 32 KB no total sendo 2 KB utilizados pelo \textit{bootloader} deixando disponível 30 KB, com uma velocidade de clock de 16 MHz. Contendo uma porta mini-USB integrada a qual serve para troca de dados e também como fornecimento de energia. O Arduino Nano tem a opção de receber energia também pelo pino 30(VIN) em tensões de 6 a 20 volts e/ou pelo pino 27(5V) uma tensão regulada de 5,5 volts, caso estejam as três fontes de energias conectadas a placa seleciona a de maior tensão para seu funcionamento. Componente de grande utilidade, capacidade, de pequenas dimensões -18 mm x 45 mm- e pesando apenas 7 gramas o tornam ideal para um robô jogador de futebol. 
+Todas as versões do Arduino são baseadas em um microprocessador Atmel AVR de 8 bits de arquitetura RISC\cite{arduinoemacao}. O Arduino Nano versão 3.0 utilizado neste projeto, possui um processador ATmega328 provido de uma memória flash de 32 KB no total, sendo 2 KB utilizados pelo \textit{bootloader} deixando disponível 30 KB, com uma velocidade de clock de 16 MHz. Contem uma porta mini-USB integrada que serve para troca de dados e também como fornecimento de energia. O Arduino Nano tem a opção de receber energia também pelo pino 30(VIN) em tensões de 6 a 20 volts e/ou pelo pino 27(5V) uma tensão regulada de 5,5 volts, caso estejam as três fontes de energias conectadas a placa seleciona a de maior tensão para seu funcionamento. Dotado também de uma comunicação serial que possibilita o Arduino se comunicar com um computador ou com outros dispositivos, como o bluetooth neste projeto, o Arduino nano possuem uma porta serial, também chamada UART ou USART, são acessadas pelos pinos digitais 0 (RX) e 1 (TX), assim como uma conexão USB, por isso é necessário um driver serial para utiliza-lo junto ao computador. Sendo assim quando se esta funcionalidade, os pinos 0 e 1 não poderão ser utilizados como entrada ou saída digital.
+Na IDE do Arduino existem uma ferramente onde você pode monitorar a comunicação Serial entre a placa do Arduino e o computador.
+Componente então de grande utilidade, capacidade, de pequenas dimensões -18 mm x 45 mm- e pesando apenas 7 gramas o tornam ideal para um robô jogador de futebol. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{arduinonano.jpg}
 	\caption{Vista superior de um Arduino Nano. Fonte:store.arduino.cc}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{nano.pdf}
+	\caption{Infográfico pinagem arduino e suas funções}
 \end{figure}
 
 \section{Controlador para motores TB6612FNG}\label{TB6612FNG}
@@ -187,16 +205,26 @@ Note: If you are looking for the SparkFun Motor Driver with headers, it can be f
 	\includegraphics[width=0.5\textwidth]{inferiorTB6612FNG.jpg}
 	\caption{Vista inferior do driver TB6612FNG com os rótulos de seus respectivos pinos. Fonte:www.sparkfun.com}
 \end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{superiorTB6612FNG.jpg}
-	\caption{Vista superior do driver TB6612FNG. Fonte:www.sparkfun.com}
-\end{figure}
 
+Para entendermos o funcionamento básico do controlador \textbf{TB6612FNG} a tabela a seguir descreve as possibilidades de configuração para o controlador, considerando que o pino \textit{\textbf{STBY}} e \textit{\textbf{PWM}} estão em alto(\textit{high}) em todos os casos, ou seja, os casos de \textit{\textbf{STBY/PWM}} baixos(\textit{low}) não estarão presentes na tabela.
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{IN1} & \textbf{IN2} & \textbf{OUT1} & \textbf{OUT2} & \textbf{MODO} \\ \hline
+		    ALTO     &     ALTO     &     BAIXO     &     BAIXO     & FREADA RÁPIDA \\ \hline
+		   BAIXO     &     ALTO     &     BAIXO     &     ALTO      &   SENTIDO 1   \\ \hline
+		    ALTO     &    BAIXO     &     ALTO      &     BAIXO     &   SENTIDO 2   \\ \hline
+		   BAIXO     &    BAIXO     &   DESLIGADO   &   DESLIGADO   &    PARADO     \\ \hline
+	\end{tabular}
+	\caption[Tabela verdade controle motor]{Lista de funcionamento e atuação de um motor DC para o controlador TB6612FNG.}
+	\label{Tab:TB6612FNG}
+\end{table}
+Como podemos ver na tabela verdade do controlador \textbf{TB6612FNG} podemos ver o funcionamento igual a de uma ponte-H, com as duas entradas carregadas não ah corrente de saída em ambas as portas, alternando a corrente entre as portas \textbf{IN1} e \textbf{IN2} mudamos o sentido de rotação do motor e por ultimo com as duas entradas sem carga as portas \textbf{OUT} não apresentam saída de tensão, sendo assim controlando as portas \textbf{IN} com o Arduino podemos controlar o sentido de rotação de cada um dos motores, visto que o \textbf{TB6612FNG} pode controlar até dois motores.
 
 \section{Sensor Óptico TCRT1000}\label{TCRT1000}
-O sensor óptico utilizado neste trabalho é do modelo \textbf{TCRT1000}, segundo a documentação da empresa \textit{Vishay} obtidas no sitio \textit{www.vishay.com}, o sensor refletivo é um conjunto de, um emissor infravermelho com um fototransistor, inseridos em um invólucro de chumbo o qual bloqueia a luz visível evitando erros nas leituras no fototransistor, um sensor de pequenas dimensões medindo apenas 7mm x 4mm x 2.5mm e de boa precisão.
-Como pode ser visto na imagem \ref{fig:lateralmodu} o robô possui dois sensores para cada roda, mas neste trabalho foi usado apenas um sensor para cada roda -os conectados aos pinos com interrupção\ref{isr}-, sendo os sensores mais externos da roda.
+O sensor óptico modelo \textbf{TCRT1000}, segundo a documentação da empresa \textit{Vishay} obtidas no sitio \textit{www.vishay.com}, é um conjunto de um emissor infravermelho com um fototransistor, inseridos em um invólucro de chumbo para bloquear a luz visível evitando erros nas leituras no fototransistor um sensor de pequenas dimensões medindo apenas 7mm x 4mm x 2.5mm e pode ser utilizado como mostrado na imagem \ref{fig:lateralmodu}, em robô com dois sensores para cada roda.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{TCRT1000.jpg}
@@ -231,7 +259,7 @@ O robô Modu possui apenas um par de rodas de !!XX mm!! e uma faixa de marcadore
 \end{figure}
 
 \section{Encoder}\label{encoder}
-Segundo \textit{Victor Adriano Turchetti} em seu trabalho de conclusão de curso pela universidade estadual de Campinas (UNICAMP) em 2007 um encoder é um componente que pode converter movimento linear ou angular em sinais digitais, dos quais geralmente são utilizados para determinas a posição, velocidade e em alguns casos dependendo da configuração do encoder pode-se também determinar a direção de rotação do sistema. O funcionamento do encoder empregado neste trabalho é a de configuração mais simples apenas um sensor óptico, o qual realiza apenas a contagem de marcadores da fita que esta colada junto a roda conforme a figura \ref{fig:roda34marc}, convertendo o movimento angular das rodas em sinais digitais, estes sinais são utilizados como sinais de entrada para as interrupções \ref{isr}, realizando a contagem do numero de pulsos em determinado tempo.
+Segundo \textit{Victor Adriano Turchetti} em seu trabalho de conclusão de curso pela universidade estadual de Campinas (UNICAMP) em 2007 um encoder é um componente que pode converter movimento linear ou angular em sinais digitais, dos quais geralmente são utilizados para determinas a posição, velocidade e em alguns casos dependendo da configuração do encoder pode-se também determinar a direção de rotação do sistema. 
 
 \section{Bluetooth HC-06}\label{bthc06}
 O modulo foi utilizado para comunicação sem fio entre o robô e o computador, as informações são trocadas utilizando do protocolo \textit{Serial}, o alcance do módulo segue o padrão da comunicação bluethooth, aproximadamente 10 metros, o suficiente, visto que o campo não passa pouco dos dois metros. Uma característica deste modelo (HC-06) possui apenas o modo \textit{slave} neste modo é apenas permitido receber conexão de outros dispositivos, ou seja, não permite que este modelo busque e solicite conexão com outros dispositivos, assim como ocorre com fones de ouvido e caixas de som.
@@ -895,6 +923,9 @@ O regime de máxima potencia se demostrou o mais instável tendo variação supe
 
 
 \chapter{Metodologia} \label{cap: metodologia}
+Neste trabalho foi usado apenas um sensor para cada roda -os conectados aos pinos com interrupção\ref{isr}-, sendo os sensores mais externos da roda.
+O funcionamento do encoder empregado neste trabalho é a de configuração mais simples apenas um sensor óptico, o qual realiza apenas a contagem de marcadores da fita que esta colada junto a roda conforme a figura \ref{fig:roda34marc}, convertendo o movimento angular das rodas em sinais digitais, estes sinais são utilizados como sinais de entrada para as interrupções \ref{isr}, realizando a contagem do numero de pulsos em determinado tempo.
+
 
 \begin{enumerate}[(A)]
 	
