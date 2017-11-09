@@ -170,14 +170,15 @@ Esta categoria conta com duas ligas, a ``\textit{Large league}" (Liga grande) co
 O time de futebol de robôs do campus de Coxim enquadra-se na modalidade VSS confome a seção \ref{modalidade} esta limitado as dimensões de 7,5 cm x 7,5 cm x 7,5 cm. Dotado de um Arduino nano o qual realiza o controle de todo o robô, um bluetooth do modelo \textbf{HC-06} \ref{bthc06} que possui apenas o modo \textit{slave}(apenas recebe conexão, não busca a mesma) cujo função principal é estabelecer a conexão entre o robô e o computador da equipe, um driver para motor de corrente continua do modelo \textbf{TB6612FNG} \ref{TB6612FNG} capais de controlar dois motores, dos quais são utilizados para realizar os movimentos, dois sensores ópticos do modelo \textbf{TCRT1000} \ref{TCRT1000} os quais são utilizados em conjunto com as rodas \ref{roda} então este conjunto trabalha como um encoder, utilizado para determinar a velocidade de rotação das rodas/motor.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{inferiormodu.jpg}
-	\caption{Vista inferior aberto do robô Modu.}
-\end{figure}
-\begin{figure}[H]
-	\centering
 	\includegraphics[width=0.5\textwidth]{superiormodu.jpg}
 	\caption{Vista superior do robô Modu.}
 \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{inferiormodu.jpg}
+	\caption{Vista inferior aberto do robô Modu.}
+\end{figure}
+
 
 \section{Arduino}\label{arduinonano}
 Todas as versões do Arduino são baseadas em um microprocessador Atmel AVR de 8 bits de arquitetura RISC\cite{arduinoemacao}. O Arduino Nano versão 3.0 utilizado neste projeto, possui um processador ATmega328 provido de uma memória flash de 32 KB no total, sendo 2 KB utilizados pelo \textit{bootloader} deixando disponível 30 KB, com uma velocidade de clock de 16 MHz. Contem uma porta mini-USB integrada que serve para troca de dados e também como fornecimento de energia. O Arduino Nano tem a opção de receber energia também pelo pino 30(VIN) em tensões de 6 a 20 volts e/ou pelo pino 27(5V) uma tensão regulada de 5,5 volts, caso estejam as três fontes de energias conectadas a placa seleciona a de maior tensão para seu funcionamento. Dotado também de uma comunicação serial que possibilita o Arduino se comunicar com um computador ou com outros dispositivos, como o bluetooth neste projeto, o Arduino nano possuem uma porta serial, também chamada UART ou USART, são acessadas pelos pinos digitais 0 (RX) e 1 (TX), assim como uma conexão USB, por isso é necessário um driver serial para utiliza-lo junto ao computador. Sendo assim quando se esta funcionalidade, os pinos 0 e 1 não poderão ser utilizados como entrada ou saída digital.
@@ -185,12 +186,12 @@ Na IDE do Arduino existem uma ferramente onde você pode monitorar a comunicaç�
 Componente então de grande utilidade, capacidade, de pequenas dimensões -18 mm x 45 mm- e pesando apenas 7 gramas o tornam ideal para um robô jogador de futebol. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{arduinonano.jpg}
+	\includegraphics[width=0.5\textwidth]{arduinonano.png}
 	\caption{Vista superior de um Arduino Nano. Fonte:store.arduino.cc}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{nano.pdf}
+	\includegraphics[width=0.9\textwidth]{nano.pdf}
 	\caption{Infográfico pinagem arduino e suas funções}
 \end{figure}
 
@@ -214,8 +215,8 @@ Para entendermos o funcionamento básico do controlador \textbf{TB6612FNG} a tab
 		\hline
 		\textbf{IN1} & \textbf{IN2} & \textbf{OUT1} & \textbf{OUT2} & \textbf{MODO} \\ \hline
 		    ALTO     &     ALTO     &     BAIXO     &     BAIXO     & FREADA RÁPIDA \\ \hline
-		   BAIXO     &     ALTO     &     BAIXO     &     ALTO      &   SENTIDO 1   \\ \hline
-		    ALTO     &    BAIXO     &     ALTO      &     BAIXO     &   SENTIDO 2   \\ \hline
+		   BAIXO     &     ALTO     &     BAIXO     &     ALTO      &   ROTAÇÃO 1   \\ \hline
+		    ALTO     &    BAIXO     &     ALTO      &     BAIXO     &   ROTAÇÃO 2   \\ \hline
 		   BAIXO     &    BAIXO     &   DESLIGADO   &   DESLIGADO   &    PARADO     \\ \hline
 	\end{tabular}
 	\caption[Tabela verdade controle motor]{Lista de funcionamento e atuação de um motor DC para o controlador TB6612FNG.}
@@ -259,7 +260,7 @@ O robô Modu possui apenas um par de rodas de !!XX mm!! e uma faixa de marcadore
 \end{figure}
 
 \section{Encoder}\label{encoder}
-Segundo \textit{Victor Adriano Turchetti} em seu trabalho de conclusão de curso pela universidade estadual de Campinas (UNICAMP) em 2007 um encoder é um componente que pode converter movimento linear ou angular em sinais digitais, dos quais geralmente são utilizados para determinas a posição, velocidade e em alguns casos dependendo da configuração do encoder pode-se também determinar a direção de rotação do sistema. 
+Em resumo NC Braga descreve um encoder como um componente formado por transistores precisos que pode converter movimento linear ou angular em sinais digitais, dos quais geralmente são utilizados para determinas a posição\cite{braga2009funcionam}, velocidade e em alguns casos dependendo da configuração do encoder pode-se também determinar a direção de rotação do sistema. 
 
 \section{Bluetooth HC-06}\label{bthc06}
 O modulo foi utilizado para comunicação sem fio entre o robô e o computador, as informações são trocadas utilizando do protocolo \textit{Serial}, o alcance do módulo segue o padrão da comunicação bluethooth, aproximadamente 10 metros, o suficiente, visto que o campo não passa pouco dos dois metros. Uma característica deste modelo (HC-06) possui apenas o modo \textit{slave} neste modo é apenas permitido receber conexão de outros dispositivos, ou seja, não permite que este modelo busque e solicite conexão com outros dispositivos, assim como ocorre com fones de ouvido e caixas de som.

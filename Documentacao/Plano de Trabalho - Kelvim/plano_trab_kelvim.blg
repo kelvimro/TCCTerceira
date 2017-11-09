@@ -31,45 +31,46 @@ You're missing a field name---line 79 of file bibliografia.bib
 I'm skipping whatever remains of this entry
 Warning--there is no address in arduinoemacao
 Warning--empty year in arduinoemacao
-You've used 1 entry,
+Warning--empty address in braga2009funcionam
+You've used 2 entries,
             4793 wiz_defined-function locations,
-            1166 strings with 11342 characters,
-and the built_in function-call counts, 175 in all, are:
-= -- 11
-> -- 4
+            1173 strings with 11433 characters,
+and the built_in function-call counts, 893 in all, are:
+= -- 212
+> -- 8
 < -- 0
-+ -- 2
-- -- 1
-* -- 10
-:= -- 32
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 2
++ -- 4
+- -- 2
+* -- 21
+:= -- 59
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 4
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 9
-empty$ -- 23
-format.name$ -- 1
-if$ -- 36
+cite$ -- 5
+duplicate$ -- 18
+empty$ -- 40
+format.name$ -- 2
+if$ -- 256
 int.to.chr$ -- 0
-int.to.str$ -- 1
+int.to.str$ -- 2
 missing$ -- 0
-newline$ -- 8
-num.names$ -- 1
-pop$ -- 7
+newline$ -- 13
+num.names$ -- 2
+pop$ -- 9
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2
+skip$ -- 194
 stack$ -- 0
 substring$ -- 0
-swap$ -- 1
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 1
-width$ -- 2
-write$ -- 11
+warning$ -- 3
+while$ -- 2
+width$ -- 3
+write$ -- 22
 (There was 1 error message)

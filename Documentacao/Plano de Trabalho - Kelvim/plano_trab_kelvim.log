@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.8.3)  7 NOV 2017 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.8.3)  8 NOV 2017 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -888,139 +888,139 @@ Cap\'{\i }tulo 3.
 
 ] [7]
 Cap\'{\i }tulo 4.
-<figuras/inferiormodu.jpg, id=33, 2441.12pt x 2442.12375pt>
-File: figuras/inferiormodu.jpg Graphic file (type jpg)
-
-<use figuras/inferiormodu.jpg>
-Package pdftex.def Info: figuras/inferiormodu.jpg used on input line 173.
-(pdftex.def)             Requested size: 234.73524pt x 234.79895pt.
-
-<figuras/superiormodu.jpg, id=34, 2441.12pt x 2442.12375pt>
+<figuras/superiormodu.jpg, id=33, 2441.12pt x 2442.12375pt>
 File: figuras/superiormodu.jpg Graphic file (type jpg)
 
 <use figuras/superiormodu.jpg>
-Package pdftex.def Info: figuras/superiormodu.jpg used on input line 178.
+Package pdftex.def Info: figuras/superiormodu.jpg used on input line 173.
+(pdftex.def)             Requested size: 234.73524pt x 234.79895pt.
+
+<figuras/inferiormodu.jpg, id=34, 2441.12pt x 2442.12375pt>
+File: figuras/inferiormodu.jpg Graphic file (type jpg)
+
+<use figuras/inferiormodu.jpg>
+Package pdftex.def Info: figuras/inferiormodu.jpg used on input line 178.
 (pdftex.def)             Requested size: 234.73524pt x 234.79895pt.
  [8
 
- <./figuras/inferiormodu.jpg>]
-<figuras/arduinonano.jpg, id=39, 534.49687pt x 351.56343pt>
-File: figuras/arduinonano.jpg Graphic file (type jpg)
+ <./figuras/superiormodu.jpg>]
+<figuras/arduinonano.png, id=39, 2529.45pt x 1114.1625pt>
+File: figuras/arduinonano.png Graphic file (type png)
 
-<use figuras/arduinonano.jpg>
-Package pdftex.def Info: figuras/arduinonano.jpg used on input line 188.
-(pdftex.def)             Requested size: 234.73524pt x 154.3987pt.
+<use figuras/arduinonano.png>
+Package pdftex.def Info: figuras/arduinonano.png used on input line 189.
+(pdftex.def)             Requested size: 234.73524pt x 103.38142pt.
 
 <figuras/nano.pdf, id=40, 845.0471pt x 597.51233pt>
 File: figuras/nano.pdf Graphic file (type pdf)
  <use figuras/nano.pdf>
-Package pdftex.def Info: figuras/nano.pdf used on input line 193.
-(pdftex.def)             Requested size: 234.73524pt x 165.97118pt.
+Package pdftex.def Info: figuras/nano.pdf used on input line 194.
+(pdftex.def)             Requested size: 422.52057pt x 298.75543pt.
 
-[9 <./figuras/superiormodu.jpg>] [10 <./figuras/arduinonano.jpg> <./figuras/nan
-o.pdf>] <figuras/inferiorTB6612FNG.jpg, id=623, 602.25pt x 602.25pt>
+[9 <./figuras/inferiormodu.jpg>] [10 <./figuras/arduinonano.png> <./figuras/nan
+o.pdf>] <figuras/inferiorTB6612FNG.jpg, id=624, 602.25pt x 602.25pt>
 File: figuras/inferiorTB6612FNG.jpg Graphic file (type jpg)
 
 <use figuras/inferiorTB6612FNG.jpg>
-Package pdftex.def Info: figuras/inferiorTB6612FNG.jpg used on input line 205.
+Package pdftex.def Info: figuras/inferiorTB6612FNG.jpg used on input line 206.
 (pdftex.def)             Requested size: 234.73524pt x 234.73871pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 213.
+LaTeX Font Info:    Try loading font information for U+msa on input line 214.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 213.
+LaTeX Font Info:    Try loading font information for U+msb on input line 214.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 213.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 214.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [11 <./figuras/inferiorTB6612FNG.jpg>] <figuras/TCRT1000.jpg, id=627, 348.301
+) [11 <./figuras/inferiorTB6612FNG.jpg>] <figuras/TCRT1000.jpg, id=628, 348.301
 25pt x 308.15125pt>
 File: figuras/TCRT1000.jpg Graphic file (type jpg)
 
 <use figuras/TCRT1000.jpg>
-Package pdftex.def Info: figuras/TCRT1000.jpg used on input line 230.
+Package pdftex.def Info: figuras/TCRT1000.jpg used on input line 231.
 (pdftex.def)             Requested size: 234.73524pt x 207.67807pt.
 
-<figuras/lateralmodu.jpg, id=628, 3513.125pt x 2206.2425pt>
+<figuras/lateralmodu.jpg, id=629, 3513.125pt x 2206.2425pt>
 File: figuras/lateralmodu.jpg Graphic file (type jpg)
 
 <use figuras/lateralmodu.jpg>
-Package pdftex.def Info: figuras/lateralmodu.jpg used on input line 235.
+Package pdftex.def Info: figuras/lateralmodu.jpg used on input line 236.
 (pdftex.def)             Requested size: 234.73524pt x 147.38321pt.
-
-<figuras/roda32marc.jpg, id=629, 2051.665pt x 2049.6575pt>
+ [12 <./figuras/TCRT1000.jpg>]
+<figuras/roda32marc.jpg, id=633, 2051.665pt x 2049.6575pt>
 File: figuras/roda32marc.jpg Graphic file (type jpg)
 
 <use figuras/roda32marc.jpg>
-Package pdftex.def Info: figuras/roda32marc.jpg used on input line 244.
+Package pdftex.def Info: figuras/roda32marc.jpg used on input line 245.
 (pdftex.def)             Requested size: 234.73524pt x 234.50156pt.
- [12 <./figuras/TCRT1000.jpg> <./figuras/lateralmodu.jpg>] <figuras/roda34marc.
-jpg, id=633, 2209.25375pt x 2154.0475pt>
+
+<figuras/roda34marc.jpg, id=634, 2209.25375pt x 2154.0475pt>
 File: figuras/roda34marc.jpg Graphic file (type jpg)
 
 <use figuras/roda34marc.jpg>
-Package pdftex.def Info: figuras/roda34marc.jpg used on input line 250.
+Package pdftex.def Info: figuras/roda34marc.jpg used on input line 251.
 (pdftex.def)             Requested size: 234.73524pt x 228.86041pt.
 
-<figuras/roda38marc.jpg, id=634, 2051.665pt x 2014.52625pt>
+<figuras/roda38marc.jpg, id=635, 2051.665pt x 2014.52625pt>
 File: figuras/roda38marc.jpg Graphic file (type jpg)
 
 <use figuras/roda38marc.jpg>
-Package pdftex.def Info: figuras/roda38marc.jpg used on input line 256.
+Package pdftex.def Info: figuras/roda38marc.jpg used on input line 257.
 (pdftex.def)             Requested size: 234.73524pt x 230.4822pt.
- [13 <./figuras/roda32marc.jpg> <./figuras/roda34marc.jpg>] <figuras/BTHC06.jpg
-, id=639, 602.25pt x 602.25pt>
+ [13 <./figuras/lateralmodu.jpg> <./figuras/roda32marc.jpg>] [14 <./figuras/rod
+a34marc.jpg> <./figuras/roda38marc.jpg>]
+<figuras/BTHC06.jpg, id=643, 602.25pt x 602.25pt>
 File: figuras/BTHC06.jpg Graphic file (type jpg)
-
-<use figuras/BTHC06.jpg>
-Package pdftex.def Info: figuras/BTHC06.jpg used on input line 268.
+ <use figuras/BTHC06.jpg>
+Package pdftex.def Info: figuras/BTHC06.jpg used on input line 269.
 (pdftex.def)             Requested size: 234.73524pt x 234.73871pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 270--270
 []\OT1/cmr/m/n/10.95 Figura 4.11: |Vista su-pe-rior de um com-po-nente blu-e-to
 -oth mo-delo HC-06.
  []
 
-[14 <./figuras/roda38marc.jpg>] [15 <./figuras/BTHC06.jpg>]
+[15 <./figuras/BTHC06.jpg>]
 Cap\'{\i }tulo 5.
-<figuras/dlArduino.jpg, id=646, 329.73187pt x 135.50626pt>
+<figuras/dlArduino.jpg, id=647, 329.73187pt x 135.50626pt>
 File: figuras/dlArduino.jpg Graphic file (type jpg)
 
 <use figuras/dlArduino.jpg>
-Package pdftex.def Info: figuras/dlArduino.jpg used on input line 284.
+Package pdftex.def Info: figuras/dlArduino.jpg used on input line 285.
 (pdftex.def)             Requested size: 234.73524pt x 96.46855pt.
  [16
 
 ]
-<figuras/unrarArduino.jpg, id=650, 341.77687pt x 287.57437pt>
+<figuras/unrarArduino.jpg, id=651, 341.77687pt x 287.57437pt>
 File: figuras/unrarArduino.jpg Graphic file (type jpg)
 
 <use figuras/unrarArduino.jpg>
-Package pdftex.def Info: figuras/unrarArduino.jpg used on input line 290.
+Package pdftex.def Info: figuras/unrarArduino.jpg used on input line 291.
 (pdftex.def)             Requested size: 234.73524pt x 197.51382pt.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/installArduino.jpg, id=651, 448.67625pt x 281.55188pt>
+<figuras/installArduino.jpg, id=652, 448.67625pt x 281.55188pt>
 File: figuras/installArduino.jpg Graphic file (type jpg)
 
 <use figuras/installArduino.jpg>
-Package pdftex.def Info: figuras/installArduino.jpg used on input line 300.
+Package pdftex.def Info: figuras/installArduino.jpg used on input line 301.
 (pdftex.def)             Requested size: 234.73524pt x 147.2971pt.
  [17 <./figuras/dlArduino.jpg> <./figuras/unrarArduino.jpg>]
-Overfull \hbox (30.50777pt too wide) in paragraph at lines 305--307
+Overfull \hbox (30.50777pt too wide) in paragraph at lines 306--308
 []\OT1/cmr/m/n/12 ====== https://www.jetbrains.com/clion/ ======= CLion ^^Se um
 a IDE multi-plataforma,
  []
 
 
-Overfull \hbox (34.59511pt too wide) in paragraph at lines 309--310
+Overfull \hbox (34.59511pt too wide) in paragraph at lines 310--311
 []\OT1/cmr/m/n/12 Na p^^Sagina ofi-cial de down-load do Clion ``https://www.jet
 brains.com/clion/download/#[]linux"foi
  []
@@ -1037,18 +1037,18 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/pluginClion.jpg, id=660, 469.755pt x 318.43968pt>
+<figuras/pluginClion.jpg, id=661, 469.755pt x 318.43968pt>
 File: figuras/pluginClion.jpg Graphic file (type jpg)
 
 <use figuras/pluginClion.jpg>
-Package pdftex.def Info: figuras/pluginClion.jpg used on input line 335.
+Package pdftex.def Info: figuras/pluginClion.jpg used on input line 336.
 (pdftex.def)             Requested size: 234.73524pt x 159.12227pt.
 
-<figuras/pluginClion2.jpg, id=661, 468.24937pt x 403.5075pt>
+<figuras/pluginClion2.jpg, id=662, 468.24937pt x 403.5075pt>
 File: figuras/pluginClion2.jpg Graphic file (type jpg)
 
 <use figuras/pluginClion2.jpg>
-Package pdftex.def Info: figuras/pluginClion2.jpg used on input line 340.
+Package pdftex.def Info: figuras/pluginClion2.jpg used on input line 341.
 (pdftex.def)             Requested size: 234.73524pt x 202.28276pt.
  [19]
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -1057,28 +1057,28 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/boardPlatformio.jpg, id=666, 469.755pt x 222.07968pt>
+<figuras/boardPlatformio.jpg, id=667, 469.755pt x 222.07968pt>
 File: figuras/boardPlatformio.jpg Graphic file (type jpg)
 
 <use figuras/boardPlatformio.jpg>
-Package pdftex.def Info: figuras/boardPlatformio.jpg used on input line 354.
+Package pdftex.def Info: figuras/boardPlatformio.jpg used on input line 355.
 (pdftex.def)             Requested size: 234.73524pt x 110.97179pt.
  [20 <./figuras/pluginClion.jpg> <./figuras/pluginClion2.jpg>] (/usr/share/texl
 ive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/initPlatformio.jpg, id=670, 469.755pt x 239.39438pt>
+<figuras/initPlatformio.jpg, id=671, 469.755pt x 239.39438pt>
 File: figuras/initPlatformio.jpg Graphic file (type jpg)
 
 <use figuras/initPlatformio.jpg>
-Package pdftex.def Info: figuras/initPlatformio.jpg used on input line 363.
+Package pdftex.def Info: figuras/initPlatformio.jpg used on input line 364.
 (pdftex.def)             Requested size: 234.73524pt x 119.62383pt.
 
-<figuras/reloadCmake.jpg, id=671, 430.60875pt x 490.83376pt>
+<figuras/reloadCmake.jpg, id=672, 430.60875pt x 490.83376pt>
 File: figuras/reloadCmake.jpg Graphic file (type jpg)
 
 <use figuras/reloadCmake.jpg>
-Package pdftex.def Info: figuras/reloadCmake.jpg used on input line 369.
+Package pdftex.def Info: figuras/reloadCmake.jpg used on input line 370.
 (pdftex.def)             Requested size: 234.73524pt x 267.57024pt.
  [21 <./figuras/boardPlatformio.jpg> <./figuras/initPlatformio.jpg>] (/usr/shar
 e/texlive/texmf-dist/tex/latex/base/utf8.def
@@ -1086,26 +1086,26 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
-) [22 <./figuras/reloadCmake.jpg>] <figuras/buildClion.jpg, id=678, 630.85687pt
+) [22 <./figuras/reloadCmake.jpg>] <figuras/buildClion.jpg, id=679, 630.85687pt
  x 426.84468pt>
 File: figuras/buildClion.jpg Graphic file (type jpg)
 
 <use figuras/buildClion.jpg>
-Package pdftex.def Info: figuras/buildClion.jpg used on input line 397.
+Package pdftex.def Info: figuras/buildClion.jpg used on input line 398.
 (pdftex.def)             Requested size: 234.73524pt x 158.82236pt.
 
-<figuras/upload.jpg, id=679, 531.48563pt x 267.24844pt>
+<figuras/upload.jpg, id=680, 531.48563pt x 267.24844pt>
 File: figuras/upload.jpg Graphic file (type jpg)
 
 <use figuras/upload.jpg>
-Package pdftex.def Info: figuras/upload.jpg used on input line 404.
+Package pdftex.def Info: figuras/upload.jpg used on input line 405.
 (pdftex.def)             Requested size: 234.73524pt x 118.03416pt.
  (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) [23 <./figuras/buildClion.jpg> <./figuras/upload.jpg>] [24]
 Cap\'{\i }tulo 6.
 
-Overfull \hbox (63.31705pt too wide) in paragraph at lines 418--425
+Overfull \hbox (63.31705pt too wide) in paragraph at lines 419--426
 \OT1/cmr/m/n/12 trado no link: https://github.com/kelvimro/TCCTerceira/blob/mas
 ter/lib/ControleBT/controleBT.cpp
  []
@@ -1125,7 +1125,7 @@ Cap\'{\i }tulo 7.
 [27
 
 ]
-Underfull \hbox (badness 1735) in paragraph at lines 501--501
+Underfull \hbox (badness 1735) in paragraph at lines 502--502
 []\OT1/cmr/m/n/10.95 Tabela 7.1: |Lista de in-ter-rup^^Xc~oes para o chip pro-c
 es-sa-dor At-mega328. Fonte: gam-
  []
@@ -1162,7 +1162,7 @@ Cap\'{\i }tulo 8.
 
 ]
 
-LaTeX Warning: Reference `tcrt1000' on page 33 undefined on input line 580.
+LaTeX Warning: Reference `tcrt1000' on page 33 undefined on input line 581.
 
 [33] [34]
 Cap\'{\i }tulo 9.
@@ -1188,16 +1188,16 @@ File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 ) [41] [42]
 Cap\'{\i }tulo 10.
 
-LaTeX Warning: Reference `getAmostras' on page 43 undefined on input line 798.
+LaTeX Warning: Reference `getAmostras' on page 43 undefined on input line 799.
 
 
-LaTeX Warning: Reference `getAmostras' on page 43 undefined on input line 801.
+LaTeX Warning: Reference `getAmostras' on page 43 undefined on input line 802.
 
-<figuras/semcorrecao.jpg, id=744, 942.52126pt x 376.40625pt>
+<figuras/semcorrecao.jpg, id=745, 942.52126pt x 376.40625pt>
 File: figuras/semcorrecao.jpg Graphic file (type jpg)
 
 <use figuras/semcorrecao.jpg>
-Package pdftex.def Info: figuras/semcorrecao.jpg used on input line 805.
+Package pdftex.def Info: figuras/semcorrecao.jpg used on input line 806.
 (pdftex.def)             Requested size: 469.47049pt x 187.49046pt.
  [43
 
@@ -1205,48 +1205,48 @@ Package pdftex.def Info: figuras/semcorrecao.jpg used on input line 805.
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 )
-<figuras/correcao100.jpg, id=753, 959.83594pt x 376.40625pt>
+<figuras/correcao100.jpg, id=754, 959.83594pt x 376.40625pt>
 File: figuras/correcao100.jpg Graphic file (type jpg)
 
 <use figuras/correcao100.jpg>
-Package pdftex.def Info: figuras/correcao100.jpg used on input line 848.
+Package pdftex.def Info: figuras/correcao100.jpg used on input line 849.
 (pdftex.def)             Requested size: 469.47049pt x 184.10754pt.
  [45]
-<figuras/correcao4pwm.jpg, id=757, 943.27406pt x 374.14781pt>
+<figuras/correcao4pwm.jpg, id=758, 943.27406pt x 374.14781pt>
 File: figuras/correcao4pwm.jpg Graphic file (type jpg)
 
 <use figuras/correcao4pwm.jpg>
-Package pdftex.def Info: figuras/correcao4pwm.jpg used on input line 876.
+Package pdftex.def Info: figuras/correcao4pwm.jpg used on input line 877.
 (pdftex.def)             Requested size: 469.47049pt x 186.21707pt.
  [46 <./figuras/correcao100.jpg>] [47 <./figuras/correcao4pwm.jpg>]
 Cap\'{\i }tulo 11.
-<figuras/pwm100.jpg, id=764, 948.54375pt x 383.18156pt>
+<figuras/pwm100.jpg, id=765, 948.54375pt x 383.18156pt>
 File: figuras/pwm100.jpg Graphic file (type jpg)
 
 <use figuras/pwm100.jpg>
-Package pdftex.def Info: figuras/pwm100.jpg used on input line 890.
+Package pdftex.def Info: figuras/pwm100.jpg used on input line 891.
 (pdftex.def)             Requested size: 469.47049pt x 189.64914pt.
  [48
 
 ]
-<figuras/pwm150.jpg, id=770, 949.29657pt x 378.66469pt>
+<figuras/pwm150.jpg, id=771, 949.29657pt x 378.66469pt>
 File: figuras/pwm150.jpg Graphic file (type jpg)
 
 <use figuras/pwm150.jpg>
-Package pdftex.def Info: figuras/pwm150.jpg used on input line 899.
+Package pdftex.def Info: figuras/pwm150.jpg used on input line 900.
 (pdftex.def)             Requested size: 469.47049pt x 187.26915pt.
  [49 <./figuras/pwm100.jpg> <./figuras/pwm150.jpg>]
-<figuras/pwm200.jpg, id=775, 944.7797pt x 379.4175pt>
+<figuras/pwm200.jpg, id=776, 944.7797pt x 379.4175pt>
 File: figuras/pwm200.jpg Graphic file (type jpg)
  <use figuras/pwm200.jpg>
-Package pdftex.def Info: figuras/pwm200.jpg used on input line 908.
+Package pdftex.def Info: figuras/pwm200.jpg used on input line 909.
 (pdftex.def)             Requested size: 469.47049pt x 188.5388pt.
 
-<figuras/pwm255.jpg, id=776, 946.28531pt x 380.17032pt>
+<figuras/pwm255.jpg, id=777, 946.28531pt x 380.17032pt>
 File: figuras/pwm255.jpg Graphic file (type jpg)
 
 <use figuras/pwm255.jpg>
-Package pdftex.def Info: figuras/pwm255.jpg used on input line 917.
+Package pdftex.def Info: figuras/pwm255.jpg used on input line 918.
 (pdftex.def)             Requested size: 469.47049pt x 188.60545pt.
  [50 <./figuras/pwm200.jpg>] [51 <./figuras/pwm255.jpg>]
 Cap\'{\i }tulo 12.
@@ -1265,10 +1265,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 8918 strings out of 494925
- 127624 string characters out of 6180252
+ 8920 strings out of 494925
+ 127648 string characters out of 6180252
  451700 words of memory out of 5000000
- 11933 multiletter control sequences out of 15000+600000
+ 11934 multiletter control sequences out of 15000+600000
  13369 words of font info for 51 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  39i,13n,58p,2171b,2169s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1286,9 +1286,9 @@ m/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
 0.pfb>
-Output written on plano_trab_kelvim.pdf (54 pages, 8726877 bytes).
+Output written on plano_trab_kelvim.pdf (54 pages, 10094980 bytes).
 PDF statistics:
- 840 PDF objects out of 1000 (max. 8388607)
+ 841 PDF objects out of 1000 (max. 8388607)
  456 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
  146 words of extra memory for PDF output out of 10000 (max. 10000000)
