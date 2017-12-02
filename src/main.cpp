@@ -69,6 +69,7 @@ double speed_actA = 0;                             // speed (actual value)
 double speed_actB = 0;                             // speed (actual value)
 
 // Filas para calibragem por media movel
+QueueArray<int> pwmArray;
 QueueArray<int> calibA;
 QueueArray<int> calibB;
 QueueArray<double> mediaA;
@@ -76,7 +77,7 @@ QueueArray<double> mediaB;
 
 // Peso dos motores
 double pesoA = 1;
-double pesoB = 0.97;
+double pesoB = 1;
 
 
 // Flags
@@ -95,7 +96,7 @@ double cmdB = 0;                // Comando rescebido pelo controlador
 
 #define START_CMD_CHAR '*'
 #define DIV_CMD_CHAR '|'
-// #define END_CMD_CHAR '#'
+#define END_CMD_CHAR '#'
 #define CALIB_CMD_CHAR '@'
 
 /****************************************************************************************************/
@@ -446,7 +447,7 @@ void getAmostras(int _PWM) {
         PWM_valA = PWM_valB = 2;
         motorRefresh();
     }
-    Serial.print(print);
+    //Serial.print(print);
     print = " ";
 
     if (processMedia()) {
@@ -674,14 +675,23 @@ boolean calibrate() {
     PWM_valA = PWM_valB = 7;
     motorupdate();
 
-    getAmostras(150);
-    getPercent();
+    // Coleta todos os PWMs do array
+    while (Serial.available()) {
+        pwmArray.push(Serial.parseInt());
+    }
+    while (!pwmArray.isEmpty()) {
+        static int _pwm;
+        _pwm = pwmArray.pop();
+        getAmostras(_pwm);
+    }
+    //getAmostras(150);
+    //getPercent();
 /*
     getAmostras(255);
     getAmostras(200);
     getAmostras(150);
     getAmostras(100);
-
+*/
     if (finalMedia()) {
         print = "\n";
         print += "~Calibragem finalizada~\n";
@@ -721,6 +731,7 @@ void loop() {
     if (Serial.available()) {
         // Parce do primero char do comando
         get_char = Serial.read();
+        // Primeoro Char for igual @ (CALIB_CMD_CHAR)
         if (get_char == CALIB_CMD_CHAR) calibrate();
         // Se diferente de comando inicial retorna loop
         if (get_char != START_CMD_CHAR) return;

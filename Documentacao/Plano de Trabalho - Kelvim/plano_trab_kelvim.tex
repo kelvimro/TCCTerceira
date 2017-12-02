@@ -130,11 +130,12 @@ Bla bla bla
 \begin{itemize}
 	%lista de itens	
 	
-	\item Criar uma interface simples e intuitiva para que qualquer pessoa sem alto nível de conhecimento no pacote \textit{Vaucanson-G} possa utilizá-lo.
-	
-	\item Desenvolver o sistema de transição livre.
-	
-	\item Desenvolver o sistema de transição dupla.
+	\item Estudar o hardware do Arduino.
+	\item Desenvolver software utilizando a linguagem do Arduino.
+	\item Aprofundamento dos conhecimentos de eletrônica.
+	\item Aprofundamento nos conhecimentos de robótica.
+	\item Tornar o robô MODU funcional para o time de futebol do CPCX.
+	\item Aprofundamento na linguagem C e C++.
 	
 	
 \end{itemize}
@@ -582,7 +583,64 @@ Como pode ser visto o encoder \ref{encoder} é o conjunto da roda \ref{roda} pro
 Concluindo então que a utilização de controle do tipo PID do modo implementado não é recomendado.
 
 \chapter{Controle por pesos}
-Um controle por peso é de simples funcionamento, cada motor tem seu peso o qual é multiplicado pelo seu PWM solicitado pelo computador controlador dos robôs, com a diferença dos pesos os motores mesmo com potencia real diferente tendem a rodarem com uma velocidade parecida. Para atribuir valores aos pesos, foram feito os !!X!! passos começando com coleta de amostras, calculando a média das amostras adquiridas e então calculando os pesos.
+Um controle por peso é de simples funcionamento, cada motor tem seu peso o qual é multiplicado pelo seu PWM solicitado pelo computador controlador dos robôs, com a diferença dos pesos os motores mesmo com potencia real diferente tendem a rodarem com uma velocidade parecida. Para atribuir valores aos pesos, foram feito os !!X!! passos começando com coleta de amostras, calculando a média das amostras adquiridas e então calculando os pesos, surgindo então a ferramenta de calibragem por peso.
+A ferramenta tem como principal finalidade permitir o cálculos dos pesos a partir de testes reais, utilizando a sintaxe da sessão \ref{sintaxe} podemos calcular os pesos testando um ou mais valores de PWM conforme a necessidade.
+ 
+\section{Sintaxe da ferramenta}\label{sintaxe}
+A sintaxe da ferramenta é bem simples e pode ser alterada nas primeiras linhas do código onde encontramos as seguintes variáveis:
+\begin{lstlisting}
+#define START_CMD_CHAR '*'
+#define DIV_CMD_CHAR '|'
+#define CALIB_CMD_CHAR '@'
+\end{lstlisting}
+
+\subsection{\textbf{START\_CMD\_CHAR}}\label{stardcmd}
+\textbf{\textit{START\_CMD\_CHAR}} é o caractere inicial para movimentação, seguido de dois inteiros (um inteiro para cada motor) separados pelo caractere \textbf{DIV\_CMD\_CHAR}(utilizado o '|' neste trabalho), utilizado conforme a seguinte tabela.
+
+\begin{table}[!h]
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{|c|cc|c|}
+		\hline
+		 Comando   & Potencia Motor A & Potencia Motor B &    Movimento    \\ \hline
+		 *100|100  &  100\% a frente  &  100\% a frente  &   Para frente   \\
+		*-100|-100 & 100\% para trás  & 100\% para trás  &    Para trás    \\
+		 *50|-50   &  50\% a frente   &  50\% para trás  & Rotação horária \\
+		  *50|25   &  50\% a frente   &  25\% a frente   & Curva a direita \\ \hline
+	\end{tabular}
+	\caption[Comandos]{Tabela com exemplo de sintaxe para movimentação do robô}
+\end{table}
+
+O caractere inicial pode ser alterado para o caractere de identificação do robô, caso tenhamos mais que um robô controlado pelo mesmo rádio, obrigatoriamente o caractere inicial não pode ser um caractere do tipo inteiro (\textbf{\textit{INT}}), ou seja, tento os robôs 'A','B' e 'C'e um o rádio pode comandar os três robôs no mesmo canal de comunicação caso alterarmos o \textbf{DIV\_CMD\_CHAR} de cada robô para seu respectivo ID ignorando os comandos dos outros robôs.
+
+\subsection{{DIV\_CMD\_CHAR}}\label{divcmd}
+O comando de divisão é utilizado em conjunto com os outros comando, serve exclusivamente para separar os inteiros referentes aos valores de PWM, utilizados entre um inteiro e outro serve como caractere de parada para a função \textbf{Serial.parseInt()} e também ignorado pela mesma, \textbf{DIV\_CMD\_CHAR} deve ser único e pode ser alterado mas nunca por um inteiro.
+
+\subsection{CALIB\_CMD\_CHAR}\label{calibcmd}
+O caractere \textbf{CALIB\_CMD\_CHAR} é o caractere que identifica que os inteiros seguintes serão utilizados para calibragem e não para movimentação do robô, ou sejá, o caractere \textbf{CALIB\_CMD\_CHAR} ('@' neste trabalho) invoca a função \textbf{calibrate()} que será explicado seu funcionamento na sessão \ref{calibrate}, este deve ser único e pode ser alterado mas nunca por um inteiro.
+Para solicitar uma calibragem o comando deve começar com o caractere de calibragem seguindo por 'N' inteiros separados por \textbf{DIV\_CMD\_CHAR} conforme os exemplos abaixo:
+\begin{lstlisting}
+	@100
+	@100|150|200|255
+	@150|150|150|150|150|150|150
+\end{lstlisting}
+Como podemos ver no exemplo a cima a função de calibragem aceita um numero variável de PWMs, podendo calibrar em varias potencias ou em uma mesma potencia porem repetidas vezes, quanto maior o numero de potencias testadas maior a precisão dos cálculos pois como sabemos quanto maior o numero de amostras menor o erro.
+
+\section{Calibragem - calibrate()}\label{calibrate}
+A função de calibragem (\textbf{calibrate()}) é invocada com o uso do caractere \textbf{CALIB\_CMD\_CHAR} uma função a qual recebe os um ou mais valores de PWM e os testam.
+\begin{lstlisting}
+	// Coleta todos os PWMs do array
+	while (Serial.available()) {
+		pwmArray.push(Serial.parseInt());
+	}
+	while (!pwmArray.isEmpty()) {
+		static int _pwm;
+		_pwm = pwmArray.pop();
+		getAmostras(_pwm);
+	}
+\end{lstlisting}
+O primeiro laço de repetição \textit{while} é responsável por separar os valores de PWM e coloca-los em uma pilha, este trecho do código permite que a função teste números variados de PWMs.
+No segundo \textit{while} é desempilhado um valor de PWM e este valor é utilizado na função \textbf{getAmostras(int \_PWM)} \ref{getamostras} coletando amostas de todos os PWM solicitados. Com as amostras coletadas é invocadas a função \textbf{finalMedia()} \ref{finalMedia} para a conclusão da calibragem.
 
 \section{Coleta de amostras - getAmostras(int \_PWM)}\label{getamostras}
 Foi desenvolvido um método chamado \textbf{getAmostras(int \_PWM)} tendo como argumento o PWM desejado para coleta de amostras.
