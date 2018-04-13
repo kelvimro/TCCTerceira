@@ -1,20 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: plano_trab_kelvim.aux
-The style file: abnt.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
+The style file: abnt-alf.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -23,54 +10,68 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Database file #1: bibliografia.bib
-You're missing a field name---line 79 of file bibliografia.bib
- :  
- :  %url   = "",
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--there is no address in arduinoemacao
-Warning--empty year in arduinoemacao
-Warning--empty address in braga2009funcionam
-You've used 2 entries,
-            4793 wiz_defined-function locations,
-            1173 strings with 11433 characters,
-and the built_in function-call counts, 893 in all, are:
-= -- 212
-> -- 8
-< -- 0
-+ -- 4
-- -- 2
-* -- 21
-:= -- 59
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 4
-chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 18
-empty$ -- 40
-format.name$ -- 2
-if$ -- 256
+Database file #1: abntex2-options.bib
+Database file #2: bibliografia.bib
+Warning--entry type for "controlepid" isn't style-file defined
+--line 165 of file bibliografia.bib
+Warning--entry type for "gammon" isn't style-file defined
+--line 179 of file bibliografia.bib
+Warning--entry type for "sitearduinoide" isn't style-file defined
+--line 193 of file bibliografia.bib
+Warning--entry type for "siteclion" isn't style-file defined
+--line 205 of file bibliografia.bib
+Warning--entry type for "platiformio" isn't style-file defined
+--line 217 of file bibliografia.bib
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
++---------------------------------------------------------+
+| Estilo bibliografico abnt-alf.bst versao 1.53           |
+| Implementa a NBR6023, NBR10520 e NBR10523               |
+| Em caso de duvidas ou problemas com este estilo procure |
+| http://abntex.codigolivre.org.br                        |
++---------------------------------------------------------+
+You've used 11 entries,
+            6522 wiz_defined-function locations,
+            1212 strings with 10347 characters,
+and the built_in function-call counts, 7293 in all, are:
+= -- 641
+> -- 230
+< -- 3
++ -- 125
+- -- 72
+* -- 451
+:= -- 1080
+add.period$ -- 34
+call.type$ -- 11
+change.case$ -- 83
+chr.to.int$ -- 14
+cite$ -- 10
+duplicate$ -- 307
+empty$ -- 579
+format.name$ -- 339
+if$ -- 1735
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 0
-newline$ -- 13
-num.names$ -- 2
-pop$ -- 9
+int.to.str$ -- 0
+missing$ -- 178
+newline$ -- 60
+num.names$ -- 50
+pop$ -- 238
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 38
 quote$ -- 0
-skip$ -- 194
-stack$ -- 0
-substring$ -- 0
-swap$ -- 3
-text.length$ -- 0
+skip$ -- 464
+stack$ -- 1
+substring$ -- 202
+swap$ -- 125
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 3
-while$ -- 2
-width$ -- 3
-write$ -- 22
-(There was 1 error message)
+type$ -- 8
+warning$ -- 0
+while$ -- 59
+width$ -- 0
+write$ -- 153
+(There were 5 warnings)
