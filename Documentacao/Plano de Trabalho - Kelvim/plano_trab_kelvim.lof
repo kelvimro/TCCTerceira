@@ -1,0 +1,39 @@
+\select@language {brazil}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Mec\IeC {\^a}nica dos movimentos. Fonte: www.ebanataw.com.br\relax }}{1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Vista superior do rob\IeC {\^o} Modu.\relax }}{6}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Vista inferior aberto do rob\IeC {\^o} Modu.\relax }}{7}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Vista superior de um Arduino Nano. Fonte: http://store.arduino.cc\relax }}{7}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Infogr\IeC {\'a}fico pinagem arduino e suas fun\IeC {\c c}\IeC {\~o}es\relax }}{8}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Vista inferior do driver TB6612FNG com os r\IeC {\'o}tulos de seus respectivos pinos. Fonte: http://www.sparkfun.com\relax }}{9}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Sensor \IeC {\'o}ptico TCRT1000. Fonte:www.vishay.com\relax }}{10}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Vista lateral do rob\IeC {\^o} Modu sem a roda, carca\IeC {\c c}a verde feita em impressora 3D. Em destaque: dois sensores \IeC {\'o}pticos ao lado do eixo de motor.\relax }}{10}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Roda com fita de 32, 34 e 38 marcadores, da esquerda para direita respectivamente.\relax }}{11}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Componente bluetooth modelo HC-06. Fonte:~http://buildbot.com.br\relax }}{12}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Download IDE Arduino 1.6.10\relax }}{14}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Extra\IeC {\c c}\IeC {\~a}o dos arquivos do arquivo baixado\relax }}{14}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Comando CD para navegar entre as pastas e ./install.sh para instala\IeC {\c c}\IeC {\~a}o.\relax }}{15}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Tela de busca de plugin.\relax }}{17}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Tela com resultado da busca mostram os plugins a serem instalados.\relax }}{17}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Tela de sele\IeC {\c c}\IeC {\~a}o do modelo da placa ``nanoatmega328".\relax }}{18}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Op\IeC {\c c}\IeC {\~a}o de recarga do arquivo CMake do projeto.\relax }}{18}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Tela principal, bot\IeC {\~a}o de compila\IeC {\c c}\IeC {\~a}o.\relax }}{19}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Bot\IeC {\~a}o utilizado para carregar (\textit {upload}) o programa no Arduino Nano.\relax }}{20}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para cada valor de PWM. Valores de PWM testados: 100, 150, 200 e 255\relax }}{33}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para cada valor de PWM. Valores de PWM testados: 100, 150, 200 e 255\relax }}{35}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para cada valor de PWM. Valores de PWM testados: 100, 150, 200 e 255\relax }}{36}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para o valor de PWM 100.\relax }}{38}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para o valor de PWM 150.\relax }}{38}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para o valor de PWM 200.\relax }}{39}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Velocidades do motor A em rela\IeC {\c c}\IeC {\~a}o ao motor B em \%, quinze compara\IeC {\c c}\IeC {\~o}es para o valor de PWM 255.\relax }}{40}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

@@ -1,12 +1,68 @@
-\begin{thebibliography}{1}
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.53 }
 
-\bibitem{TCCFlavioCouto}
-DA~SILVA, F.~C.
-\newblock Planta didÁtica – controle pid digital para motor dc.
-\newblock Dezembro 2008.
+\bibitem[Banzi et al.]{sitearduinoide}
+\abntrefinfo{Banzi et al.}{BANZI et al.}{}
+{BANZI, M. et al.
+Dispon{\'\i}vel em: \url{https://www.arduino.cc/en/main/software}. Acesso em:
+  20 dez. 2017.}
 
-\bibitem{dainteractive}
-DA~SILVA~ALVES, J.~D.
-\newblock An interactive system for automata manipulations.
+\bibitem[Braga 2009]{braga2009funcionam}
+\abntrefinfo{Braga}{BRAGA}{2009}
+{BRAGA, N.~C. Como funcionam os encoders.
+\emph{Mecatr{\^o}nica F{\'a}cil}, v.~5, n.~50, 2009.}
+
+\bibitem[CitiSystems 2017]{controlepid}
+\abntrefinfo{CitiSystems}{CITISYSTEMS}{2017}
+{CITISYSTEMS. 2017.
+Dispon{\'\i}vel em: \url{https://www.citisystems.com.br/controle-pid/}. Acesso
+  em: 20 dez. 2017.}
+
+\bibitem[Community]{platiformio}
+\abntrefinfo{Community}{COMMUNITY}{}
+{COMMUNITY, P.
+Dispon{\'\i}vel em: \url{http://platformio.org/}. Acesso em: 20 dez. 2017.}
+
+\bibitem[Evans, Noble e Hochenbaum 2013]{arduinoemacao}
+\abntrefinfo{Evans, Noble e Hochenbaum}{EVANS; NOBLE; HOCHENBAUM}{2013}
+{EVANS, M.; NOBLE, J.; HOCHENBAUM, J. \emph{Arduino em ação}. [S.l.]:
+  Novatec, 2013.
+ISBN 978-85-7522-373-4.}
+
+\bibitem[Gammon 2012]{gammon}
+\abntrefinfo{Gammon}{GAMMON}{2012}
+{GAMMON, N. 2012.
+Dispon{\'\i}vel em: \url{https://gammon.com.au/interrupts}. Acesso em: 20 dez.
+  2017.}
+
+\bibitem[JetBrains]{siteclion}
+\abntrefinfo{JetBrains}{JETBRAINS}{}
+{JETBRAINS.
+Dispon{\'\i}vel em: \url{https://www.jetbrains.com/clion/}. Acesso em: 20 dez.
+  2017.}
+
+\bibitem[Junior e Vitalino 2011]{lourivaljr}
+\abntrefinfo{Junior e Vitalino}{JUNIOR; VITALINO}{2011}
+{JUNIOR, L. de O.~L.; VITALINO, R. dos S.
+\emph{Desenvolvimento de Estratégias para um Time de Futebol de Robôs}.
+Monografia de graduação --- CPCX--UFMS, Coxim--MS, 2011.}
+
+\bibitem[Monk 2015]{simonmonk}
+\abntrefinfo{Monk}{MONK}{2015}
+{MONK, S. \emph{Programação com Arduino {II}: Passos avançados com
+  sketches}. Porto Alegre: Bookman, 2015.
+ISBN 978-85-8260-297-3.}
+
+\bibitem[Schio 2015]{sane}
+\abntrefinfo{Schio}{SCHIO}{2015}
+{SCHIO, J.
+\emph{Desenvolvimento de um Sistema de Calibração de Cores com Reconhecimento
+  de Objetos para a Equipe de Futebol De Robôs Cedro Categoria IEEE Very Small
+  Size}.
+Monografia de graduação --- CPCX--UFMS, Coxim--MS, 2015.}
 
 \end{thebibliography}

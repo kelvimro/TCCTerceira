@@ -1,0 +1,55 @@
+\select@language {brazil}
+\contentsline {chapter}{Lista de Figuras}{iv}
+\contentsline {chapter}{Lista de Tabelas}{vi}
+\contentsline {chapter}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{1}
+\contentsline {section}{\numberline {1.1}Objetivos}{2}
+\contentsline {section}{\numberline {1.2}Organiza\IeC {\c c}\IeC {\~a}o da Monografia}{2}
+\contentsline {chapter}{\numberline {2}Futebol de rob\IeC {\^o}s}{4}
+\contentsline {section}{\numberline {2.1}Uma breve hist\IeC {\'o}ria sobre futebol de rob\IeC {\^o}s}{4}
+\contentsline {section}{\numberline {2.2}Modalidade}{5}
+\contentsline {chapter}{\numberline {3}O rob\IeC {\^o} Modu}{6}
+\contentsline {section}{\numberline {3.1}Arduino}{7}
+\contentsline {section}{\numberline {3.2}Driver TB6612FNG para motores CC}{8}
+\contentsline {section}{\numberline {3.3}Sensor \IeC {\'O}ptico TCRT1000}{10}
+\contentsline {section}{\numberline {3.4}Roda}{11}
+\contentsline {section}{\numberline {3.5}Encoder}{11}
+\contentsline {section}{\numberline {3.6}Bluetooth HC-06}{11}
+\contentsline {chapter}{\numberline {4}Ambiente de desenvolvimento}{13}
+\contentsline {section}{\numberline {4.1}Arduino IDE}{13}
+\contentsline {subsection}{\numberline {4.1.1}Intala\IeC {\c c}\IeC {\~a}o}{13}
+\contentsline {section}{\numberline {4.2}Clion 2017.1}{15}
+\contentsline {subsection}{\numberline {4.2.1}Instala\IeC {\c c}\IeC {\~a}o}{15}
+\contentsline {section}{\numberline {4.3}PlatformIO}{16}
+\contentsline {subsection}{\numberline {4.3.1}Instala\IeC {\c c}\IeC {\~a}o}{16}
+\contentsline {section}{\numberline {4.4}Iniciando um novo projeto}{16}
+\contentsline {chapter}{\numberline {5}Interrup\IeC {\c c}\IeC {\~o}es no Atmega328}{21}
+\contentsline {section}{\numberline {5.1}Rotinas de servi\IeC {\c c}o de interrup\IeC {\c c}\IeC {\~a}o (ISR)}{21}
+\contentsline {section}{\numberline {5.2}Modos de Interrup\IeC {\c c}\IeC {\~a}o}{22}
+\contentsline {section}{\numberline {5.3}Prioridades das interrup\IeC {\c c}\IeC {\~o}es}{22}
+\contentsline {chapter}{\numberline {6}Desenvolvimento}{24}
+\contentsline {section}{\numberline {6.1}Utilizando interrup\IeC {\c c}\IeC {\~a}o no Arduino}{24}
+\contentsline {section}{\numberline {6.2}Controlador PID}{26}
+\contentsline {subsection}{\numberline {6.2.1}Utiliza\IeC {\c c}\IeC {\~a}o do PID}{27}
+\contentsline {subsection}{\numberline {6.2.2}Problemas no ciclo}{27}
+\contentsline {subsection}{\numberline {6.2.3}Problemas devido interrup\IeC {\c c}\IeC {\~o}es}{27}
+\contentsline {section}{\numberline {6.3}Ferramenta Monitoramento/Ajuste}{28}
+\contentsline {subsection}{\numberline {6.3.1}Sintaxe da ferramenta}{28}
+\contentsline {subsection}{\numberline {6.3.2}Calibragem - calibrate()}{29}
+\contentsline {subsection}{\numberline {6.3.3}Coleta de amostras - getAmostras(int \_PWM)}{30}
+\contentsline {subsection}{\numberline {6.3.4}M\IeC {\'e}dia de amostas - processMedia()}{31}
+\contentsline {subsection}{\numberline {6.3.5}Determina\IeC {\c c}\IeC {\~a}o dos Pesos - finalMedia()}{31}
+\contentsline {section}{\numberline {6.4}Metodologia e Testes}{33}
+\contentsline {subsection}{\numberline {6.4.1}Diferen\IeC {\c c}a de motores}{33}
+\contentsline {subsection}{\numberline {6.4.2}Pesos com PWM 100}{34}
+\contentsline {subsection}{\numberline {6.4.3}Pesos com quatro PWMs}{35}
+\contentsline {chapter}{\numberline {7}Discuss\IeC {\~a}o dos Resultados}{37}
+\contentsline {section}{\numberline {7.1}An\IeC {\'a}lise do PWM 100}{38}
+\contentsline {section}{\numberline {7.2}Analise do PWM 150}{38}
+\contentsline {section}{\numberline {7.3}Analise do PWM 200}{39}
+\contentsline {section}{\numberline {7.4}Analise do PWM 255}{40}
+\contentsline {chapter}{\numberline {8}Considera\IeC {\c c}\IeC {\~o}es Finais}{41}
+\contentsline {chapter}{Refer\IeC {\^e}ncias Bibliogr\IeC {\'a}ficas}{43}
+\contentsline {chapter}{\numberline {A}Joystick Bluetooth}{44}
+\contentsline {chapter}{\numberline {B}getAmostras(int \_PWM)}{46}
+\contentsline {chapter}{\numberline {C}processMedia()}{49}
+\contentsline {chapter}{\numberline {D}Fun\IeC {\c c}\IeC {\~a}o de teste - getPercent()}{51}

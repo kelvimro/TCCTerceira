@@ -1,19 +1,21 @@
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 
+const int d5 = 5;
+
 const byte PIN_ANALOG_X = 0;
 const byte PIN_ANALOG_Y = 1;
 double cmdX;
 double cmdY;
 double sendA;
 double sendB;
-int looptime = 200;
+long looptime = 200;
 int oldtime = 0;
 
-String command = "";
-String START_CMD_CHAR = "*";
-String DIV_CMD_CHAR = "|";
-String END_CMD_CHAR = "#";
+static String command = "";
+static String START_CMD_CHAR = "*";
+static String DIV_CMD_CHAR = "|";
+static String END_CMD_CHAR = "#";
 
 //RX e TX para o Bluetooth
 SoftwareSerial mySerial(10, 11);
@@ -23,10 +25,37 @@ void setup() {
     Serial.begin(38400);
     mySerial.begin(38400);
     oldtime = millis();
+    pinMode(d5, INPUT);
+}
+
+int plebeu(){
+    static int i;
+    i = 0;
+    i++;
+    return i;
 }
 
 
 void loop() {
+    if(digitalRead(d5) > 0) {
+        Serial.println(plebeu());
+    }
+
+    // Read user input if available.
+    if (Serial.available()) {
+        delay(10); // The DELAY!
+        mySerial.write(Serial.read());
+    }
+
+    //Rescebe do BT
+    if (mySerial.available()) {
+        while (mySerial.available()) { // While there is more to be read, keep reading.
+            command += (char) mySerial.read();
+        }
+        Serial.println(command);
+        command = ""; // No repeats
+    }
+
     if ((millis() - oldtime) >= looptime) {
         //Leitura do eixo Y = vertical = Potencias dos motores
         cmdY = analogRead(PIN_ANALOG_Y);
@@ -68,16 +97,12 @@ void loop() {
         vai = START_CMD_CHAR + a + DIV_CMD_CHAR + b + END_CMD_CHAR;
         //Enviando via BT
         mySerial.print(vai);
-        if (mySerial.available()) {
-            while (mySerial.available()) { // While there is more to be read, keep reading.
-                command += (char) mySerial.read();
-            }
-            Serial.println(command);
-            command = ""; // No repeats
-        }
+
         //Zera timer
         oldtime = millis();
     }
+
+
 }
 
 

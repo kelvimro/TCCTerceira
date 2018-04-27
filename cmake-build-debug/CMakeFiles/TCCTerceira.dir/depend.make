@@ -305,7 +305,6 @@ CMakeFiles/TCCTerceira.dir/src/main.cpp.o: /home/kelvimro/.platformio/packages/t
 CMakeFiles/TCCTerceira.dir/src/main.cpp.o: /home/kelvimro/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include/stdarg.h
 CMakeFiles/TCCTerceira.dir/src/main.cpp.o: /home/kelvimro/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include/stdbool.h
 CMakeFiles/TCCTerceira.dir/src/main.cpp.o: /home/kelvimro/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include/stddef.h
-CMakeFiles/TCCTerceira.dir/src/main.cpp.o: ../lib/Arduino-PID-Library-master/PID_v1.h
-CMakeFiles/TCCTerceira.dir/src/main.cpp.o: ../lib/PID_AutoTune_v0/PID_AutoTune_v0.h
+CMakeFiles/TCCTerceira.dir/src/main.cpp.o: ../lib/QueueArray/QueueArray.h
 CMakeFiles/TCCTerceira.dir/src/main.cpp.o: ../src/main.cpp
 
