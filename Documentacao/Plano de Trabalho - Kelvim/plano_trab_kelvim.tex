@@ -110,8 +110,23 @@ Banca Examinadora:
 	\item Prof. Esp. Angelino Caon (IFMS--Coxim)
 \end{itemize}
 
-%\chapter*{Agradecimentos}
-%\thispagestyle{empty}
+\chapter*{Agradecimentos}
+\thispagestyle{empty}
+Primeiramente a Deus por minha vida, família e amigos.
+
+À instituição de ensino UFMS e ao campus de Coxim pelo ambiente criativo e amigável, pela paciência nos longos anos de formação.
+
+Ao meu orientador Gedson e professores pela paciência e fé acreditando que este dia chegaria mesmo com muita demora.
+
+Aos colegas que passaram as tardes na sala dos professores estudando e trocando conhecimentos.
+
+Ao colega Rafael pelos conhecimentos a min transmitidos durante esse caminho.
+
+Aos colegas da TalentW pelas inúmeras risadas e litros e litros de café.
+
+A todos aqueles que direta ou indiretamente contribuirão para minha formação.
+
+J.Rtf.
 %Agradecer Orientador e Câmpus Coxim.
 
 \chapter*{Resumo}
@@ -129,8 +144,19 @@ Por fim observou-se por meio dos testes, a necessidade dos ajustes em regimes de
 
 
 
-%\chapter*{Abstract}
-%\thispagestyle{empty}
+\chapter*{Abstract}
+\thispagestyle{empty}
+Two-wheel robots have been used in many types of tasks and are also the first models of robot cars studied and implemented in robotics courses due to their simplicity when compared to robots with four or more wheels. These robot models are also used in the robot soccer competition of the VSS-RoboCup category. However, the VSS robots of the Cedro / CPCX team had the difficulty of moving in a straight line, because as similar as the motors of each wheel may be, their performance is not identical, becoming a big problem for Coxim's Campus soccer team.
+
+In this paper, an embedded system that acts as a tool with its own syntax capable of monitoring and determining the speed difference between the motors was proposed .
+For this purpose, two control models were investigated: the PID control (Proportional, Integral and Derivative); this control makes subtle corrections reaching its goal with greater smoothness. The second model, control by weight, consists of a value (weight) multiplied by the requested power that makes the faster motor equivalent to the slower one.
+
+After investigating the controls of the PID model, it was verified that it would not be efficient for soccer players, since controls of this type need speed information during their execution, information obtained using interrupts (ISR) which cause read errors making the tool ineffective.
+
+Bypassing the ISR problems, an embedded system was developed, which uses the average of the interrupt counts to determine the relative speed difference between the motors. By using its own syntax it is possible to make the system a tool capable of testing, monitoring and adjusting power regimes, using one or more PWM values, repeated or not, according to the strategy employed.
+
+Finally, it was observed through the tests, the need for adjustments in different power regimes and that the tool proved to be effective as a pre-adjustment of the weight, for a certain speed, according to the need of the competition.
+
 
 % sumario %
 \cleardoublepage
@@ -319,7 +345,7 @@ O módulo Bluethooth (Figura~\ref{fig:BTHC06}) é utilizado para comunicação s
 \begin{figure}[H]	
 	\centering
 	\includegraphics[width=0.5\textwidth]{BTHC06.jpg}
-	\caption{Vista superior de um componente bluetooth modelo HC-06. /-Fonte:~http://buildbot.com.br}
+	\caption{Componente bluetooth modelo HC-06. Fonte:~http://buildbot.com.br}
 	\label{fig:BTHC06}
 \end{figure}
 
